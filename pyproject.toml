@@ -14,7 +14,7 @@ requires-python = ">= 3.9, <3.12"
 dependencies = [
     # we'll try to keep this template up to date, but it's recommended to use the
     # minor version of cumulus-library
-    "cumulus-library >= 0.2.2",
+    "cumulus-library >= 0.3.0",
     "sqlfluff == 2.0.2"
 ]
 # You can alter this to discuss your study specifics
