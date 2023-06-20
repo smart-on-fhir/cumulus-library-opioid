@@ -1,0 +1,50 @@
+# This is our stock pyproject.toml, which we use for installing dependencies and
+# packaging. You don't have to touch this if you don't want to! But if you're
+# making a distributable, or need extra python dependencies, this is a good 
+# place to put that info.
+
+[project]
+# Change this to reference the name of your study
+name = "cumulus-library-opioid"
+# You can leave this alone to start. Only worry about it when you need to create
+# a package for other users
+version = "0.1.0"
+requires-python = ">= 3.9, <3.12"
+# If you need python libraries, add them here
+dependencies = [
+    # we'll try to keep this template up to date, but it's recommended to use the
+    # minor version of cumulus-library
+    "cumulus-library >= 0.2.2",
+    "sqlfluff == 2.0.2"
+]
+# You can alter this to discuss your study specifics
+description = "Opioid Overdose and Opioid Use Disorder (OUD)"
+readme = "README.md"
+license = { text="Apache License 2.0" }
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Home = "https://smarthealthit.org/cumulus-a-universal-sidecar-for-a-smart-learning-healthcare-system/"
+Documentation = "https://docs.smarthealthit.org/cumulus/"
+# Change this source to reference your github URL
+Source = "https://github.com/smart-on-fhir/cumulus-library-opioid"
+
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pylint",    
+]
+
+[tool.flit.sdist]
+# change this to the name of the study folder inside of the module directory
+include = ["opioid/"]
