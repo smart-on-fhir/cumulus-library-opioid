@@ -15,7 +15,9 @@ dependencies = [
     # we'll try to keep this template up to date, but it's recommended to use the
     # minor version of cumulus-library
     "cumulus-library >= 0.3.0",
-    "sqlfluff == 2.0.2"
+    "sqlfluff == 2.0.2",
+    "xlrd",
+    "openpyxl"
 ]
 # You can alter this to discuss your study specifics
 description = "Opioid Overdose and Opioid Use Disorder (OUD)"
