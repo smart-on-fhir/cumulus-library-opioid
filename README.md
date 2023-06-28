@@ -8,9 +8,9 @@ The specific aims of this study are to quantify
 
 1) Demographic subtypes of opioid overdose
 
-2) use of Xyalzine tranqualizer use with opioids 
+2) co-morbidities of OUD, such as sepsis
 
-3) severe co-morbidities of OUD, such as sepsis
+3) medication use of opioid overdose population
 
 **Further Reading**
 * [Buprenorphine Quick Start Guide](BuprenorphineQuickStartGuideIndicationsMatrixCOWS.pdf)
