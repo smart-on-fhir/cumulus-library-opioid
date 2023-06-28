@@ -1,8 +1,7 @@
 from typing import List
 from cumulus_library.schema import counts
 
-# https://github.com/smart-on-fhir/cumulus-library-template/issues/2
-STUDY_PREFIX = 'suicide_icd10'
+STUDY_PREFIX = 'opioid'
 
 def table(tablename: str, duration=None) -> str:
     if duration:
@@ -10,22 +9,16 @@ def table(tablename: str, duration=None) -> str:
     else: 
         return f'{STUDY_PREFIX}__{tablename}'
 
-def count_dx(duration='week'):
-    """
-    suicide_icd10__count_dx_week
-    suicide_icd10__count_dx_month
-    """
-    view_name = table('count_dx', duration)
-    from_table = table('dx')
+def count_dx_sepsis(duration='week'):
+    view_name = table('count_dx_sepsis', duration)
+    from_table = table('dx_sepsis')
     cols = [f'recorded_{duration}',
-            'case_subtype',
-            'icd10_code',
-            'gender',
-            'race_display',
-            'age_at_visit',
+            'category_code',
             'enc_class_code',
-            'doc_type_code',
-            'ed_note']
+            'dx_display',
+            'gender',
+            'age_at_visit']
+
     return counts.count_encounter(view_name, from_table, cols)
 
 def count_study_period(duration='month'):
@@ -36,8 +29,8 @@ def count_study_period(duration='month'):
     """
     view_name = table('count_study_period', duration)
     from_table = table('study_period')
-    cols = [f'start_{duration}', 'period',
-            'gender', 'age_group', 'race_display']
+    cols = [f'start_{duration}', 'enc_class_code',
+            'gender', 'age_at_visit']
     return counts.count_encounter(view_name, from_table, cols)
 
 def concat_view_sql(create_view_list: List[str]) -> str:
@@ -65,9 +58,8 @@ def write_view_sql(view_list_sql: List[str], filename='count.sql') -> None:
 if __name__ == '__main__':
 
     write_view_sql([
-        count_dx('week'),
-        count_dx('month'),
+        count_dx_sepsis('week'),
+        count_dx_sepsis('month'),
         count_study_period('week'),
-        count_study_period('month'),
-        count_study_period('year')
+        count_study_period('month')
     ])
