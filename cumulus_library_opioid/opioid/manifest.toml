@@ -12,9 +12,13 @@ study_prefix = "opioid"
 # tables/view selecting subsets of data from FHIR data, tables/views creating 
 # summary statistics.
 file_names = [
-    "opioid__define_sepsis.sql",
+    "define_dx.sql",
+    "define_sepsis.sql",
+    "define_lab.sql",
+    "define_rx.sql",
     "table_study_period.sql",
-    "table_dx.sql"
+    "table_dx.sql",
+    "table_sepsis.sql"
 ]
 
 
@@ -24,10 +28,10 @@ file_names = [
 # The following tables will be output to disk when an export is run. In most cases,
 # only count tables should be output in this way.
 export_list = [
-    "opioid__count_dx_sepsis_week",
-    "opioid__count_dx_sepsis_month",
     "opioid__count_study_period_week",
     "opioid__count_study_period_month",
+    "opioid__count_dx_sepsis_week",
+    "opioid__count_dx_sepsis_month",
 ]
 
 

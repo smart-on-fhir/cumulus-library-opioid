@@ -1,4 +1,4 @@
-create or replace view opioid__define_dx_icd10 as select * from (values
+create or replace view opioid__define_dx as select * from (values
 ('http://hl7.org/fhir/sid/icd-10-cm', 'F11.92', 'Opioid use, unspecified with intoxication')
 ,('http://hl7.org/fhir/sid/icd-10-cm', 'F11.920', 'Opioid use, unspecified with intoxication, uncomplicated')
 ,('http://hl7.org/fhir/sid/icd-10-cm', 'F11.921', 'Opioid use, unspecified with intoxication delirium')

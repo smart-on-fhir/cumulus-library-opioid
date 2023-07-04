@@ -87,7 +87,7 @@ def save(view_name: str, view_sql: str, outfile=None) -> str:
         fp.write(view_sql)
     return outfile
 
-def define_dx_sepsis():
+def define_sepsis():
     """
     Optional use: SEPSIS is a common and deadly outcome for OUD populations.
     :return:
@@ -95,7 +95,7 @@ def define_dx_sepsis():
     codings = valueset2coding('valueset_sepsis_snomed.json')
     codings += valueset2coding('valueset_sepsis_icd10.json')
 
-    save('define_dx_sepsis', coding2view('define_dx_sepsis', codings))
+    save('define_sepsis', coding2view('define_dx_sepsis', codings))
 
 def define_rx():
     """
@@ -118,7 +118,7 @@ def define_rx():
 
     save('define_rx', coding2view('define_rx', codings))
 
-def define_dx_icd10():
+def define_dx():
     """
     Notice: Epic Bulk-FHIR provides SNOMED not ICD10 !
     This is for reproducibility
@@ -138,7 +138,7 @@ def define_dx_icd10():
                        'code': code}
             codings.append(Coding(as_fhir))
 
-    save('define_dx_icd10', coding2view('define_dx_icd10', codings))
+    save('define_dx', coding2view('define_dx', codings))
 
 def define_lab():
     """
@@ -164,7 +164,7 @@ def define_lab():
 
 
 if __name__ == "__main__":
-    define_rx()
-    define_dx_icd10()
-    define_dx_sepsis()
+    define_dx()
+    define_sepsis()
     define_lab()
+    define_rx()

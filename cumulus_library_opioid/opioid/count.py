@@ -9,15 +9,13 @@ def table(tablename: str, duration=None) -> str:
     else: 
         return f'{STUDY_PREFIX}__{tablename}'
 
-def count_dx_sepsis(duration='week'):
-    view_name = table('count_dx_sepsis', duration)
-    from_table = table('dx_sepsis')
-    cols = [f'recorded_{duration}',
-            'category_code',
-            'enc_class_code',
-            'dx_display',
-            'gender',
-            'age_at_visit']
+def count_sepsis(duration='week'):
+    view_name = table('count_sepsis', duration)
+    from_table = table('sepsis')
+    cols = [f'cond_{duration}',
+            'category_code', 'cond_display', 'cond_system_display',
+            'enc_class_code', 'age_at_visit',
+            'gender', 'race_display', 'ethnicity_display']
 
     return counts.count_encounter(view_name, from_table, cols)
 
@@ -29,8 +27,10 @@ def count_study_period(duration='month'):
     """
     view_name = table('count_study_period', duration)
     from_table = table('study_period')
-    cols = [f'start_{duration}', 'enc_class_code',
-            'gender', 'age_at_visit']
+    cols = [f'start_{duration}',
+            'enc_class_code', 'age_at_visit',
+            'gender', 'race_display', 'ethnicity_display']
+
     return counts.count_encounter(view_name, from_table, cols)
 
 def concat_view_sql(create_view_list: List[str]) -> str:
@@ -58,8 +58,8 @@ def write_view_sql(view_list_sql: List[str], filename='count.sql') -> None:
 if __name__ == '__main__':
 
     write_view_sql([
-        count_dx_sepsis('week'),
-        count_dx_sepsis('month'),
         count_study_period('week'),
-        count_study_period('month')
+        count_study_period('month'),
+        count_sepsis('week'),
+        count_sepsis('month'),
     ])
