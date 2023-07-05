@@ -1,4 +1,4 @@
-create table opioid__sepsis as
+create table opioid__dx_sepsis as
 SELECT DISTINCT
     c.subject_ref,
     c.encounter_ref,

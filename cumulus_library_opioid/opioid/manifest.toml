@@ -13,12 +13,13 @@ study_prefix = "opioid"
 # summary statistics.
 file_names = [
     "define_dx.sql",
-    "define_sepsis.sql",
+    "define_dx_sepsis.sql",
     "define_lab.sql",
     "define_rx.sql",
     "table_study_period.sql",
     "table_dx.sql",
-    "table_sepsis.sql",
+    "table_dx_sepsis.sql",
+    "table_lab.sql",
     "count.sql"
 ]
 
@@ -33,8 +34,11 @@ export_list = [
     "opioid__count_study_period_month",
     "opioid__count_dx_sepsis_week",
     "opioid__count_dx_sepsis_month",
+    "opioid__count_dx_month",
+    "opioid__count_dx_week",
+    "opioid__count_lab_month",
+    "opioid__count_lab_week"
 ]
-
 
 # For most use cases, this should not be required, but if you need to run code, you
 # can point to a python module. The vocab study provides an example of this. 

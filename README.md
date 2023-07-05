@@ -35,7 +35,7 @@ _Number of encounters with **Opioid Overdose**_ during study period
 <br>
 
 
-| **Table: opioid__count_dx_week** | See REFERENCES for case definition                                                                            |
+| **Table: opioid__count_dx_week** | See [Spreadsheet: Opioid Involved Overdose Codes](cumulus_library_opioid/opioid/CodeBookOpioidOverDose.xlsx)                     |
 |----------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | cnt                              | count number of encounters                                                                                                       |
 | cond_week (or cond_month)        | Week of encounter with Opioid Overdose diagnosis                                                                                 |
@@ -67,3 +67,21 @@ _Number of encounters with **Sepsis**_ during study period
 | race_display                  | [CDC R5 race](http://hl7.org/fhir/us/core/StructureDefinition/us-core-race)                                                      |
 | ethnicity_display             | [Hispanic or Latino](http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity)                                          |
 
+<br>
+
+---
+_Number of encounters with **Opioid Overdose Lab**_ during study period
+
+<br>
+
+| **opioid__count_lab_week** | See [Spreadsheet: Opioid Involved Lab Codes](cumulus_library_opioid/opioid/CodeBookOpioidOverDose.xlsx)                          |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| cnt                        | count number of encounters                                                                                                       |
+| lab_week (or lab_month)    | Week of LOINC lab test involved with opioid overdose (LOINC)                                                                     |
+| loinc_code_display         | LOINC test name                                                                                                                  |
+| lab_result_display         | Lab result                                                                                                                       |
+| enc_class_code             | [Encounter class](https://terminology.hl7.org/5.1.0/ValueSet-encounter-class.html) ambulatory, emergency, impatient, observation | 
+| gender                     | [female or male sex](http://hl7.org/fhir/ValueSet/administrative-gender)                                                         |
+| age_at_visit               | patient age at time of visit                                                                                                     |
+| race_display               | [CDC R5 race](http://hl7.org/fhir/us/core/StructureDefinition/us-core-race)                                                      |
+| ethnicity_display          | [Hispanic or Latino](http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity)                                          |
