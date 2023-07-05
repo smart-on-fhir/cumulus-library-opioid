@@ -1,5 +1,3 @@
-drop table if exists opioid__study_period;
-
 CREATE TABLE opioid__study_period AS
 SELECT DISTINCT
     ce.start_date,
@@ -12,7 +10,7 @@ SELECT DISTINCT
     cp.ethnicity_display,
     cp.subject_ref,
     ce.encounter_ref,
-    coalesce(ce.enc_class.code, '?') AS enc_class_code
+    ce.enc_class.code AS enc_class_code
 FROM
     core__patient AS cp,
     core__encounter AS ce

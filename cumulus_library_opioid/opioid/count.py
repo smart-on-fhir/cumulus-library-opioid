@@ -9,6 +9,16 @@ def table(tablename: str, duration=None) -> str:
     else: 
         return f'{STUDY_PREFIX}__{tablename}'
 
+def count_dx(duration='week'):
+    view_name = table('count_dx', duration)
+    from_table = table('dx')
+    cols = [f'cond_{duration}',
+            'category_code', 'cond_display', 'cond_system_display',
+            'enc_class_code', 'age_at_visit',
+            'gender', 'race_display', 'ethnicity_display']
+
+    return counts.count_encounter(view_name, from_table, cols)
+
 def count_sepsis(duration='week'):
     view_name = table('count_sepsis', duration)
     from_table = table('sepsis')
@@ -51,8 +61,9 @@ def write_view_sql(view_list_sql: List[str], filename='count.sql') -> None:
     :param view_list_sql: SQL prepared statements
     :param filename: path to output file, default 'count.sql' in PWD
     """
+    sql_optimizer = concat_view_sql(view_list_sql).replace('ORDER BY cnt desc', '')
     with open(filename, 'w') as fout:
-        fout.write(concat_view_sql(view_list_sql))
+        fout.write(sql_optimizer)
 
 
 if __name__ == '__main__':
@@ -60,6 +71,8 @@ if __name__ == '__main__':
     write_view_sql([
         count_study_period('week'),
         count_study_period('month'),
+        count_dx('week'),
+        count_dx('month'),
         count_sepsis('week'),
         count_sepsis('month'),
     ])

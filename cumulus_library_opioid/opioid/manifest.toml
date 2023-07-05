@@ -18,7 +18,8 @@ file_names = [
     "define_rx.sql",
     "table_study_period.sql",
     "table_dx.sql",
-    "table_sepsis.sql"
+    "table_sepsis.sql",
+    "count.sql"
 ]
 
 
