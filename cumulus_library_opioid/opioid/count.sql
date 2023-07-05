@@ -75,6 +75,44 @@ CREATE or replace VIEW opioid__count_dx_month AS
     ;
 
 -- ###########################################################
+CREATE or replace VIEW opioid__count_lab_week AS 
+    with powerset as
+    (
+        select
+        count(distinct subject_ref)   as cnt_subject
+        , count(distinct encounter_ref)   as cnt_encounter
+        , lab_week, enc_class_code, loinc_code_display, lab_result_display, age_at_visit, gender, race_display, ethnicity_display        
+        FROM opioid__lab
+        group by CUBE
+        ( lab_week, enc_class_code, loinc_code_display, lab_result_display, age_at_visit, gender, race_display, ethnicity_display )
+    )
+    select
+          cnt_encounter  as cnt 
+        , lab_week, enc_class_code, loinc_code_display, lab_result_display, age_at_visit, gender, race_display, ethnicity_display
+    from powerset 
+    WHERE cnt_subject >= 10 
+    ;
+
+-- ###########################################################
+CREATE or replace VIEW opioid__count_lab_month AS 
+    with powerset as
+    (
+        select
+        count(distinct subject_ref)   as cnt_subject
+        , count(distinct encounter_ref)   as cnt_encounter
+        , lab_month, enc_class_code, loinc_code_display, lab_result_display, age_at_visit, gender, race_display, ethnicity_display        
+        FROM opioid__lab
+        group by CUBE
+        ( lab_month, enc_class_code, loinc_code_display, lab_result_display, age_at_visit, gender, race_display, ethnicity_display )
+    )
+    select
+          cnt_encounter  as cnt 
+        , lab_month, enc_class_code, loinc_code_display, lab_result_display, age_at_visit, gender, race_display, ethnicity_display
+    from powerset 
+    WHERE cnt_subject >= 10 
+    ;
+
+-- ###########################################################
 CREATE or replace VIEW opioid__count_sepsis_week AS 
     with powerset as
     (
