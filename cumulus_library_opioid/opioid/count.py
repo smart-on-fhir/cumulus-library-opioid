@@ -28,9 +28,9 @@ def count_lab(duration='week'):
 
     return counts.count_encounter(view_name, from_table, cols)
 
-def count_sepsis(duration='week'):
-    view_name = table('count_sepsis', duration)
-    from_table = table('sepsis')
+def count_dx_sepsis(duration='week'):
+    view_name = table('count_dx_sepsis', duration)
+    from_table = table('dx_sepsis')
     cols = [f'cond_{duration}',
             'category_code', 'cond_display', 'cond_system_display',
             'enc_class_code', 'age_at_visit',
@@ -82,8 +82,8 @@ if __name__ == '__main__':
         count_study_period('month'),
         count_dx('week'),
         count_dx('month'),
+        count_dx_sepsis('week'),
+        count_dx_sepsis('month'),
         count_lab('week'),
         count_lab('month'),
-        count_sepsis('week'),
-        count_sepsis('month'),
     ])
