@@ -13,7 +13,7 @@ def count_dx(duration='week'):
     view_name = table('count_dx', duration)
     from_table = table('dx')
     cols = [f'cond_{duration}',
-            'category_code', 'cond_display', 'cond_system_display',
+            'category_code', 'cond_display',
             'enc_class_code', 'age_at_visit',
             'gender', 'race_display', 'ethnicity_display']
 

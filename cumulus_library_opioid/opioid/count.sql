@@ -43,14 +43,14 @@ CREATE or replace VIEW opioid__count_dx_week AS
         select
         count(distinct subject_ref)   as cnt_subject
         , count(distinct encounter_ref)   as cnt_encounter
-        , cond_week, category_code, cond_display, cond_system_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display        
+        , cond_week, category_code, cond_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display        
         FROM opioid__dx
         group by CUBE
-        ( cond_week, category_code, cond_display, cond_system_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display )
+        ( cond_week, category_code, cond_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display )
     )
     select
           cnt_encounter  as cnt 
-        , cond_week, category_code, cond_display, cond_system_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display
+        , cond_week, category_code, cond_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display
     from powerset 
     WHERE cnt_subject >= 10 
     ;
@@ -62,14 +62,14 @@ CREATE or replace VIEW opioid__count_dx_month AS
         select
         count(distinct subject_ref)   as cnt_subject
         , count(distinct encounter_ref)   as cnt_encounter
-        , cond_month, category_code, cond_display, cond_system_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display        
+        , cond_month, category_code, cond_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display        
         FROM opioid__dx
         group by CUBE
-        ( cond_month, category_code, cond_display, cond_system_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display )
+        ( cond_month, category_code, cond_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display )
     )
     select
           cnt_encounter  as cnt 
-        , cond_month, category_code, cond_display, cond_system_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display
+        , cond_month, category_code, cond_display, enc_class_code, age_at_visit, gender, race_display, ethnicity_display
     from powerset 
     WHERE cnt_subject >= 10 
     ;
