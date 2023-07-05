@@ -8,10 +8,13 @@ This study is part of the [Cumulus Library](https://github.com/smart-on-fhir/cum
 * [Linked Data on Hospitalizations, Mortality, and Drugs: Data from the National Hospital Care Survey 2016, National Death Index 2016-2017, and the Drug-Involved Mortality 2016-2017](CDC_LinkedDataHospitalizationsMortality&DrugsNatHospCareSurvey2016-17.pdf)
 * [Spreadsheet: Opioid Overdose Codebook](CodeBookOpioidOverDose.xlsx)
 
------
 **COUNT TABLES**
 
-Count all encounters in the study period with demographic stratification.    
+-----
+
+_Number encounters in the **study period** with demographic stratification._
+
+<br>
 
 | **opioid__count_study_period_week** | Cohort Summary                                                                                                                   |
 |-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
@@ -27,7 +30,9 @@ Count all encounters in the study period with demographic stratification.
 <br>
 
 ---
-__Number of encounters with Opioid Overdose__ 
+_Number of encounters with **Opioid Overdose**_ during study period
+
+<br>
 
 
 | **Table: opioid__count_dx_week** | See REFERENCES for case definition                                                                            |
@@ -45,8 +50,9 @@ __Number of encounters with Opioid Overdose__
 <br>
 
 ---
-_Number of encounters with SEPSIS_ 
+_Number of encounters with **Sepsis**_ during study period
 
+<br>
 
 | **opioid__count_sepsis_week** | [Sepsis ValueSet](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1029.353/expansion/Latest)                             |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
