@@ -16,8 +16,7 @@ FROM
     opioid__define_dx AS dx,
     core__condition AS c,
     core__condition_codable_concepts cc,
-    opioid__study_period AS s,
-
+    opioid__study_period AS s
 WHERE
     dx.system = cc.code_system  and
     dx.code   = cc.code    and
