@@ -9,19 +9,17 @@ SELECT DISTINCT
     lab.lab_date,
     lab.lab_week,
     lab.lab_month,
-    s.enc_class_code,
-    s.age_at_visit,
-    s.gender,
-    s.race_display,
-    s.ethnicity_display,
+    p.gender,
+    p.race_display,
+    p.ethnicity_display,
     lab.subject_ref,
     lab.encounter_ref,
     lab.observation_ref
 FROM
     core__observation_lab as lab,
     opioid__define_lab as loinc,
-    opioid__study_period AS s
+    core__patient AS p
 WHERE
     lab.lab_code.code = loinc.code and
     lab.lab_code.system = loinc.system and
-    lab.encounter_ref = s.encounter_ref;
+    lab.subject_ref = p.subject_ref;
