@@ -37,11 +37,6 @@ def count_dx_sepsis(duration='week'):
     return counts.count_encounter(view_name, from_table, cols)
 
 def count_study_period(duration='month'):
-    """
-    suicide_icd10__count_study_period_week
-    suicide_icd10__count_study_period_month
-    suicide_icd10__count_study_period_year
-    """
     view_name = table('count_study_period', duration)
     from_table = table('study_period')
     cols = [f'start_{duration}',
@@ -68,7 +63,11 @@ def write_view_sql(view_list_sql: List[str], filename='count.sql') -> None:
     :param view_list_sql: SQL prepared statements
     :param filename: path to output file, default 'count.sql' in PWD
     """
-    sql_optimizer = concat_view_sql(view_list_sql).replace('ORDER BY cnt desc', '')
+    sql_optimizer = concat_view_sql(view_list_sql)
+    sql_optimizer = sql_optimizer.replace("CREATE or replace VIEW", 'CREATE TABLE')
+    sql_optimizer = sql_optimizer.replace("ORDER BY cnt desc", "")
+    sql_optimizer = sql_optimizer.replace('WHERE cnt_subject >= 10', '')
+
     with open(filename, 'w') as fout:
         fout.write(sql_optimizer)
 
@@ -76,12 +75,18 @@ def write_view_sql(view_list_sql: List[str], filename='count.sql') -> None:
 if __name__ == '__main__':
 
     write_view_sql([
-        count_study_period('week'),
         count_study_period('month'),
-        count_dx('week'),
+        count_study_period('week'),
+        count_study_period('date'),
+
         count_dx('month'),
-        count_dx_sepsis('week'),
+        count_dx('week'),
+        count_dx('date'),
+
         count_dx_sepsis('month'),
+        count_dx_sepsis('week'),
+        count_dx_sepsis('date'),
+
         count_lab('week'),
         count_lab('month'),
     ])
