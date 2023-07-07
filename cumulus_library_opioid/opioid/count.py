@@ -87,6 +87,8 @@ if __name__ == '__main__':
         count_dx_sepsis('week'),
         count_dx_sepsis('date'),
 
-        count_lab('week'),
         count_lab('month'),
+        count_lab('week'),
+        count_lab('date'),
+
     ])
