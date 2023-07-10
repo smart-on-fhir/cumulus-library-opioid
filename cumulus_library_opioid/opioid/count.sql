@@ -14,7 +14,7 @@ CREATE TABLE opioid__count_study_period_month AS
           cnt_encounter  as cnt 
         , start_month, enc_class_code, age_at_visit, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -33,7 +33,7 @@ CREATE TABLE opioid__count_study_period_week AS
           cnt_encounter  as cnt 
         , start_week, enc_class_code, age_at_visit, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -52,7 +52,7 @@ CREATE TABLE opioid__count_study_period_date AS
           cnt_encounter  as cnt 
         , start_date, enc_class_code, age_at_visit, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -71,7 +71,7 @@ CREATE TABLE opioid__count_dx_month AS
           cnt_encounter  as cnt 
         , cond_month, category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -90,7 +90,7 @@ CREATE TABLE opioid__count_dx_week AS
           cnt_encounter  as cnt 
         , cond_week, category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -109,7 +109,7 @@ CREATE TABLE opioid__count_dx_date AS
           cnt_encounter  as cnt 
         , cond_date, category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -128,7 +128,7 @@ CREATE TABLE opioid__count_dx_sepsis_month AS
           cnt_encounter  as cnt 
         , cond_month, category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -147,7 +147,7 @@ CREATE TABLE opioid__count_dx_sepsis_week AS
           cnt_encounter  as cnt 
         , cond_week, category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -166,7 +166,7 @@ CREATE TABLE opioid__count_dx_sepsis_date AS
           cnt_encounter  as cnt 
         , cond_date, category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -185,7 +185,7 @@ CREATE TABLE opioid__count_lab_month AS
           cnt_encounter  as cnt 
         , lab_month, loinc_code_display, lab_result_display, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -204,7 +204,7 @@ CREATE TABLE opioid__count_lab_week AS
           cnt_encounter  as cnt 
         , lab_week, loinc_code_display, lab_result_display, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
 
 -- ###########################################################
@@ -223,5 +223,5 @@ CREATE TABLE opioid__count_lab_date AS
           cnt_encounter  as cnt 
         , lab_date, loinc_code_display, lab_result_display, gender, race_display, ethnicity_display
     from powerset 
-     
+    WHERE cnt_subject >= 1 
     ;
