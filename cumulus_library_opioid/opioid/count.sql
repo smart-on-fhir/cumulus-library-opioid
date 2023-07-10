@@ -157,14 +157,14 @@ CREATE TABLE opioid__count_dx_sepsis_month AS
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_month        
+        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_month        
         FROM opioid__dx_sepsis
         group by CUBE
-        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_month )
+        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_month )
     )
     select
           cnt_subject as cnt 
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_month
+        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_month
     from powerset 
     WHERE cnt_subject >= 1 
     ;
@@ -176,14 +176,14 @@ CREATE TABLE opioid__count_dx_sepsis_week AS
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_week        
+        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_week        
         FROM opioid__dx_sepsis
         group by CUBE
-        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_week )
+        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_week )
     )
     select
           cnt_subject as cnt 
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_week
+        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_week
     from powerset 
     WHERE cnt_subject >= 1 
     ;
@@ -195,14 +195,14 @@ CREATE TABLE opioid__count_dx_sepsis_date AS
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_date        
+        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_date        
         FROM opioid__dx_sepsis
         group by CUBE
-        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_date )
+        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_date )
     )
     select
           cnt_subject as cnt 
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, lab_date
+        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_date
     from powerset 
     WHERE cnt_subject >= 1 
     ;

@@ -1,4 +1,4 @@
-create table opioid__dx as
+    create table opioid__dx as
     SELECT DISTINCT
         c.category.code as category_code,
         dx.code AS cond_code,

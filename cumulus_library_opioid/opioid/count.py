@@ -27,7 +27,7 @@ def count_dx_sepsis(duration=None):
             'gender', 'race_display', 'ethnicity_display']
 
     if duration:
-        cols.append(f'lab_{duration}')
+        cols.append(f'cond_{duration}')
 
     return counts.count_patient(view_name, from_table, cols)
 
