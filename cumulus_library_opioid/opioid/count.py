@@ -18,7 +18,7 @@ def count_dx(duration=None):
     if duration:
         cols.append(f'cond_{duration}')
 
-    return counts.count_encounter(view_name, from_table, cols)
+    return counts.count_patient(view_name, from_table, cols)
 
 def count_dx_sepsis(duration=None):
     view_name = table('count_dx_sepsis', duration)
@@ -29,7 +29,7 @@ def count_dx_sepsis(duration=None):
     if duration:
         cols.append(f'lab_{duration}')
 
-    return counts.count_encounter(view_name, from_table, cols)
+    return counts.count_patient(view_name, from_table, cols)
 
 def count_study_period(duration='month'):
     view_name = table('count_study_period', duration)
