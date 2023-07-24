@@ -53,6 +53,31 @@ def count_lab(duration=None):
 
     return counts.count_encounter(view_name, from_table, cols)
 
+def count_rx_request(duration=None):
+    view_name = table('count_rx_request', duration)
+    from_table = table('medicationrequest')
+    cols = ['status', 'intent',
+            'rx_system', 'rx_display', 'rx_category_display',
+            'gender', 'race_display', 'ethnicity_display', 'postalcode3']
+
+    if duration:
+        cols.append(f'authoredon_{duration}')
+
+    return counts.count_patient(view_name, from_table, cols)
+
+def count_rx(from_table, duration=None):
+    count_table = table(f'count_{from_table}', duration)
+
+    cols = ['status', 'intent',
+            'rx_system', 'rx_display', 'rx_category_display',
+            'gender', 'race_display', 'ethnicity_display', 'postalcode3']
+
+    if duration:
+        cols.append(f'authoredon_{duration}')
+
+    return counts.count_patient(count_table, table(from_table), cols)
+
+
 def concat_view_sql(create_view_list: List[str]) -> str:
     """
     :param create_view_list: SQL prepared statements
@@ -102,4 +127,9 @@ if __name__ == '__main__':
         count_lab('week'),
         count_lab('date'),
 
+        count_rx('medicationrequest', 'month'),
+        count_rx('rx'),
+        count_rx('rx_opioid'),
+        count_rx('rx_naloxone'),
+        count_rx('rx_buprenorphine'),
     ])
