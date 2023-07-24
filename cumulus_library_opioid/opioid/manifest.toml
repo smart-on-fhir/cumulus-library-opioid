@@ -14,6 +14,7 @@ study_prefix = "opioid"
 file_names = [
     "define_dx.sql",
     "define_dx_sepsis.sql",
+    "opioid__define_dx_sud.sql",
     "define_lab.sql",
     "define_rx.sql",
     "define_rx_buprenorphine.sql",
