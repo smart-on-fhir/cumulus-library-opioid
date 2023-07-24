@@ -20,6 +20,17 @@ def count_dx(duration=None):
 
     return counts.count_patient(view_name, from_table, cols)
 
+def count_dx_sud(duration=None):
+    view_name = table('count_dx_sud', duration)
+    from_table = table('dx_sud')
+    cols = ['category_code', 'cond_display', 'age_dx_recorded',
+            'gender', 'race_display', 'ethnicity_display']
+
+    if duration:
+        cols.append(f'cond_{duration}')
+
+    return counts.count_patient(view_name, from_table, cols)
+
 def count_dx_sepsis(duration=None):
     view_name = table('count_dx_sepsis', duration)
     from_table = table('dx_sepsis')
@@ -116,6 +127,7 @@ if __name__ == '__main__':
         count_dx('month'),
         count_dx('week'),
         count_dx('date'),
+        count_dx_sud(),
 
         count_dx_sepsis(),
         count_dx_sepsis('month'),
