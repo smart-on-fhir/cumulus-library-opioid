@@ -87,17 +87,7 @@ def save(view_name: str, view_sql: str, outfile=None) -> str:
         fp.write(view_sql)
     return outfile
 
-def define_sepsis():
-    """
-    Optional use: SEPSIS is a common and deadly outcome for OUD populations.
-    :return:
-    """
-    codings = valueset2coding('valueset_sepsis_snomed.json')
-    codings += valueset2coding('valueset_sepsis_icd10.json')
-
-    save('define_sepsis', coding2view('define_dx_sepsis', codings))
-
-def define_rx():
+def define_rx_ucdavis():
     """
     Curated/Supplied by UC Davis
     """
@@ -116,7 +106,7 @@ def define_rx():
                        'code': code}
             codings.append(Coding(as_fhir))
 
-    save('define_rx', coding2view('define_rx', codings))
+    save('define_rx_ucdavis', coding2view('define_rx_ucdavis', codings))
 
 def define_dx():
     """
@@ -162,9 +152,51 @@ def define_lab():
 
     save('define_lab', coding2view('define_lab', codings))
 
+def define_sepsis():
+    """
+    Optional use: SEPSIS is a common and deadly outcome for OUD populations.
+    :return:
+    """
+    codings = valueset2coding('valueset_sepsis_snomed.json')
+    codings += valueset2coding('valueset_sepsis_icd10.json')
+
+    save('define_sepsis', coding2view('define_dx_sepsis', codings))
+
+def define_dx_sud_substance_use_disorder():
+    """
+    VSAC definitions of substance use disorder (SUD)
+    """
+    codings = valueset2coding('valueset_dx_sud_substance_use_disorder.json')
+    save('define_dx_sud', coding2view('define_dx_sud', codings))
+
+def define_rx_opioid():
+    """
+    VSAC definitions of opioid medications
+    """
+    codings = valueset2coding('valueset_rx_opioid.json')
+    save('define_rx_opioid', coding2view('define_rx_opioid', codings))
+
+def define_rx_buprenorphine():
+    """
+    VSAC definitions of Buprenorphine, for SUD treatment (dependence)
+    """
+    codings = valueset2coding('valueset_rx_buprenorphine.json')
+    save('define_rx_buprenorphine', coding2view('define_rx_buprenorphine', codings))
+
+def define_rx_naloxone():
+    """
+    VSAC definitions of Buprenorphine, for SUD treatment (overdose)
+    """
+    codings = valueset2coding('valueset_rx_naloxone.json')
+    save('define_rx_naloxone', coding2view('define_rx_naloxone', codings))
+
 
 if __name__ == "__main__":
-    define_dx()
-    define_sepsis()
-    define_lab()
-    define_rx()
+    # define_dx()
+    # define_lab()
+    # define_rx_ucdavis()
+    # define_sepsis()
+    define_dx_sud_substance_use_disorder()
+    define_rx_buprenorphine()
+    define_rx_opioid()
+    define_rx_naloxone()
