@@ -24,6 +24,7 @@ file_names = [
     "table_dx.sql",
     "table_dx_sepsis.sql",
     "table_lab.sql",
+    "table_rx.sql",
     "count.sql"
 ]
 
