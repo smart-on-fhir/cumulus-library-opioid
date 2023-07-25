@@ -14,7 +14,7 @@ CREATE TABLE opioid__count_study_period_month AS
           cnt_encounter  as cnt 
         , enc_class_code, age_at_visit, gender, race_display, ethnicity_display, start_month
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -33,7 +33,7 @@ CREATE TABLE opioid__count_study_period_week AS
           cnt_encounter  as cnt 
         , enc_class_code, age_at_visit, gender, race_display, ethnicity_display, start_week
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -52,7 +52,7 @@ CREATE TABLE opioid__count_study_period_date AS
           cnt_encounter  as cnt 
         , enc_class_code, age_at_visit, gender, race_display, ethnicity_display, start_date
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -71,7 +71,7 @@ CREATE TABLE opioid__count_dx AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -90,7 +90,7 @@ CREATE TABLE opioid__count_dx_month AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_month
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -109,7 +109,7 @@ CREATE TABLE opioid__count_dx_week AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_week
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -128,7 +128,7 @@ CREATE TABLE opioid__count_dx_date AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_date
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -147,7 +147,7 @@ CREATE TABLE opioid__count_dx_sud AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -166,7 +166,7 @@ CREATE TABLE opioid__count_dx_sepsis AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -185,7 +185,7 @@ CREATE TABLE opioid__count_dx_sepsis_month AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_month
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -204,7 +204,7 @@ CREATE TABLE opioid__count_dx_sepsis_week AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_week
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -223,7 +223,7 @@ CREATE TABLE opioid__count_dx_sepsis_date AS
           cnt_subject as cnt 
         , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display, cond_date
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -242,7 +242,7 @@ CREATE TABLE opioid__count_lab AS
           cnt_encounter  as cnt 
         , loinc_code_display, lab_result_display, gender, race_display, ethnicity_display
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -261,7 +261,7 @@ CREATE TABLE opioid__count_lab_month AS
           cnt_encounter  as cnt 
         , loinc_code_display, lab_result_display, gender, race_display, ethnicity_display, lab_month
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -280,7 +280,7 @@ CREATE TABLE opioid__count_lab_week AS
           cnt_encounter  as cnt 
         , loinc_code_display, lab_result_display, gender, race_display, ethnicity_display, lab_week
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -299,26 +299,26 @@ CREATE TABLE opioid__count_lab_date AS
           cnt_encounter  as cnt 
         , loinc_code_display, lab_result_display, gender, race_display, ethnicity_display, lab_date
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
-CREATE TABLE opioid__count_medicationrequest_month AS 
+CREATE TABLE opioid__count_medicationrequest AS 
     with powerset as
     (
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3, authoredon_month        
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3        
         FROM opioid__medicationrequest
         group by CUBE
-        ( status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3, authoredon_month )
+        ( status, intent, rx_display, rx_category_display, gender, race_display, postalcode3 )
     )
     select
           cnt_subject as cnt 
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3, authoredon_month
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -328,16 +328,16 @@ CREATE TABLE opioid__count_rx AS
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3        
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3        
         FROM opioid__rx
         group by CUBE
-        ( status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3 )
+        ( status, intent, rx_display, rx_category_display, gender, race_display, postalcode3 )
     )
     select
           cnt_subject as cnt 
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -347,16 +347,16 @@ CREATE TABLE opioid__count_rx_opioid AS
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3        
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3        
         FROM opioid__rx_opioid
         group by CUBE
-        ( status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3 )
+        ( status, intent, rx_display, rx_category_display, gender, race_display, postalcode3 )
     )
     select
           cnt_subject as cnt 
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -366,16 +366,16 @@ CREATE TABLE opioid__count_rx_naloxone AS
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3        
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3        
         FROM opioid__rx_naloxone
         group by CUBE
-        ( status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3 )
+        ( status, intent, rx_display, rx_category_display, gender, race_display, postalcode3 )
     )
     select
           cnt_subject as cnt 
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;
 
 -- ###########################################################
@@ -385,14 +385,14 @@ CREATE TABLE opioid__count_rx_buprenorphine AS
         select
         count(distinct subject_ref)   as cnt_subject
         
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3        
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3        
         FROM opioid__rx_buprenorphine
         group by CUBE
-        ( status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3 )
+        ( status, intent, rx_display, rx_category_display, gender, race_display, postalcode3 )
     )
     select
           cnt_subject as cnt 
-        , status, intent, rx_system, rx_display, rx_category_display, gender, race_display, ethnicity_display, postalcode3
+        , status, intent, rx_display, rx_category_display, gender, race_display, postalcode3
     from powerset 
-    WHERE cnt_subject >= 1 
+    WHERE cnt_subject >= 5 
     ;

@@ -64,24 +64,12 @@ def count_lab(duration=None):
 
     return counts.count_encounter(view_name, from_table, cols)
 
-def count_rx_request(duration=None):
-    view_name = table('count_rx_request', duration)
-    from_table = table('medicationrequest')
-    cols = ['status', 'intent',
-            'rx_system', 'rx_display', 'rx_category_display',
-            'gender', 'race_display', 'ethnicity_display', 'postalcode3']
-
-    if duration:
-        cols.append(f'authoredon_{duration}')
-
-    return counts.count_patient(view_name, from_table, cols)
-
 def count_rx(from_table, duration=None):
     count_table = table(f'count_{from_table}', duration)
 
     cols = ['status', 'intent',
-            'rx_system', 'rx_display', 'rx_category_display',
-            'gender', 'race_display', 'ethnicity_display', 'postalcode3']
+            'rx_display', 'rx_category_display',
+            'gender', 'race_display', 'postalcode3']
 
     if duration:
         cols.append(f'authoredon_{duration}')
@@ -110,7 +98,7 @@ def write_view_sql(view_list_sql: List[str], filename='count.sql') -> None:
     sql_optimizer = concat_view_sql(view_list_sql)
     sql_optimizer = sql_optimizer.replace("CREATE or replace VIEW", 'CREATE TABLE')
     sql_optimizer = sql_optimizer.replace("ORDER BY cnt desc", "")
-    sql_optimizer = sql_optimizer.replace('WHERE cnt_subject >= 10', 'WHERE cnt_subject >= 1')
+    sql_optimizer = sql_optimizer.replace('WHERE cnt_subject >= 10', 'WHERE cnt_subject >= 5')
 
     with open(filename, 'w') as fout:
         fout.write(sql_optimizer)
@@ -139,7 +127,7 @@ if __name__ == '__main__':
         count_lab('week'),
         count_lab('date'),
 
-        count_rx('medicationrequest', 'month'),
+        count_rx('medicationrequest'),
         count_rx('rx'),
         count_rx('rx_opioid'),
         count_rx('rx_naloxone'),
