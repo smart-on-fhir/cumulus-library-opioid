@@ -132,23 +132,23 @@ CREATE TABLE opioid__count_dx_date AS
     ;
 
 -- ###########################################################
-CREATE TABLE opioid__count_dx_sud AS 
-    with powerset as
-    (
-        select
-        count(distinct subject_ref)   as cnt_subject
-        
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display        
-        FROM opioid__dx_sud
-        group by CUBE
-        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display )
-    )
-    select
-          cnt_subject as cnt 
-        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
-    from powerset 
-    WHERE cnt_subject >= 5 
-    ;
+--CREATE TABLE opioid__count_dx_sud AS 
+--    with powerset as
+--    (
+--        select
+--        count(distinct subject_ref)   as cnt_subject
+--        
+--        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display        
+--        FROM opioid__dx_sud
+--        group by CUBE
+--        ( category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display )
+--    )
+--    select
+--          cnt_subject as cnt 
+--        , category_code, cond_display, age_dx_recorded, gender, race_display, ethnicity_display
+--    from powerset 
+--    WHERE cnt_subject >= 5 
+--    ;
 
 -- ###########################################################
 CREATE TABLE opioid__count_dx_sepsis AS 
