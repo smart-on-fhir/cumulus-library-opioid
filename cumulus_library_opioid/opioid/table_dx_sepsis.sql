@@ -1,6 +1,6 @@
 create table opioid__dx_sepsis as
     SELECT DISTINCT
-        c.category.code as category_code,
+        c.category_code,
         dx.code AS cond_code,
         dx.display as cond_display,
         c.recorded_month AS cond_month,
@@ -15,11 +15,9 @@ create table opioid__dx_sepsis as
     FROM
         opioid__define_dx_sepsis AS dx,
         core__condition AS c,
-        core__condition_codable_concepts cc,
         core__patient AS p
     WHERE
-        dx.system = cc.code_system  and
-        dx.code   = cc.code    and
-        cc.id = c.condition_id and
+        dx.system = c.code_system  and
+        dx.code   = c.code    and
         c.subject_ref = p.subject_ref
 ;
