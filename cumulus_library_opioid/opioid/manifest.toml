@@ -48,7 +48,8 @@ export_list = [
     "opioid__count_rx",
     "opioid__count_rx_opioid",
     "opioid__count_rx_buprenorphine",
-    "opioid__count_rx_naloxone"
+    "opioid__count_rx_naloxone",
+    "opioid__meta_version"
 ]
 
 # For most use cases, this should not be required, but if you need to run code, you
