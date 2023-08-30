@@ -1,135 +1,106 @@
-from typing import List
-from cumulus_library.schema import counts
+from pathlib import Path
+from cumulus_library.schema.counts import CountsBuilder
 
-STUDY_PREFIX = 'opioid'
+class OpioidCountsBuilder(CountsBuilder):
+    display_text = "Creating opioid counts..."
 
-def table(tablename: str, duration=None) -> str:
-    if duration:
-        return f'{STUDY_PREFIX}__{tablename}_{duration}'
-    else: 
-        return f'{STUDY_PREFIX}__{tablename}'
+    def count_dx(self, duration=None):
+        view_name = self.get_table_name('count_dx', duration)
+        from_table = self.get_table_name('dx')
+        cols = ['category_code', 'cond_display', 'age_dx_recorded',
+                'gender', 'race_display', 'ethnicity_display']
 
-def count_dx(duration=None):
-    view_name = table('count_dx', duration)
-    from_table = table('dx')
-    cols = ['category_code', 'cond_display', 'age_dx_recorded',
-            'gender', 'race_display', 'ethnicity_display']
+        if duration:
+            cols.append(f'cond_{duration}')
 
-    if duration:
-        cols.append(f'cond_{duration}')
+        return self.count_patient(view_name, from_table, cols)
 
-    return counts.count_patient(view_name, from_table, cols)
+    def count_dx_sud(self, duration=None):
+        view_name = self.get_table_name('count_dx_sud', duration)
+        from_table = self.get_table_name('dx_sud')
+        cols = ['category_code', 'cond_display', 'age_dx_recorded',
+                'gender', 'race_display', 'ethnicity_display']
 
-def count_dx_sud(duration=None):
-    view_name = table('count_dx_sud', duration)
-    from_table = table('dx_sud')
-    cols = ['category_code', 'cond_display', 'age_dx_recorded',
-            'gender', 'race_display', 'ethnicity_display']
+        if duration:
+            cols.append(f'cond_{duration}')
 
-    if duration:
-        cols.append(f'cond_{duration}')
+        return self.count_patient(view_name, from_table, cols)
 
-    return counts.count_patient(view_name, from_table, cols)
+    def count_dx_sepsis(self, duration=None):
+        view_name = self.get_table_name('count_dx_sepsis', duration)
+        from_table = self.get_table_name('dx_sepsis')
+        cols = ['category_code', 'cond_display', 'age_dx_recorded',
+                'gender', 'race_display', 'ethnicity_display']
 
-def count_dx_sepsis(duration=None):
-    view_name = table('count_dx_sepsis', duration)
-    from_table = table('dx_sepsis')
-    cols = ['category_code', 'cond_display', 'age_dx_recorded',
-            'gender', 'race_display', 'ethnicity_display']
+        if duration:
+            cols.append(f'cond_{duration}')
 
-    if duration:
-        cols.append(f'cond_{duration}')
+        return self.count_patient(view_name, from_table, cols)
 
-    return counts.count_patient(view_name, from_table, cols)
+    def count_study_period(self, duration='month'):
+        view_name = self.get_table_name('count_study_period', duration)
+        from_table = self.get_table_name('study_period')
+        cols = ['enc_class_code', 'age_at_visit',
+                'gender', 'race_display', 'ethnicity_display']
 
-def count_study_period(duration='month'):
-    view_name = table('count_study_period', duration)
-    from_table = table('study_period')
-    cols = ['enc_class_code', 'age_at_visit',
-            'gender', 'race_display', 'ethnicity_display']
+        if duration:
+            cols.append(f'start_{duration}')
 
-    if duration:
-        cols.append(f'start_{duration}')
+        return self.count_encounter(view_name, from_table, cols)
 
-    return counts.count_encounter(view_name, from_table, cols)
+    def count_lab(self, duration=None):
+        view_name = self.get_table_name('count_lab', duration)
+        from_table = self.get_table_name('lab')
+        cols = ['loinc_code_display', 'lab_result_display',
+                'gender', 'race_display', 'ethnicity_display']
 
-def count_lab(duration=None):
-    view_name = table('count_lab', duration)
-    from_table = table('lab')
-    cols = ['loinc_code_display', 'lab_result_display',
-            'gender', 'race_display', 'ethnicity_display']
+        if duration:
+            cols.append(f'lab_{duration}')
 
-    if duration:
-        cols.append(f'lab_{duration}')
+        return self.count_encounter(view_name, from_table, cols)
 
-    return counts.count_encounter(view_name, from_table, cols)
+    def count_rx(self, from_table, duration=None):
+        count_table = self.get_table_name(f'count_{from_table}', duration)
+        from_table = self.get_table_name(from_table)
 
-def count_rx(from_table, duration=None):
-    count_table = table(f'count_{from_table}', duration)
+        cols = ['status', 'intent',
+                'rx_display', 'rx_category_display',
+                'gender', 'race_display', 'postalcode3']
 
-    cols = ['status', 'intent',
-            'rx_display', 'rx_category_display',
-            'gender', 'race_display', 'postalcode3']
+        if duration:
+            cols.append(f'authoredon_{duration}')
 
-    if duration:
-        cols.append(f'authoredon_{duration}')
+        return self.count_patient(count_table, from_table, cols)
 
-    return counts.count_patient(count_table, table(from_table), cols)
+    def prepare_queries(self, cursor=None, schema=None):
+        self.queries = [
+            self.count_study_period('month'),
+            self.count_study_period('week'),
+            self.count_study_period('date'),
 
+            self.count_dx(),
+            self.count_dx('month'),
+            self.count_dx('week'),
+            self.count_dx('date'),
+            #self.count_dx_sud(),
 
-def concat_view_sql(create_view_list: List[str]) -> str:
-    """
-    :param create_view_list: SQL prepared statements
-    :param filename: path to output file, default 'count.sql' in PWD
-    """
-    seperator = '-- ###########################################################'
-    concat = list()
+            self.count_dx_sepsis(),
+            self.count_dx_sepsis('month'),
+            self.count_dx_sepsis('week'),
+            self.count_dx_sepsis('date'),
 
-    for create_view in create_view_list:
-        concat.append(seperator + '\n'+create_view + '\n')
+            self.count_lab(),
+            self.count_lab('month'),
+            self.count_lab('week'),
+            self.count_lab('date'),
 
-    return '\n'.join(concat)
+            self.count_rx('medicationrequest'),
+            self.count_rx('rx'),
+            self.count_rx('rx_opioid'),
+            self.count_rx('rx_naloxone'),
+            self.count_rx('rx_buprenorphine'),
+        ]
 
-def write_view_sql(view_list_sql: List[str], filename='count.sql') -> None:
-    """
-    :param view_list_sql: SQL prepared statements
-    :param filename: path to output file, default 'count.sql' in PWD
-    """
-    sql_optimizer = concat_view_sql(view_list_sql)
-    sql_optimizer = sql_optimizer.replace("CREATE or replace VIEW", 'CREATE TABLE')
-    sql_optimizer = sql_optimizer.replace("ORDER BY cnt desc", "")
-    sql_optimizer = sql_optimizer.replace('WHERE cnt_subject >= 10', 'WHERE cnt_subject >= 5')
-
-    with open(filename, 'w') as fout:
-        fout.write(sql_optimizer)
-
-
-if __name__ == '__main__':
-
-    write_view_sql([
-        count_study_period('month'),
-        count_study_period('week'),
-        count_study_period('date'),
-
-        count_dx(),
-        count_dx('month'),
-        count_dx('week'),
-        count_dx('date'),
-        count_dx_sud(),
-
-        count_dx_sepsis(),
-        count_dx_sepsis('month'),
-        count_dx_sepsis('week'),
-        count_dx_sepsis('date'),
-
-        count_lab(),
-        count_lab('month'),
-        count_lab('week'),
-        count_lab('date'),
-
-        count_rx('medicationrequest'),
-        count_rx('rx'),
-        count_rx('rx_opioid'),
-        count_rx('rx_naloxone'),
-        count_rx('rx_buprenorphine'),
-    ])
+if __name__ == "__main__":
+    builder = OpioidCountsBuilder()
+    builder.write_counts(f"{Path(__file__).resolve().parent}/count.sql")

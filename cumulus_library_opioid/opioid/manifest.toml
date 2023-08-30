@@ -25,8 +25,12 @@ file_names = [
     "table_dx_sepsis.sql",
     "table_lab.sql",
     "table_rx.sql",
-    "count.sql",
     "version.sql"
+]
+
+[counts_builder_config]
+file_names = [
+    "count.py"
 ]
 
 
