@@ -33,7 +33,7 @@ CREATE TABLE opioid__count_study_period_month AS (
         "start_month"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -71,7 +71,7 @@ CREATE TABLE opioid__count_study_period_week AS (
         "start_week"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -109,7 +109,7 @@ CREATE TABLE opioid__count_study_period_date AS (
         "start_date"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -146,7 +146,7 @@ CREATE TABLE opioid__count_dx AS (
         "ethnicity_display"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -186,7 +186,7 @@ CREATE TABLE opioid__count_dx_month AS (
         "cond_month"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -226,7 +226,7 @@ CREATE TABLE opioid__count_dx_week AS (
         "cond_week"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -266,7 +266,7 @@ CREATE TABLE opioid__count_dx_date AS (
         "cond_date"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -303,7 +303,7 @@ CREATE TABLE opioid__count_dx_sepsis AS (
         "ethnicity_display"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -343,7 +343,7 @@ CREATE TABLE opioid__count_dx_sepsis_month AS (
         "cond_month"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -383,7 +383,7 @@ CREATE TABLE opioid__count_dx_sepsis_week AS (
         "cond_week"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -423,7 +423,7 @@ CREATE TABLE opioid__count_dx_sepsis_date AS (
         "cond_date"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -458,7 +458,7 @@ CREATE TABLE opioid__count_lab AS (
         "ethnicity_display"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -496,7 +496,7 @@ CREATE TABLE opioid__count_lab_month AS (
         "lab_month"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -534,7 +534,7 @@ CREATE TABLE opioid__count_lab_week AS (
         "lab_week"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -572,7 +572,7 @@ CREATE TABLE opioid__count_lab_date AS (
         "lab_date"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -612,7 +612,7 @@ CREATE TABLE opioid__count_medicationrequest AS (
         "postalcode3"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -652,7 +652,7 @@ CREATE TABLE opioid__count_rx AS (
         "postalcode3"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -692,7 +692,7 @@ CREATE TABLE opioid__count_rx_opioid AS (
         "postalcode3"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -732,7 +732,7 @@ CREATE TABLE opioid__count_rx_naloxone AS (
         "postalcode3"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );
 
 -- ###########################################################
@@ -772,5 +772,5 @@ CREATE TABLE opioid__count_rx_buprenorphine AS (
         "postalcode3"
     FROM powerset
     WHERE 
-        cnt_subject >= 10
+        cnt_subject >= 5
 );

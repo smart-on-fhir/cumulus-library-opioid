@@ -13,7 +13,7 @@ class OpioidCountsBuilder(CountsBuilder):
         if duration:
             cols.append(f'cond_{duration}')
 
-        return self.count_patient(view_name, from_table, cols)
+        return self.count_patient(view_name, from_table, cols, min_subject=5)
 
     def count_dx_sud(self, duration=None):
         view_name = self.get_table_name('count_dx_sud', duration)
@@ -24,7 +24,7 @@ class OpioidCountsBuilder(CountsBuilder):
         if duration:
             cols.append(f'cond_{duration}')
 
-        return self.count_patient(view_name, from_table, cols)
+        return self.count_patient(view_name, from_table, cols, min_subject=5)
 
     def count_dx_sepsis(self, duration=None):
         view_name = self.get_table_name('count_dx_sepsis', duration)
@@ -35,7 +35,7 @@ class OpioidCountsBuilder(CountsBuilder):
         if duration:
             cols.append(f'cond_{duration}')
 
-        return self.count_patient(view_name, from_table, cols)
+        return self.count_patient(view_name, from_table, cols, min_subject=5)
 
     def count_study_period(self, duration='month'):
         view_name = self.get_table_name('count_study_period', duration)
@@ -46,7 +46,7 @@ class OpioidCountsBuilder(CountsBuilder):
         if duration:
             cols.append(f'start_{duration}')
 
-        return self.count_encounter(view_name, from_table, cols)
+        return self.count_encounter(view_name, from_table, cols, min_subject=5)
 
     def count_lab(self, duration=None):
         view_name = self.get_table_name('count_lab', duration)
@@ -57,7 +57,7 @@ class OpioidCountsBuilder(CountsBuilder):
         if duration:
             cols.append(f'lab_{duration}')
 
-        return self.count_encounter(view_name, from_table, cols)
+        return self.count_encounter(view_name, from_table, cols, min_subject=5)
 
     def count_rx(self, from_table, duration=None):
         count_table = self.get_table_name(f'count_{from_table}', duration)
@@ -70,7 +70,7 @@ class OpioidCountsBuilder(CountsBuilder):
         if duration:
             cols.append(f'authoredon_{duration}')
 
-        return self.count_patient(count_table, from_table, cols)
+        return self.count_patient(count_table, from_table, cols, min_subject=5)
 
     def prepare_queries(self, cursor=None, schema=None):
         self.queries = [
@@ -103,4 +103,4 @@ class OpioidCountsBuilder(CountsBuilder):
 
 if __name__ == "__main__":
     builder = OpioidCountsBuilder()
-    builder.write_counts(f"{Path(__file__).resolve().parent}/count.sql")
+    builder.write_counts(f"{Path(__file__).resolve().parent}/counts.sql")
