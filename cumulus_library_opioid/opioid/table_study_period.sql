@@ -20,7 +20,8 @@ SELECT DISTINCT
     COALESCE(E.enc_priority_code, 'None')   as enc_priority_code,
     COALESCE(E.enc_priority_display, 'None') as enc_priority_display,
     P.subject_ref,
-    E.encounter_ref
+    E.encounter_ref,
+    E.status
 FROM
     core__patient AS P,
     core__encounter_type AS E
