@@ -14,12 +14,15 @@ SELECT DISTINCT
     p.ethnicity_display,
     lab.subject_ref,
     lab.encounter_ref,
-    lab.observation_ref
+    lab.observation_ref,
+    e.status
 FROM
     core__observation_lab as lab,
+    core__encounter as e,
     opioid__define_lab as loinc,
     core__patient AS p
 WHERE
     lab.lab_code.code = loinc.code and
     lab.lab_code.system = loinc.system and
-    lab.subject_ref = p.subject_ref;
+    lab.subject_ref = p.subject_ref and
+    lab.encounter_ref = e.encounter_ref;
