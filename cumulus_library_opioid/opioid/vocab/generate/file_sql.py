@@ -1,5 +1,5 @@
 def file_header() -> str:
-    return linebreak() + '-- generator.py -- ' + linebreak()
+    return linebreak() + '-- file_sql.py -- ' + linebreak()
 
 def linebreak(seperator='-- #########################################') -> str:
     return '\n' + seperator + '\n'
