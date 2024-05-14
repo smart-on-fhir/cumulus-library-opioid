@@ -11,9 +11,10 @@ mysql -u root -e "show databases"
 $mysql_table_schema < common/logging/logging.sql
 $mysql_table_schema < common/logging/version.sql
 
-$mysql_table_schema < common/umls/uml_abbreviations.sql
 $mysql_table_schema < common/keywords/keywords.sql
 $mysql_table_schema < common/expand_rules/expand_rules.sql
+
+$mysql_table_schema < common/umls/uml_abbreviations.sql
 
 echo '#############################################'
 $mysql_table_schema -e "call mem"
