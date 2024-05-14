@@ -1,5 +1,5 @@
 import unittest
-from cumulus_library_opioid.opioid.vocab.generator \
+from cumulus_library_opioid.opioid.vocab.generate.file_sql \
     import file_header, linebreak, create, index, tic, str_like
 
 MEDRT_RELA = ['isa',

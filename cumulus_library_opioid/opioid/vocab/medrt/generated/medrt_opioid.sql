@@ -1,11 +1,11 @@
 
 -- #########################################
--- generator.py -- 
+-- file_sql.py -- 
 -- #########################################
 drop   table if exists   MRCONSO_medrt;
 create table             MRCONSO_medrt
 select distinct * from umls.MRCONSO
-where SAB ='MED-RT' and ( (lower(STR) like lower('%Opioid%')) OR (lower(STR) like lower('%Opiate%')) )
+where SAB ='MED-RT' and ( (lower(STR) like lower('%Opioid%')) )
 ;
 call create_index('MRCONSO_medrt', 'CUI');
 

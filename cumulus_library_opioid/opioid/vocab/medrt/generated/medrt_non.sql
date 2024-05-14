@@ -1,6 +1,6 @@
 
 -- #########################################
--- generator.py -- 
+-- file_sql.py -- 
 -- #########################################
 drop   table if exists   MRCONSO_medrt;
 create table             MRCONSO_medrt
