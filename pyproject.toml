@@ -1,23 +1,14 @@
-# This is our stock pyproject.toml, which we use for installing dependencies and
-# packaging. You don't have to touch this if you don't want to! But if you're
-# making a distributable, or need extra python dependencies, this is a good 
-# place to put that info.
-
 [project]
-# Change this to reference the name of your study
 name = "cumulus-library-opioid"
-# You can leave this alone to start. Only worry about it when you need to create
-# a package for other users
-version = "0.1.4"
-requires-python = ">= 3.9"
+version = "1.0"
+requires-python = ">= 3.10"
 # If you need python libraries, add them here
 dependencies = [
-    # we'll try to keep this template up to date, but it's recommended to use the
-    # minor version of cumulus-library
-    "cumulus-library >= 1.4.0",
+    "cumulus-library >= 2.2.0",
     "sqlfluff == 2.0.2",
     "xlrd",
-    "openpyxl"
+    "openpyxl",
+    "pandas"
 ]
 # You can alter this to discuss your study specifics
 description = "Opioid Overdose and Opioid Use Disorder (OUD)"
@@ -43,10 +34,12 @@ build-backend = "flit_core.buildapi"
 
 [project.optional-dependencies]
 dev = [
-    "black",
+    "ruff = 0.4.4",
     "pylint",    
+]
+test = [
+    "pytest",    
 ]
 
 [tool.flit.sdist]
-# change this to the name of the study folder inside of the module directory
-include = ["opioid/"]
+include = ["LICENSE"]
