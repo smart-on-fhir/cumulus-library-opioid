@@ -13,10 +13,9 @@ fi
 echo "Using $CURATED.tsv"
 $mysql_table_schema -e "call version('${CURATED}', 'results.sh:begin')"
 
-# TODO: links with (ln -s) should be replaced with Matt's true VSAC downloader.
-# Each "curated" source is a TSV file with two cols, RXCUI and STR
+python vsac.py $CURATED
 rm -f curated.tsv
-ln -s infile/$CURATED.tsv curated.tsv
+ln -s ../data/$CURATED.tsv curated.tsv
 
 $mysql_table_schema < curate.sql
 $mysql_table_schema < expand.sql
