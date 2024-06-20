@@ -1,3 +1,5 @@
+import json
+
 import argparse
 import pandas
 import pathlib
@@ -40,14 +42,16 @@ def download_oid_data(
     :returns: True if file created, false otherwise (mostly for testing)
     """
     if not path:
-        path = pathlib.Path(__file__).parent.parent / "data/"
+        path = pathlib.Path(__file__).parent.parent / "data"
     path.mkdir(exist_ok=True, parents=True)
     if not force_recreate and (path / f"{source_vocab}.parquet").exists():
         print(f"{source_vocab} data present, skipping download")
         return False
-    print(f"Downloading {source_vocab}...")
     if source_vocab not in VSAC_OIDS.keys():
         sys.exit(f"Vocab {source_vocab} not found")
+    if VSAC_OIDS[source_vocab] is None:
+        sys.exit(f"No available OID for {source_vocab}")
+    print(f"Downloading {source_vocab} to {path}")
     api = umls.UmlsApi(api_key=api_key)
     output = []
 
@@ -58,8 +62,10 @@ def download_oid_data(
             for concept in data.get("concept", []):
                 output.append([concept["code"], concept["display"]])
     output_df = pandas.DataFrame(output, columns=["RXCUI", "STR"])
-    output_df.to_csv(path / f"{source_vocab}.tsv", index=False, header=False, sep="|")
+    output_df.to_csv(path / f"{source_vocab}.tsv", index=False, header=False, sep="\t")
     output_df.to_parquet(path / f"{source_vocab}.parquet")
+    with open(path/ f"{source_vocab}.json", 'w') as f:
+        f.write(json.dumps(response))
     return True
 
 
@@ -81,7 +87,7 @@ def main(cli_args=None):
         args.source_vocab,
         api_key=args.api_key,
         force_recreate=args.force_recreate,
-        path=args.path,
+        path=pathlib.Path(args.path),
     )
 
 
