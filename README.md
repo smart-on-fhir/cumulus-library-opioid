@@ -2,10 +2,10 @@
 
 This study is part of the [Cumulus Library](https://github.com/smart-on-fhir/cumulus-library).
 
-**REFERENCES**
-* [Buprenorphine Quick Start Guide](BuprenorphineQuickStartGuideIndicationsMatrixCOWS.pdf)
-* [Enhancing Identification of Opioid-involved Health Outcomes Using National Hospital Care Survey Data](CDC_EnhancingIdentificationOpioidOutcomesNationalHospitalCareSurveyData.pdf)
-* [Linked Data on Hospitalizations, Mortality, and Drugs: Data from the National Hospital Care Survey 2016, National Death Index 2016-2017, and the Drug-Involved Mortality 2016-2017](CDC_LinkedDataHospitalizationsMortality&DrugsNatHospCareSurvey2016-17.pdf)
+**CITATIONS**
+* [Buprenorphine Quick Start Guide](./citations/BuprenorphineQuickStartGuideIndicationsMatrixCOWS.pdf)
+* [Enhancing Identification of Opioid-involved Health Outcomes Using National Hospital Care Survey Data](./citations/cumulus-library-opioidCDC_EnhancingIdentificationOpioidOutcomesNationalHospitalCareSurveyData.pdf)
+* [Linked Data on Hospitalizations, Mortality, and Drugs: Data from the National Hospital Care Survey 2016, National Death Index 2016-2017, and the Drug-Involved Mortality 2016-2017](./citations/CDC_LinkedDataHospitalizationsMortality&DrugsNatHospCareSurvey2016-17.pdf)
 * [Spreadsheet: Opioid Overdose Codebook](cumulus_library_opioid/opioid/CodeBookOpioidOverDose.xlsx)
 
 **COUNT TABLES**
