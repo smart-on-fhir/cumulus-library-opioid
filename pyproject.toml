@@ -5,7 +5,7 @@ requires-python = ">= 3.10"
 # If you need python libraries, add them here
 dependencies = [
     "cumulus-library >= 2.3.0",
-    "sqlfluff >3",
+    "sqlfluff >=3",
     "xlrd",
     "openpyxl",
     "pandas"
