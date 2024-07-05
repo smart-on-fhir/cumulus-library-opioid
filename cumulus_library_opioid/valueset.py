@@ -1,10 +1,9 @@
 import os
-from typing import List
-from fhirclient.models.coding import Coding
 
+import pandas
 from cumulus_library.helper import load_json
 from cumulus_library.schema.typesystem import Vocab
-import pandas
+from fhirclient.models.coding import Coding
 
 STUDY_PREFIX = "opioid"
 
@@ -35,7 +34,7 @@ def escape(sql: str) -> str:
     return sql.replace("'", "").replace(";", ".")
 
 
-def coding2view(view_name: str, concept_list: List[Coding]) -> str:
+def coding2view(view_name: str, concept_list: list[Coding]) -> str:
     """
     :param view_name: like define_type
     :param concept_list: list of concepts to include in definition
@@ -53,7 +52,7 @@ def coding2view(view_name: str, concept_list: List[Coding]) -> str:
     return header + "\n" + content + "\n" + footer
 
 
-def valueset2coding(valueset_json) -> List[Coding]:
+def valueset2coding(valueset_json) -> list[Coding]:
     """
     Obtain a list of Coding "concepts" from a ValueSet.
     This method currently supports only "include" of "concept" defined fields.
