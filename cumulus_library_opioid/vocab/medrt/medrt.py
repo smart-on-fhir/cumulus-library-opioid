@@ -1,11 +1,12 @@
 import unittest
+
 from cumulus_library_opioid.vocab.generate.file_sql import (
-    file_header,
-    linebreak,
     create,
+    file_header,
     index,
-    tic,
+    linebreak,
     str_like,
+    tic,
 )
 
 MEDRT_RELA = ["isa", "tradename_of", "has_tradename", "has_basis_of_strength_substance"]

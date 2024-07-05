@@ -1,6 +1,6 @@
 import pytest
-
 from cumulus_library import base_utils, databases
+
 
 @pytest.fixture
 def mock_db(tmp_path):
@@ -9,7 +9,7 @@ def mock_db(tmp_path):
         {
             "db_type": "duckdb",
             "schema_name": f"{tmp_path}/duck.db",
-            #"load_ndjson_dir": MOCK_DATA_DIR,
+            # "load_ndjson_dir": MOCK_DATA_DIR,
         }
     )
     yield db
