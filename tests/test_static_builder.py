@@ -69,7 +69,7 @@ def test_static_tables(
             headers=["foo", "bar"],
             dtypes={"foo": "str", "bar": "str"},
             parquet_types=["STR", "STR"],
-            filtered_name=filtered,
+            filtered_path=filtered,
             ignore_header=ignore_header,
             map_cols=mapping,
         )
