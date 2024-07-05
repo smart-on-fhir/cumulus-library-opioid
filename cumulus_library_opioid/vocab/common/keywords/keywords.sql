@@ -1,3 +1,5 @@
+-- This is obsoleted by static_builder
+
 -- #############################################################################
 call log('keywords.sql', 'begin');
 
