@@ -26,7 +26,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
     display_text = "Building static data tables..."
     base_path = pathlib.Path(__file__).resolve().parent
 
-    tables = [
+    tables = [  # noqa: RUF012
         TableConfig(
             file_path=base_path / "./common/keywords/keywords.curated.tsv",
             delimiter="\t",
