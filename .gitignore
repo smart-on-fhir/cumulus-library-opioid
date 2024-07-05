@@ -1,4 +1,5 @@
 # project specific
+*.parquet
 data_export/
 .python-version
 .DS_Store
