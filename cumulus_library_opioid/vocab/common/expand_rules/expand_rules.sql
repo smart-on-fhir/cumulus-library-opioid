@@ -1,6 +1,8 @@
 -- ##############################################
 call log('expand_rules.sql', 'create table');
 
+-- this first table is supplanted by static_builer
+
 drop    table if exists expand_rules;
 create  table           expand_rules
 (

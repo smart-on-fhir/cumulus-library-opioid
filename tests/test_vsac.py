@@ -1,9 +1,10 @@
 import json
 import pathlib
-import pytest
-
 from contextlib import nullcontext as does_not_raise
 from unittest import mock
+
+import pytest
+
 from cumulus_library_opioid.vocab.analyze import vsac
 
 

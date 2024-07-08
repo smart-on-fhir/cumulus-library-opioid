@@ -1,10 +1,9 @@
-import json
-
 import argparse
-import pandas
+import json
 import pathlib
 import sys
 
+import pandas
 from cumulus_library.apis import umls
 
 VSAC_OIDS = {
@@ -30,7 +29,7 @@ VSAC_OIDS = {
 def download_oid_data(
     source_vocab: str,
     *,
-    api_key: str = None,
+    api_key: str | None = None,
     force_recreate: bool = False,
     path: pathlib.Path | None = None,
 ) -> bool:
@@ -64,7 +63,7 @@ def download_oid_data(
     output_df = pandas.DataFrame(output, columns=["RXCUI", "STR"])
     output_df.to_csv(path / f"{source_vocab}.tsv", index=False, header=False, sep="\t")
     output_df.to_parquet(path / f"{source_vocab}.parquet")
-    with open(path/ f"{source_vocab}.json", 'w') as f:
+    with open(path / f"{source_vocab}.json", "w") as f:
         f.write(json.dumps(response))
     return True
 

@@ -1,4 +1,5 @@
 import unittest
+
 from cumulus_library_opioid.vocab.constants import CURATED_LIST
 
 BASH_HEAD = """

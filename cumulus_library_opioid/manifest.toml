@@ -1,16 +1,11 @@
-# 'study_prefix' should be a string at the start of each table. We'll use this
-# to clean up queries, so it should be unique. Name your tables in the following
-# format: [study_prefix]__[table_name]. It should probably, but not necessarily,
-# be the same name as the folder the study definition is in.
 study_prefix = "opioid"
 
-# The following section describes all tables that should be generated directly
-# from SQL files.
+[table_builder_config]
+file_names = [
+    "vocab/static_builder.py"
+]
+
 [sql_config]
-# 'file_names' defines a list of sql files to execute, in order, in this folder.
-# Recommended order: Any ancillary config (like a list of condition codes),
-# tables/view selecting subsets of data from FHIR data, tables/views creating 
-# summary statistics.
 file_names = [
     "define_dx.sql",
     "define_dx_sepsis.sql",
@@ -34,11 +29,7 @@ file_names = [
 ]
 
 
-# The following section defines parameters related to exporting study data from
-# your athena database
 [export_config]
-# The following tables will be output to disk when an export is run. In most cases,
-# only count tables should be output in this way.
 export_list = [
     "opioid__count_study_period_week",
     "opioid__count_study_period_month",
@@ -55,14 +46,3 @@ export_list = [
     "opioid__count_rx_naloxone",
     "opioid__meta_version",
 ]
-
-# For most use cases, this should not be required, but if you need to run code, you
-# can point to a python module. The vocab study provides an example of this. 
-# Python code will always be run before any SQL queries are executed.
-# [python_config]
-# file_names = [
-#     "my_script.py",
-# ]
-
-# If you'd like another language available, please reach out - we can likely 
-# accomadate, but we'd need to understand the use cases a little better.

@@ -1,3 +1,5 @@
+-- Its unclear where RXNCONSO_curated comes from
+
 -- #############################################################################
 call log('keywords_db.sql', 'begin');
 
