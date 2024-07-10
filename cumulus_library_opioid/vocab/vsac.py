@@ -1,9 +1,9 @@
-import argparse
 import json
 import pathlib
 import sys
 
 import pandas
+from cumulus_library import base_utils
 from cumulus_library.apis import umls
 
 VSAC_OIDS = {
@@ -25,33 +25,34 @@ VSAC_OIDS = {
     "keywords": None,
 }
 
+VALID_MSG = f"Valid stewards: all,{','.join(VSAC_OIDS.keys())}"
 
 def download_oid_data(
     source_vocab: str,
     *,
-    api_key: str | None = None,
-    force_recreate: bool = False,
+    config: base_utils.StudyConfig,
     path: pathlib.Path | None = None,
 ) -> bool:
     """Fetches code definitions (assumed to be RXNorm coded) from VSAC
     :param source_vocab: the human readable label for the valueset
-    :keyword api_key: UMLS API key. Will read from UMLS_API_KEY env var if none
-    :keyword force_recreate: If true, redownload valueset even if it already exists
+    :keyword config: A StudyConfig object. If umls_key is none, will check the
+        UMLS_API_KEY env var
     :keyword path: A path to write data to (default: ../data)
     :returns: True if file created, false otherwise (mostly for testing)
     """
     if not path:
         path = pathlib.Path(__file__).parent.parent / "data"
     path.mkdir(exist_ok=True, parents=True)
-    if not force_recreate and (path / f"{source_vocab}.parquet").exists():
+    if not config.force_upload and (path / f"{source_vocab}.parquet").exists():
         print(f"{source_vocab} data present, skipping download")
         return False
     if source_vocab not in VSAC_OIDS.keys():
-        sys.exit(f"Vocab {source_vocab} not found")
+        sys.exit(f"Vocab from steward {source_vocab} not found. \n\n {VALID_MSG}")
     if VSAC_OIDS[source_vocab] is None:
-        sys.exit(f"No available OID for {source_vocab}")
+        # TODO: Impove this exist message when porting to library
+        sys.exit(f"No available OID for {source_vocab}.")
     print(f"Downloading {source_vocab} to {path}")
-    api = umls.UmlsApi(api_key=api_key)
+    api = umls.UmlsApi(api_key=config.umls_key)
     output = []
 
     response = api.get_vsac_valuesets(oid=VSAC_OIDS[source_vocab])
@@ -68,27 +69,26 @@ def download_oid_data(
     return True
 
 
-def main(cli_args=None):
-    """Temporary CLI interface"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "source_vocab", help="Name of vocab to look up codes for", default=None
-    )
-    parser.add_argument("--api_key", help="UMLS api key", default=None)
-    parser.add_argument(
-        "--force-recreate",
-        help="Force redownloading of data even if it already exists",
-        action="store_true",
-    )
-    parser.add_argument("--path", help="optional path to write data to", default=None)
-    args = parser.parse_args(cli_args)
-    return download_oid_data(
-        args.source_vocab,
-        api_key=args.api_key,
-        force_recreate=args.force_recreate,
-        path=pathlib.Path(args.path),
-    )
-
-
-if __name__ == "__main__":
-    main()
+def get_vsac_stewards(config:base_utils.StudyConfig) -> list[str]:
+    """Gets the steward target(s) from the StudyConfig options"""
+    stewards = []
+    try:
+        if config.options['steward'] == 'all':
+            for k,v in VSAC_OIDS.items():
+                if v is not None:
+                    stewards.append(k)
+        else:
+            if config.options['steward'] in VSAC_OIDS.keys():
+                stewards.append(config.options['steward'])
+            else:
+                sys.exit(
+                    f"{config.options['steward']} is not a valid value set steward."
+                    f" \n\n{VALID_MSG}"
+                )
+        return stewards
+    except TypeError:
+        sys.exit(
+            "This study requires specifying a value set steward. Add an argument like"
+            "'--option steward:name' to specify which value sets to use.\n\n"
+            f"{VALID_MSG}"
+        )

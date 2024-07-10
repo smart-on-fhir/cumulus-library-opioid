@@ -1,0 +1,14 @@
+{%- import 'syntax.sql.jinja' as syntax -%}
+
+CREATE OR REPLACE VIEW {{ view_name }} AS
+SELECT 
+    {%- for col in a_cols %}
+    a.{{col}}{{ syntax.comma_delineate(loop) }}
+    {%- endfor %}
+    {%- if a_cols|length >0 and b_cols|length >0 -%},{%- endif -%}
+    {%- for col in b_cols %}
+    b.{{col}}{{ syntax.comma_delineate(loop) }}
+    {%- endfor %}
+FROM {{ a_table }} AS a,
+    {{ b_table }} AS b
+WHERE a.{{ a_join_col }} = b.{{ b_join_col }}

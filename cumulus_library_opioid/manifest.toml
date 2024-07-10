@@ -2,7 +2,8 @@ study_prefix = "opioid"
 
 [table_builder_config]
 file_names = [
-    "vocab/static_builder.py"
+    "vocab/static_builder.py",
+    "vocab/rxnorm_vsac_builder.py",
 ]
 
 [sql_config]
