@@ -1,3 +1,5 @@
+-- obseleted by rxnorm_vsac_builder
+
 -- ##############################################
 call log('curate.sql', 'begin');
 
