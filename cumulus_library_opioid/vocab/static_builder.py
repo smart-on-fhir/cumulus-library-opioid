@@ -6,6 +6,8 @@ import pandas
 from cumulus_library import base_table_builder, base_utils, study_manifest
 from cumulus_library.template_sql import base_templates
 
+from cumulus_library_opioid.vocab import vsac
+
 
 @dataclasses.dataclass(kw_only=True)
 class TableConfig:
@@ -48,7 +50,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                 "rule",
             ],
             dtypes={"TTY1": "str", "RELA": "str", "TTY2": "str", "rule": "str"},
-            parquet_types=["STR", "STR", "STR", "STR", "STR"],
+            parquet_types=["STRING", "STRING", "STRING", "STRING", "STRING"],
             ignore_header=True,
             map_cols=[
                 {
@@ -82,7 +84,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
             'Hydone Formula Liquid'
             'Novahistine Expectorant'
 
-        :param path: path to a file (expected to be two cols, with data in the second col)
+        :param path: path to a file (expected to be two cols, with data in second col)
         :param delimiter: the character used to separate columns in that file
         :param filtered_path: The name of the file to write the filtered dataset to
 
@@ -107,6 +109,21 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
         *args,
         **kwargs,
     ):
+        # fetch and add vsac tables
+        vsac_stewards = vsac.get_vsac_stewards(config)
+        for steward in vsac_stewards:
+            vsac.download_oid_data(steward, config=config, path=self.base_path /'data')
+            self.tables.append(
+                TableConfig(
+                    file_path=self.base_path / f"data/{steward}.tsv",
+                    delimiter="\t",
+                    table_name=f"{steward}_vsac",
+                    headers=["code","display"],
+                    dtypes={"code": "str","display": "str"},
+                    parquet_types=["STRING", "STRING"],
+                )
+            )
+
         with base_utils.get_progress_bar() as progress:
             task = progress.add_task(
                 "Uploading static files...", total=len(self.tables)

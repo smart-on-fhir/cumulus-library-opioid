@@ -56,6 +56,7 @@ from cumulus_library_opioid.vocab import static_builder
 def test_static_tables(
     tmp_path, mock_db_config, filtered, ignore_header, mapping, expected
 ):
+    mock_db_config.options = {'steward':'acep'}
     test_path = pathlib.Path(__file__).parent / "test_data/static"
     shutil.copy(test_path / "static_table.csv", tmp_path / "static_table.csv")
     shutil.copy(test_path / "filtered.csv", tmp_path / "filtered.csv")
