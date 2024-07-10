@@ -65,7 +65,11 @@ def test_download_oid_data(mock_api, mock_db, name, umls, force, raises, tmp_pat
 def test_vsac_stewards(mock_db_config,steward,expects,raises):
     with raises:
         mock_db_config.options = {'steward': steward}
-        print(mock_db_config)
         res = vsac.get_vsac_stewards(mock_db_config)
-        print(res)
         assert res == expects
+
+def test_vsac_stewards_no_steward_key(mock_db_config):
+    with pytest.raises(SystemExit):
+        mock_db_config.options = {'key': 'val'}
+        res = vsac.get_vsac_stewards(mock_db_config)
+

@@ -86,7 +86,7 @@ def get_vsac_stewards(config:base_utils.StudyConfig) -> list[str]:
                     f" \n\n{VALID_MSG}"
                 )
         return stewards
-    except TypeError:
+    except (TypeError, KeyError):
         sys.exit(
             "This study requires specifying a value set steward. Add an argument like"
             "'--option steward:name' to specify which value sets to use.\n\n"
