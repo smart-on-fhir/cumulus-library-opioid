@@ -30,19 +30,26 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
 
     tables = [  # noqa: RUF012
         TableConfig(
-            file_path=base_path / "./common/keywords/keywords.curated.tsv",
+            file_path=base_path / "./common/keywords/keywords.tsv",
             delimiter="\t",
             table_name="keywords",
             headers=["STR"],
             dtypes={"STR": "str"},
             parquet_types=["STRING"],
-            filtered_path=base_path / "./common/keywords/keywords.curated.filtered.tsv",
+            filtered_path=base_path / "./common/keywords/keywords.filtered.tsv",
+        ),
+        TableConfig(
+            file_path=base_path / "./all_rxcui_str.RXNCONSO_curated.tsv",
+            delimiter="\t",
+            table_name="rxn_curated",
+            headers=["RXCUI","STR","TTY","SAB","CODE","keyword","keyword_len"],
+            dtypes={"RXCUI":"str","STR":"str","TTY":"str","SAB":"str","CODE":"str","keyword":"str","keyword_len":"str"},
+            parquet_types=["STRING","STRING","STRING","STRING","STRING","STRING","STRING"],
         ),
         TableConfig(
             file_path=base_path / "./common/expand_rules/expand_rules.tsv",
             delimiter="\t",
-            table_name="expand_rules",
-            # TODO: do we actually need to preserve 'rule'?
+            table_name="expansion_rules",
             headers=[
                 "TTY1",
                 "RELA",
@@ -50,7 +57,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                 "rule",
             ],
             dtypes={"TTY1": "str", "RELA": "str", "TTY2": "str", "rule": "str"},
-            parquet_types=["STRING", "STRING", "STRING", "STRING", "STRING"],
+            parquet_types=["STRING", "STRING", "STRING", "STRING", "BOOLEAN"],
             ignore_header=True,
             map_cols=[
                 {
@@ -59,6 +66,16 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                     "map_dict": {"yes": True, "no": False},
                 }
             ],
+        ),
+        # TODO: We should eventually replace this with a source derived from
+        # UMLS directly at some point
+        TableConfig(
+            file_path=base_path / "./common/umls/umls_tty.tsv",
+            delimiter="\t",
+            table_name="umls_tty",
+            headers=["TTY","TTY_STR"],
+            dtypes={"TTY": "str","TTY_STR": "str",},
+            parquet_types=["STRING", "STRING"],
         ),
     ]
 
@@ -92,7 +109,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
         target = path.with_suffix(".filtered.tsv")
         with open(path) as file:
             reader = csv.reader(file, delimiter=delimiter)
-            keywords = sorted((row[1] for row in reader), key=len)
+            keywords = sorted((row[0] for row in reader), key=len)
         unique_keywords = {}  # casefold -> normal
         for keyword in keywords:
             folded = keyword.casefold()
@@ -149,6 +166,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                     header=0 if table.ignore_header else None,
                     dtype=table.dtypes,
                     index_col=False,
+                    na_values=['\\N']
                 )
                 if table.map_cols:
                     for mapping in table.map_cols:
@@ -176,4 +194,4 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                         remote_table_cols_types=table.parquet_types,
                     )
                 )
-                progress.advance(task)
+                progress.advance(task)                

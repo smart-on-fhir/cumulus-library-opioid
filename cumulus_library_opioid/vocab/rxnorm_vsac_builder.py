@@ -19,28 +19,33 @@ class RxNormVsacBuilder(base_table_builder.BaseTableBuilder):
         **kwargs,
     ):
         def get_create_view_filter_by(
-            steward,
-            a_table,
-            b_table = None,
-            a_join_col = None,
-            b_join_col = None,
-            a_schema = None,
-            view_name = None,
-            **kwargs,
+            steward: str,
+            a_table: str,
+            *,
+            columns : list,
+            b_table:str | None= None,
+            a_join_col: str | None= None,
+            b_join_col: str | None= None,
+            a_schema: str | None= None,
+            view_name:str | None= None,
+            join_clauses: list | None = None,
+            column_aliases: dict | None = None
+            
         ):
             a_schema = a_schema or 'rxnorm.'
-            return base_templates.get_base_template(
-                'create_view_from_tables',
-                self.base_path / "template_sql",
+            return base_templates.get_create_view_from_tables(
                 view_name=view_name or (
                     f'{manifest.get_study_prefix()}__{steward}_{a_table}'
                 ),
-                a_table = f'{a_schema}{a_table}',
-                a_schema = a_schema,
-                b_table= b_table or f'opioid__{steward}_vsac',
-                a_join_col= a_join_col or 'rxcui',
-                b_join_col = b_join_col or 'code',
-                **kwargs
+                tables = [
+                    f'{a_schema}{a_table}',
+                    b_table or f'opioid__{steward}_vsac',
+                ],
+                table_aliases = ['a','b'],
+                join_clauses=join_clauses or [f"{a_join_col or 'a.rxcui'} = {b_join_col or 'b.code'}"],
+                columns=columns,
+                column_aliases = column_aliases,
+
             )
         stewards = vsac.get_vsac_stewards(config)
         for steward in stewards:
@@ -48,36 +53,55 @@ class RxNormVsacBuilder(base_table_builder.BaseTableBuilder):
                 get_create_view_filter_by(
                     steward,
                     "rxnconso",
-                    a_cols=['rxcui','str','tty','sab','code'],
-                )
-            )
-            self.queries.append(
-                get_create_view_filter_by(
-                    steward,
-                    'rxnsty',
-                    a_cols=['rxcui','tui','stn','sty','atui','cvf'],
-                )
-            )
-            self.queries.append(
-                get_create_view_filter_by(
-                    steward,
-                    'rxnrel',
-                    a_cols=[
-                        'rxcui1','rxaui1','stype1','rel','rxcui2','rxaui2',
-                        'stype2','rela','rui','srui','sab','sl','rg'
-                    ],
-                    a_join_col='rxcui1'
+                    columns=['a.rxcui','a.str','a.tty','a.sab','a.code'],
                 )
             )
             self.queries.append(
                 get_create_view_filter_by(
                     steward,
                     f'{steward}_rxnconso',
+                    a_schema=f'{manifest.get_study_prefix()}__',
+                    b_table = 'opioid__keywords',
+                    columns=['a.rxcui','a.str','a.tty','a.sab','a.code', 'b.str'],
+                    view_name=f'{manifest.get_study_prefix()}__{steward}_rxnconso_keywords',
+                    join_clauses = ["lower(a.str) LIKE concat('%',b.STR, '%')"],
+                    column_aliases = {"b.str": "keyword"}
+                )
+            )
+            self.queries.append(
+                base_templates.get_base_template(
+                    'create_annotated_rxnconso',
+                    self.base_path / "template_sql",
+                    steward=steward
+                )
+            )
+            self.queries.append(
+                get_create_view_filter_by(
+                    steward,
+                    'rxnsty',
+                    columns=['a.rxcui','a.tui','a.stn','a.sty','a.atui','a.cvf'],
+                )
+            )
+            self.queries.append(
+                get_create_view_filter_by(
+                    steward,
+                    'rxnrel',
+                    columns=[
+                        'a.rxcui1','a.rxaui1','a.stype1','a.rel','a.rxcui2','a.rxaui2',
+                        'a.stype2','a.rela','a.rui','a.srui','a.sab','a.sl','a.rg'
+                    ],
+                    a_join_col='a.rxcui1'
+                )
+            )
+            self.queries.append(
+                get_create_view_filter_by(
+                    steward,
+                    f'{steward}_rxnconso_keywords',
                     view_name= f'{manifest.get_study_prefix()}__{steward}_rela',
                     a_schema = f'{manifest.get_study_prefix()}__',
                     b_table =f'{manifest.get_study_prefix()}__{steward}_RXNREL',
-                    a_cols=['rxcui','str','tty','sab'],
-                    b_cols=['rxcui2','rel','rela','rui'],
-                    b_join_col='rxcui1'
+                    columns=['a.rxcui','a.str','a.tty','a.sab','b.rxcui2','b.rel','b.rela','b.rui'],
+                    b_join_col='b.rxcui1',
                 )
             )
+            

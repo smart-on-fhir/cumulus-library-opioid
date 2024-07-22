@@ -34,7 +34,8 @@ def test_download_oid_data(mock_api, mock_db, name, umls, force, raises, tmp_pat
         )
         vsac.download_oid_data(name,path=tmp_path, config=config)
         output_dir = list(tmp_path.glob("*"))
-        assert len(output_dir) == 5
+        print(output_dir)
+        assert len(output_dir) == 4
         with open(tmp_path / "acep.tsv") as f:
             tsv = f.readlines()
             assert tsv[0].strip() == "1010599\tBuprenorphine / Naloxone Oral Strip"

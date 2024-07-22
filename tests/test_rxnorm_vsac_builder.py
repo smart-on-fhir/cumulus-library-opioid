@@ -1,4 +1,5 @@
 import json
+import os
 import pathlib
 from unittest import mock
 
@@ -6,7 +7,10 @@ from cumulus_library import study_manifest
 
 from cumulus_library_opioid.vocab import rxnorm_vsac_builder, static_builder
 
-
+@mock.patch.dict(
+    os.environ,
+    clear=True,
+)
 @mock.patch("cumulus_library.apis.umls.UmlsApi")
 def test_rxnorm_vsac_builder(mock_api, mock_db_config,  tmp_path):
     with open(pathlib.Path(__file__).parent / "test_data/vsac_resp.json") as f:

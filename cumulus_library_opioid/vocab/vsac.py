@@ -1,3 +1,4 @@
+import argparse
 import json
 import pathlib
 import sys
@@ -92,3 +93,28 @@ def get_vsac_stewards(config:base_utils.StudyConfig) -> list[str]:
             "'--option steward:name' to specify which value sets to use.\n\n"
             f"{VALID_MSG}"
         )
+
+def main(cli_args=None):
+    """Temporary CLI interface"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "source_vocab", help="Name of vocab to look up codes for", default=None
+    )
+    parser.add_argument("--api_key", help="UMLS api key", default=None)
+    parser.add_argument(
+        "--force-recreate",
+        help="Force redownloading of data even if it already exists",
+        action="store_true",
+    )
+    parser.add_argument("--path", help="optional path to write data to", default=None)
+    args = parser.parse_args(cli_args)
+    return download_oid_data(
+        args.source_vocab,
+        api_key=args.api_key,
+        force_recreate=args.force_recreate,
+        path=pathlib.Path(args.path),
+    )
+
+
+if __name__ == "__main__":
+    main()
