@@ -14,7 +14,7 @@ drop    table if exists keywords.curated;
 create  table           keywords.curated
 select  distinct RXCUI,STR
 from    RXNCONSO_curated
-where   keyword_len > 0
+where   keyword_len >= 4
 order by RXCUI,STR;
 
 
