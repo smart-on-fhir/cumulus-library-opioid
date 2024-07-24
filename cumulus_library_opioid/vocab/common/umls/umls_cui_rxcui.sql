@@ -16,18 +16,19 @@ select distinct RXCUI, STR from rxnorm.RXNCONSO order by RXCUI,STR;
 call create_index('rxcui_str', 'CUI');
 call create_index('rxcui_str', 'STR');
 
-drop    table if exists rxcui_cui;
-create  table           rxcui_cui
-select  distinct R.RXCUI, U.CUI, U.SAB, U.CODE
-from    rxnorm.RXNCONSO R,
-        MRCONSO_drug U
-where   R.SAB  = U.SAB
-and     R.CODE = U.CODE;
-
-call create_index('rxcui_cui', 'RXCUI');
-call create_index('rxcui_cui', 'CUI');
-call create_index('rxcui_cui', 'RXCUI, CUI');
-call create_index('rxcui_cui', 'SAB, CODE');
+--    TODO: deprecated?
+--    drop    table if exists rxcui_cui;
+--    create  table           rxcui_cui
+--    select  distinct R.RXCUI, U.CUI, U.SAB, U.CODE
+--    from    rxnorm.RXNCONSO R,
+--            MRCONSO_drug U
+--    where   R.SAB  = U.SAB
+--    and     R.CODE = U.CODE;
+--
+--    call create_index('rxcui_cui', 'RXCUI');
+--    call create_index('rxcui_cui', 'CUI');
+--    call create_index('rxcui_cui', 'RXCUI, CUI');
+--    call create_index('rxcui_cui', 'SAB, CODE');
 
 -- ##############################################
 call log('all_rxcui_str.sql', 'done');
