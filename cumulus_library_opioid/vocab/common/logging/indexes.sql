@@ -1,3 +1,4 @@
+-- memory usage data and indexes
 drop procedure if exists mem;
 delimiter //
 create procedure mem()
@@ -19,6 +20,20 @@ begin
   table_schema, engine, table_name;
 end//
 delimiter ;
+
+-- processlist
+
+drop procedure if exists ps;
+delimiter //
+create procedure ps()
+begin
+  select * from information_schema.processlist
+  where
+  information_schema.processlist.DB=DATABASE() and
+  information_schema.processlist.INFO not like '%information_schema.processlist%';
+end//
+delimiter ;
+
 
 drop procedure if exists create_index;
 delimiter //

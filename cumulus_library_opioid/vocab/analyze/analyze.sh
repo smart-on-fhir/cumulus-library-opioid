@@ -13,14 +13,14 @@ fi
 echo "Using $CURATED.tsv"
 $mysql_table_schema -e "call version('${CURATED}', 'results.sh:begin')"
 
-python vsac.py $CURATED
-rm -f curated.tsv
-ln -s ../data/$CURATED.tsv curated.tsv
+#python vsac.py $CURATED
+#rm -f curated.tsv
+#ln -s ../data/$CURATED.tsv curated.tsv
 
-$mysql_table_schema < curate.sql
-$mysql_table_schema < expand.sql
-$mysql_table_schema < filter.sql
-$mysql_table_schema < stats.sql
+$mysql_table_schema < analyze/curate.sql
+$mysql_table_schema < analyze/expand.sql
+$mysql_table_schema < analyze/filter.sql
+$mysql_table_schema < analyze/stats.sql
 
 ./export_tsv.sh version
 ./export_tsv.sh curated

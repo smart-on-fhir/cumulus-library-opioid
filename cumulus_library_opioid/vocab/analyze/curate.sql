@@ -13,7 +13,7 @@ create  table           curated
 call log('infile', 'curated.tsv');
 
 load    data
-local   infile     'curated.tsv'
+local   infile     'data/curated.tsv'
 into    table       curated;
 show warnings; 
 
