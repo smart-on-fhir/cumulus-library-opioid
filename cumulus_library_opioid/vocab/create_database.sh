@@ -12,7 +12,7 @@ $mysql_table_schema < common/logging/logging.sql
 $mysql_table_schema < common/logging/version.sql
 $mysql_table_schema < common/logging/indexes.sql
 
-$mysql_table_schema < common/keywords/keywords.sql
+$mysql_table_schema < common/keywords/keywords.like.sql
 $mysql_table_schema < common/umls/umls_types.sql
 $mysql_table_schema < common/expand_rules/expand_rules.sql
 
