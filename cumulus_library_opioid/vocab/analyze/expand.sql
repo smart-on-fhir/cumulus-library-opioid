@@ -41,7 +41,7 @@ where   relax.REL not in ('RB', 'PAR')
 and     rules.include is TRUE
 and     rules.TTY1 = relax.TTY1
 and     rules.TTY2 = relax.TTY2
-and     rules.RELA = relax.RELA;
+and     rules.RELA = relax.RELA ;
 
 
 -- ##############################################
@@ -54,7 +54,11 @@ from    expand_relax as relax,
         expand_rules as rules
 where   rules.include is NULL
 and     relax.REL not in ('RB', 'PAR')
-and     relax.keyword_len >1;
+and     relax.keyword_len >= 4
+and     rules.TTY1 = relax.TTY1
+and     rules.TTY2 = relax.TTY2
+and     rules.RELA = relax.RELA ;
+
 
 -- ##############################################
 call log('expand', 'refresh');

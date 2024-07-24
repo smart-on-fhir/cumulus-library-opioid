@@ -12,10 +12,10 @@ create table keywords(
  STR   VARCHAR(50) 	NOT NULL
 );
 
-call log('keywords.tsv', 'infile');
+call log('keywords.like.tsv', 'infile');
 
 load    data
-local   infile          'keywords.tsv'
+local   infile          'common/keywords/keywords.like.tsv'
 into    table            keywords;
 show warnings;
 
