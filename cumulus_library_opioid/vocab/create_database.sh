@@ -10,11 +10,11 @@ mysql -u root -e "show databases"
 # Log and versioning info  (currently specific to MySQL)
 $mysql_table_schema < common/logging/logging.sql
 $mysql_table_schema < common/logging/version.sql
+$mysql_table_schema < common/logging/indexes.sql
 
 $mysql_table_schema < common/keywords/keywords.sql
+$mysql_table_schema < common/umls/umls_types.sql
 $mysql_table_schema < common/expand_rules/expand_rules.sql
-
-$mysql_table_schema < common/umls/uml_abbreviations.sql
 
 echo '#############################################'
 $mysql_table_schema -e "call mem"

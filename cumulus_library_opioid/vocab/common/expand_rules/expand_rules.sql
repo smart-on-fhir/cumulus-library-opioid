@@ -15,7 +15,7 @@ create  table           expand_rules
 call log('infile', 'expand_rules.tsv');
 
 load    data
-local   infile     'expand_rules.tsv'
+local   infile     'common/expand_rules/expand_rules.tsv'
 into    table       expand_rules;
 show warnings;
 
@@ -23,7 +23,7 @@ alter table expand_rules add column include boolean default NULL;
 update expand_rules set include = TRUE  where lower(rule) = 'yes';
 update expand_rules set include = FALSE where lower(rule) = 'no';
 
---source of UMLS_TTY needs to be provided
+-- source of UMLS_TTY needs to be provided
 
 drop    table if exists expand_rules_readme;
 create  table           expand_rules_readme
