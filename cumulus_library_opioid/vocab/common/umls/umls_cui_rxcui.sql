@@ -13,7 +13,7 @@ drop    table if exists rxcui_str;
 create  table           rxcui_str
 select distinct RXCUI, STR from rxnorm.RXNCONSO order by RXCUI,STR;
 
-call create_index('rxcui_str', 'CUI');
+call create_index('rxcui_str', 'RXCUI');
 call create_index('rxcui_str', 'STR');
 
 --    TODO: deprecated?
