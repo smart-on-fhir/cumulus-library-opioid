@@ -31,7 +31,9 @@ VALID_MSG = f"Valid stewards: all,{','.join(VSAC_OIDS.keys())}"
 def download_oid_data(
     source_vocab: str,
     *,
-    config: base_utils.StudyConfig,
+    api_key: str | None = None,
+    config: base_utils.StudyConfig | None = None,
+    force_upload:str | None = None,
     path: pathlib.Path | None = None,
 ) -> bool:
     """Fetches code definitions (assumed to be RXNorm coded) from VSAC
@@ -41,10 +43,13 @@ def download_oid_data(
     :keyword path: A path to write data to (default: ../data)
     :returns: True if file created, false otherwise (mostly for testing)
     """
+    if config:
+        api_key=config.umls_key
+        force_upload=config.force_upload
     if not path:
         path = pathlib.Path(__file__).parent.parent / "data"
     path.mkdir(exist_ok=True, parents=True)
-    if not config.force_upload and (path / f"{source_vocab}.parquet").exists():
+    if not (force_upload) and (path / f"{source_vocab}.parquet").exists():
         print(f"{source_vocab} data present, skipping download")
         return False
     if source_vocab not in VSAC_OIDS.keys():
@@ -53,7 +58,7 @@ def download_oid_data(
         # TODO: Impove this exist message when porting to library
         sys.exit(f"No available OID for {source_vocab}.")
     print(f"Downloading {source_vocab} to {path}")
-    api = umls.UmlsApi(api_key=config.umls_key)
+    api = umls.UmlsApi(api_key=api_key or api_key)
     output = []
 
     response = api.get_vsac_valuesets(oid=VSAC_OIDS[source_vocab])
@@ -102,7 +107,7 @@ def main(cli_args=None):
     )
     parser.add_argument("--api_key", help="UMLS api key", default=None)
     parser.add_argument(
-        "--force-recreate",
+        "--force-upload",
         help="Force redownloading of data even if it already exists",
         action="store_true",
     )
@@ -111,7 +116,7 @@ def main(cli_args=None):
     return download_oid_data(
         args.source_vocab,
         api_key=args.api_key,
-        force_recreate=args.force_recreate,
+        force_upload=args.force_upload,
         path=pathlib.Path(args.path),
     )
 
