@@ -14,7 +14,7 @@ VSAC_OIDS = {
     "CancerLinQ_non": "2.16.840.1.113762.1.4.1260.173",
     "CancerLinQ": "2.16.840.1.113762.1.4.1116.449",
     "cliniwiz_keywords": "2.16.840.1.113762.1.4.1200.163",
-    "clinwiz": "2.16.840.1.113762.1.4.1200.14",
+    "cliniwiz": "2.16.840.1.113762.1.4.1200.14",
     "ecri": "1.3.6.1.4.1.6997.4.1.2.234.999.3.2",
     "impaq": "2.16.840.1.113762.1.4.1196.87",
     "lantana": "2.16.840.1.113762.1.4.1046.241",
@@ -63,10 +63,9 @@ def download_oid_data(
 
     response = api.get_vsac_valuesets(oid=VSAC_OIDS[source_vocab])
     for valueset in response:
-        include = valueset.get("compose").get("include", [])
-        for data in include:
-            for concept in data.get("concept", []):
-                output.append([concept["code"], concept["display"]])
+        contains = valueset.get("expansion").get("contains", [])
+        for data in contains:
+            output.append([data["code"], data["display"]])
     output_df = pandas.DataFrame(output, columns=["RXCUI", "STR"])
     output_df.to_csv(path / f"{source_vocab}.tsv", index=False, header=False, sep="\t")
     output_df.to_parquet(path / f"{source_vocab}.parquet")
