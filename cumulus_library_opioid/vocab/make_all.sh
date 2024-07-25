@@ -24,8 +24,8 @@ export CURATED='lantana'
 export CURATED='math_349'
 ./make.sh
 
-export CURATED='medrt'
-./make.sh
+#export CURATED='medrt'
+#./make.sh
 
 export CURATED='mitre'
 ./make.sh
@@ -39,11 +39,11 @@ export CURATED='mdpartners_non'
 export CURATED='atc_non'
 ./make.sh
 
-export CURATED='medrt_non'
-./make.sh
+#export CURATED='medrt_non'
+#./make.sh
 
 export CURATED='cliniwiz_keywords'
 ./make.sh
 
-export CURATED='keywords'
-./make.sh
+#export CURATED='keywords'
+#./make.sh

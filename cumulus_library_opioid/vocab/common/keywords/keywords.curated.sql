@@ -1,5 +1,3 @@
--- Its unclear where all_rxcui_str.RXNCONSO_curated comes from
-
 -- #############################################################################
 call log('keywords_db.sql', 'begin');
 
@@ -16,7 +14,6 @@ select  distinct RXCUI,STR
 from    RXNCONSO_curated
 where   keyword_len >= 4
 order by RXCUI,STR;
-
 
 -- #############################################################################
 call log('keywords_db.sql', 'done');
