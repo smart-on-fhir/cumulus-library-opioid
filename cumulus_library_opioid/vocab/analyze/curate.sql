@@ -35,33 +35,40 @@ order by trim(STR);
 delete from curated where (RXCUI like '%RXCUI%');
 
 -- ##############################################
-call log('RXNCONSO_curated', 'refresh'); 
+call log('RXNCONSO_curated', 'refresh');
 
 drop    table if exists     RXNCONSO_curated;
 create  table               RXNCONSO_curated
-(
-    RXCUI   varchar(8)      NOT NULL,
-    STR     varchar(3000)   NOT NULL,
-    TTY     varchar(20)     NOT NULL,
-    SAB     varchar(20)     NOT NULL,
-    CODE    varchar(50)     NOT NULL,
-    keyword_str varchar(50) NULL,
-    keyword_len int         NULL
-);
-
-insert  into RXNCONSO_curated
-        ( RXCUI,   STR,   TTY,   SAB,   CODE)
-select  distinct
-        C.RXCUI, C.STR, C.TTY, C.SAB, C.CODE
-from    rxnorm.RXNCONSO as C, curated
+select  C.*
+from    all_rxcui_str.RXNCONSO_curated C, curated
 where   C.RXCUI = curated.RXCUI
-order by RXCUI,STR;
+order by C.RXCUI, C.STR;
 
-update  RXNCONSO_curated C, keywords K
-set
-    C.keyword_str = K.STR,
-    C.keyword_len = K.LEN
-where lower(C.STR) like concat('%',K.STR, '%');
+--    drop    table if exists     RXNCONSO_curated;
+--    create  table               RXNCONSO_curated
+--    (
+--        RXCUI   varchar(8)      NOT NULL,
+--        STR     varchar(3000)   NOT NULL,
+--        TTY     varchar(20)     NOT NULL,
+--        SAB     varchar(20)     NOT NULL,
+--        CODE    varchar(50)     NOT NULL,
+--        keyword_str varchar(50) NULL,
+--        keyword_len int         NULL
+--    );
+--
+--    insert  into RXNCONSO_curated
+--            ( RXCUI,   STR,   TTY,   SAB,   CODE, keyword_str, keyword_len)
+--    select  distinct
+--            C.RXCUI, C.STR, C.TTY, C.SAB, C.CODE
+--    from    all_rxcui_str.RXNCONSO as C, curated
+--    where   C.RXCUI = curated.RXCUI
+--    order by RXCUI,STR;
+--
+--    update  RXNCONSO_curated C, keywords K
+--    set
+--        C.keyword_str = K.STR,
+--        C.keyword_len = K.LEN
+--    where lower(C.STR) like concat('%',K.STR, '%');
 
 --    call create_index('RXNCONSO_curated','STR(255)');
 --    call create_index('RXNCONSO_curated','RXCUI');

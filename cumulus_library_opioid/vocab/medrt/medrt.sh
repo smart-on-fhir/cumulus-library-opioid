@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+echo ### PWD
+pwd
+
 # Opioid
 export CURATED='medrt'
 source ../env_table_schema.sh
