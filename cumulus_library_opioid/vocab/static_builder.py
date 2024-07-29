@@ -41,7 +41,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
         TableConfig(
             file_path=base_path / "./all_rxcui_str.RXNCONSO_curated.tsv",
             delimiter="\t",
-            table_name="rxn_curated",
+            table_name="all_rxnconso_keywords",
             headers=["RXCUI","STR","TTY","SAB","CODE","keyword","keyword_len"],
             dtypes={"RXCUI":"str","STR":"str","TTY":"str","SAB":"str","CODE":"str","keyword":"str","keyword_len":"str"},
             parquet_types=["STRING","STRING","STRING","STRING","STRING","STRING","STRING"],
@@ -49,7 +49,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
         TableConfig(
             file_path=base_path / "./common/expand_rules/expand_rules.tsv",
             delimiter="\t",
-            table_name="expansion_rules",
+            table_name="search_rules",
             headers=[
                 "TTY1",
                 "RELA",

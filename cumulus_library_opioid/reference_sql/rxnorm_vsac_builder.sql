@@ -20,7 +20,7 @@ WHERE
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_rxnconso_keywords_subset AS
+CREATE OR REPLACE VIEW opioid__acep_rxnconso_keywords AS
 SELECT
     a.rxcui,
     a.str,
@@ -32,18 +32,6 @@ FROM opioid__acep_rxnconso AS a,
     opioid__keywords AS b
 WHERE
     lower(a.str) LIKE concat('%',b.STR, '%')
-
--- ###########################################################
-
-CREATE OR REPLACE VIEW opioid__acep_rxnconso_keywords_annotated AS SELECT
-    rxcui,
-    str,
-    tty,
-    sab,
-    code,
-    b.keyword
-FROM rxnorm.rxnconso AS a
-    left join opioid__acep_rxnconso_keywords AS b USING(rxcui,str,tty,sab,code)
 
 -- ###########################################################
 

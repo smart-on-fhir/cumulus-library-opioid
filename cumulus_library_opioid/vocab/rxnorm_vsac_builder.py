@@ -68,13 +68,14 @@ class RxNormVsacBuilder(base_table_builder.BaseTableBuilder):
                     column_aliases = {"b.str": "keyword"}
                 )
             )
-            self.queries.append(
-                base_templates.get_base_template(
-                    'create_annotated_rxnconso',
-                    self.base_path / "template_sql",
-                    steward=steward
-                )
-            )
+            # TODO: Fix this template to mimic the static rxnconso file
+            # self.queries.append(
+            #     base_templates.get_base_template(
+            #         'create_annotated_rxnconso',
+            #         self.base_path / "template_sql",
+            #         steward=steward
+            #     )
+            # )
             self.queries.append(
                 get_create_view_filter_by(
                     steward,

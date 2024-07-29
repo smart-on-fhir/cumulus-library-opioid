@@ -15,7 +15,7 @@ tblproperties ("parquet.compression"="SNAPPY");
 
 -- ###########################################################
 
-CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__rxn_curated` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__all_rxnconso_keywords` (
     RXCUI STRING,
     STR STRING,
     TTY STRING,
@@ -30,7 +30,7 @@ tblproperties ("parquet.compression"="SNAPPY");
 
 -- ###########################################################
 
-CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__expansion_rules` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__search_rules` (
     TTY1 STRING,
     RELA STRING,
     TTY2 STRING,

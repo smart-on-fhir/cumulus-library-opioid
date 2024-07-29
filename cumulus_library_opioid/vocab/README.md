@@ -71,7 +71,7 @@ directly from a copy of RXNCONSO in the database.
 
 This table needs to be renamed.
 
-### `expansion_rules` (prev expand_rules)
+### `search_rules` (prev expand_rules)
 
 A human curated mapping of TTY relation types that are relevant to our specific
 task of identifying other medications from an initial list. An example is
@@ -130,7 +130,7 @@ This file uses the steward-specific annotations, and the expansion rules
 defined by the user, to select additional medications to add to the 
 potential medications related to the keywords.
 
-### `expansion_rules_descriptions` (prev expand_rules_readme)
+### `search_rules_descriptions` (prev expand_rules_readme)
 
 This uses the `umls_tty` table to get user-friendly descriptions of the
 TTY categories for the expansion rules tables, mostly as a convenience
@@ -138,25 +138,25 @@ for an analysts reviewing the rules
 
 This was originally in the static builder, and could go back there.
 
-### `[steward]_relaxed_expansion` (prev expand_relax)
+### `[steward]_potential_rules` (prev expand_relax)
 
 Using `rxn_curated` as the RXNCONSO source, `[steward]_rela` as the
 relationship, and `[vendor]_rxnconso_keywords` as the source of
 RXCUIs, get every medication from the RXNCONSO source that is defined
 by the relationship that is not already in the list of RXCUIs.
 
-### `[steward]_strict_expansion` (prev expand_strict)
+### `[steward]_included_rels` (prev expand_strict)
 
-Using `[steward]_relaxed_expansion`, and the user defined `expansion_rules`,
+Using `[steward]_potential_rules`, and the user defined `search_rules`,
 get every relationship where the rule inclusion is defined as 'Yes',
 excluding relationships of two specific types.
 
-### `[steward]_expanded_keywords` (prev expand_keywords)
+### `[steward]_included_keywords` (prev expand_keywords)
 
-Using `[steward]_relaxed_expansion`, and the user defined `expansion_rules`,
+Using `[steward]_potential_rules`, and the user defined `search_rules`,
 get every relationship where the rule inclusion is defined as 'Keyword',
 excluding relationships of two specific types.
 
-### `[steward]_expanded_ruleset` (prev expand)
+### `[steward]_combined_ruleset` (prev expand)
 
-This is the union of `[steward]_expanded_keywords` and `[steward]_expanded_ruleset`
+This is the union of `[steward]_included_keywords` and `[steward]_included_rels`
