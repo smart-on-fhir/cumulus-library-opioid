@@ -44,34 +44,13 @@ from    all_rxcui_str.RXNCONSO_curated C, curated
 where   C.RXCUI = curated.RXCUI
 order by C.RXCUI, C.STR;
 
---    drop    table if exists     RXNCONSO_curated;
---    create  table               RXNCONSO_curated
---    (
---        RXCUI   varchar(8)      NOT NULL,
---        STR     varchar(3000)   NOT NULL,
---        TTY     varchar(20)     NOT NULL,
---        SAB     varchar(20)     NOT NULL,
---        CODE    varchar(50)     NOT NULL,
---        keyword_str varchar(50) NULL,
---        keyword_len int         NULL
---    );
---
---    insert  into RXNCONSO_curated
---            ( RXCUI,   STR,   TTY,   SAB,   CODE, keyword_str, keyword_len)
---    select  distinct
---            C.RXCUI, C.STR, C.TTY, C.SAB, C.CODE
---    from    all_rxcui_str.RXNCONSO as C, curated
---    where   C.RXCUI = curated.RXCUI
---    order by RXCUI,STR;
---
---    update  RXNCONSO_curated C, keywords K
---    set
---        C.keyword_str = K.STR,
---        C.keyword_len = K.LEN
---    where lower(C.STR) like concat('%',K.STR, '%');
+-- ##############################################
+call log('curated_keywords', 'refresh');
 
---    call create_index('RXNCONSO_curated','STR(255)');
---    call create_index('RXNCONSO_curated','RXCUI');
+drop    table if exists curated_keywords;
+create  table           curated_keywords
+select distinct RXCUI, STR from RXNCONSO_curated where keyword_len >= 4
+order by        RXCUI, STR;
 
 -- ##############################################
 call log('RXNSTY_curated', 'refresh');
