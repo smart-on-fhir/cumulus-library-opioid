@@ -1,9 +1,7 @@
-import json
 import pathlib
-from unittest import mock
 
 import pytest
-from cumulus_library import base_utils, databases, study_manifest
+from cumulus_library import base_utils, databases
 
 
 @pytest.fixture

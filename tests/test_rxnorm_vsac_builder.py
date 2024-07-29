@@ -7,6 +7,7 @@ from cumulus_library import study_manifest
 
 from cumulus_library_opioid.vocab import rxnorm_vsac_builder, static_builder
 
+
 @mock.patch.dict(
     os.environ,
     clear=True,

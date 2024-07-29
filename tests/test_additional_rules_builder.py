@@ -3,10 +3,14 @@ import os
 import pathlib
 from unittest import mock
 
-import pytest
 from cumulus_library import study_manifest
 
-from cumulus_library_opioid.vocab import additional_rules_builder, rxnorm_vsac_builder, static_builder
+from cumulus_library_opioid.vocab import (
+    additional_rules_builder,
+    rxnorm_vsac_builder,
+    static_builder,
+)
+
 
 @mock.patch.dict(
     os.environ,
@@ -78,7 +82,8 @@ def test_additional_rules(mock_api, mock_db_config_rxnorm):
             'count':938,
             'first':(
                 1819, '1151359', 'BN', 'SCDG', 18636093, 'RO', 'has_ingredient', 
-                'Buprenorphine', 'buprenorphine / naloxone Oral Product', 'buprenorphine'
+                'Buprenorphine', 'buprenorphine / naloxone Oral Product',
+                'buprenorphine'
             ),
             'last': (
                 1819, '904879', 'SY', 'SCDC', 5110638, 'RO', 'has_ingredient', 

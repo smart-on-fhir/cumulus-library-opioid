@@ -33,16 +33,22 @@ class RxNormVsacBuilder(base_table_builder.BaseTableBuilder):
             
         ):
             a_schema = a_schema or 'rxnorm.'
-            return base_templates.get_create_view_from_tables(
-                view_name=view_name or (
+            a_join_col = a_join_col or 'a.rxcui'
+            b_join_col = b_join_col or 'b.rxcui'
+            b_table = b_table or f'opioid__{steward}_vsac',
+            join_clauses = join_clauses or [f"{a_join_col} = {b_join_col}"]
+            view_name = view_name or (
                     f'{manifest.get_study_prefix()}__{steward}_{a_table}'
-                ),
+            )
+
+            return base_templates.get_create_view_from_tables(
+                view_name=view_name,
                 tables = [
                     f'{a_schema}{a_table}',
-                    b_table or f'opioid__{steward}_vsac',
+                    b_table
                 ],
                 table_aliases = ['a','b'],
-                join_clauses=join_clauses or [f"{a_join_col or 'a.rxcui'} = {b_join_col or 'b.code'}"],
+                join_clauses=join_clauses,
                 columns=columns,
                 column_aliases = column_aliases,
 

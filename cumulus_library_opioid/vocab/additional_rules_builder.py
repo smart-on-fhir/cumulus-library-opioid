@@ -1,9 +1,10 @@
 """Builder for generating subsets of RxNorm data from a given valueset"""
 import pathlib
 
-from cumulus_library_opioid.vocab import vsac
 from cumulus_library import base_table_builder, base_utils, study_manifest
 from cumulus_library.template_sql import base_templates
+
+from cumulus_library_opioid.vocab import vsac
 
 
 class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
@@ -35,7 +36,10 @@ class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
                     # data from rxnconso. Since rxnconso is much, much
                     # larger, we're moving it to the left in the actual
                     # constructed join for athena performance reasons
-                    tables = [f'{prefix}all_rxnconso_keywords',f'{prefix}{steward}_rela'],
+                    tables = [
+                        f'{prefix}all_rxnconso_keywords',
+                        f'{prefix}{steward}_rela'
+                    ],
                     table_aliases = ['r', 's'],
                     columns =[
                         's.rxcui',

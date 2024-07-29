@@ -10,7 +10,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__keywords` (
     STR STRING
 )
 STORED AS PARQUET
-LOCATION 's3://cumulus-athena-933137588087-us-east-1/results/cumulus_user_uploads/cumulus_mhg_dev_db/opioid/keywords.filtered'
+LOCATION 's3://bucketname/path_to_db_storage/opioid/keywords.filtered'
 tblproperties ("parquet.compression"="SNAPPY");
 
 -- ###########################################################
@@ -25,7 +25,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__all_rxnconso_k
     keyword_len STRING
 )
 STORED AS PARQUET
-LOCATION 's3://cumulus-athena-933137588087-us-east-1/results/cumulus_user_uploads/cumulus_mhg_dev_db/opioid/all_rxcui_str.RXNCONSO_curated'
+LOCATION 's3://bucketname/path_to_db_storage/opioid/all_rxcui_str.RXNCONSO_curated'
 tblproperties ("parquet.compression"="SNAPPY");
 
 -- ###########################################################
@@ -38,7 +38,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__search_rules` 
     include BOOLEAN
 )
 STORED AS PARQUET
-LOCATION 's3://cumulus-athena-933137588087-us-east-1/results/cumulus_user_uploads/cumulus_mhg_dev_db/opioid/expand_rules'
+LOCATION 's3://bucketname/path_to_db_storage/opioid/expand_rules'
 tblproperties ("parquet.compression"="SNAPPY");
 
 -- ###########################################################
@@ -48,7 +48,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__umls_tty` (
     TTY_STR STRING
 )
 STORED AS PARQUET
-LOCATION 's3://cumulus-athena-933137588087-us-east-1/results/cumulus_user_uploads/cumulus_mhg_dev_db/opioid/umls_tty'
+LOCATION 's3://bucketname/path_to_db_storage/opioid/umls_tty'
 tblproperties ("parquet.compression"="SNAPPY");
 
 -- ###########################################################
@@ -58,5 +58,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__acep_vsac` (
     display STRING
 )
 STORED AS PARQUET
-LOCATION 's3://cumulus-athena-933137588087-us-east-1/results/cumulus_user_uploads/cumulus_mhg_dev_db/opioid/acep'
+LOCATION 's3://bucketname/path_to_db_storage/opioid/acep'
 tblproperties ("parquet.compression"="SNAPPY");

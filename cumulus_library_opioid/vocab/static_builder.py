@@ -194,4 +194,5 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                         remote_table_cols_types=table.parquet_types,
                     )
                 )
-                progress.advance(task)                
+                progress.advance(task)
+

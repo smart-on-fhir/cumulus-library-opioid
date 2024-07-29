@@ -15,4 +15,7 @@ SELECT
 FROM opioid__{{ steward }}_potential_rules AS r
 WHERE
     r.REL NOT IN ('RB', 'PAR')
+{#- The following is :probably: safe to check for greater than zero, but we are
+leaving it for now to match the source query. We can revisit again later. #}
     AND length(r.keyword) >= 4
+
