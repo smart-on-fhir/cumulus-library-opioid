@@ -63,10 +63,9 @@ def download_oid_data(
 
     response = api.get_vsac_valuesets(oid=VSAC_OIDS[source_vocab])
     for valueset in response:
-        include = valueset.get("compose").get("include", [])
-        for data in include:
-            for concept in data.get("concept", []):
-                output.append([concept["code"], concept["display"]])
+        contains = valueset.get("expansion").get("contains", [])
+        for data in contains:
+            output.append([data["code"], data["display"]])
     output_df = pandas.DataFrame(output, columns=["RXCUI", "STR"])
     output_df.to_csv(path / f"{source_vocab}.tsv", index=False, header=False, sep="\t")
     output_df.to_parquet(path / f"{source_vocab}.parquet")

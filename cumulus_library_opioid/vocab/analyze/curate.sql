@@ -44,6 +44,7 @@ from    all_rxcui_str.RXNCONSO_curated C, curated
 where   C.RXCUI = curated.RXCUI
 order by C.RXCUI, C.STR;
 
+
 --    drop    table if exists     RXNCONSO_curated;
 --    create  table               RXNCONSO_curated
 --    (
@@ -69,6 +70,7 @@ order by C.RXCUI, C.STR;
 --        C.keyword_str = K.STR,
 --        C.keyword_len = K.LEN
 --    where lower(C.STR) like concat('%',K.STR, '%');
+
 
 --    call create_index('RXNCONSO_curated','STR(255)');
 --    call create_index('RXNCONSO_curated','RXCUI');

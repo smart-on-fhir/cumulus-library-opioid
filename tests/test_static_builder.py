@@ -62,7 +62,7 @@ def test_static_tables(
     shutil.copy(test_path / "filtered.csv", tmp_path / "filtered.csv")
     builder = static_builder.StaticBuilder()
     filtered = tmp_path / filtered if filtered else None
-    builder.tables = [
+    builder.get_table_configs = lambda: [
         static_builder.TableConfig(
             file_path=tmp_path / "static_table.csv",
             delimiter=",",

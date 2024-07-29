@@ -1,0 +1,33 @@
+{%- import 'syntax.sql.jinja' as syntax -%}
+CREATE TABLE opioid__all_rxnconso_keywords AS
+WITH union_block AS (
+{%- for keyword in keywords %}
+SELECT
+    a.rxcui,
+    a.str,
+    a.tty,
+    a.sab,
+    a.code,
+    '{{ keyword }}' as keyword
+FROM rxnorm.rxnconso AS a
+WHERE regexp_like(a.str, '^.*(?i:{{ keyword }}).*$')
+{{ syntax.union_delineate(loop) }}
+{%- endfor %}
+)
+
+SELECT
+    a.rxcui,
+    a.str,
+    a.tty,
+    a.sab,
+    a.code,
+    b.keyword
+FROM rxnorm.rxnconso AS a
+LEFT JOIN union_block as b
+ON a.rxcui= b.rxcui
+AND a.str= b.str
+AND a.tty= b.tty
+AND a.sab= b.sab
+AND a.code= b.code
+
+

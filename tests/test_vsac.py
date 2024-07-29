@@ -34,10 +34,14 @@ def test_download_oid_data(mock_api, mock_db, name, umls, force, raises, tmp_pat
         )
         vsac.download_oid_data(name,path=tmp_path, config=config)
         output_dir = list(tmp_path.glob("*"))
-        assert len(output_dir) == 5
+        assert len(output_dir) == 4
+        for filename in ['acep.json','acep.tsv','acep.parquet', 'duck.db']:
+            assert len([x for x in output_dir if filename in str(x)]) == 1
         with open(tmp_path / "acep.tsv") as f:
             tsv = f.readlines()
-            assert tsv[0].strip() == "1010599\tBuprenorphine / Naloxone Oral Strip"
+            assert tsv[0].strip() == (
+                "1010600\tbuprenorphine 2 MG / naloxone 0.5 MG Sublingual Film"
+            )
             assert (
                 tsv[-1].strip()
                 == "998213\t1 ML morphine sulfate 4 MG/ML Prefilled Syringe"
@@ -54,7 +58,7 @@ def test_download_oid_data(mock_api, mock_db, name, umls, force, raises, tmp_pat
             'all', 
             [
                 'acep', 'atc_non', 'CancerLinQ_non', 'CancerLinQ', 'cliniwiz_keywords', 
-                'clinwiz', 'ecri', 'impaq', 'lantana', 'math_349', 'mdpartners_non', 
+                'cliniwiz', 'ecri', 'impaq', 'lantana', 'math_349', 'mdpartners_non', 
                 'mitre'
             ], 
             does_not_raise()
@@ -71,5 +75,5 @@ def test_vsac_stewards(mock_db_config,steward,expects,raises):
 def test_vsac_stewards_no_steward_key(mock_db_config):
     with pytest.raises(SystemExit):
         mock_db_config.options = {'key': 'val'}
-        res = vsac.get_vsac_stewards(mock_db_config)
+        vsac.get_vsac_stewards(mock_db_config)
 

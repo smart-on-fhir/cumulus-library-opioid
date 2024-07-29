@@ -1,7 +1,7 @@
+-- this file is supplanted by static_builer
+
 -- ##############################################
 call log('expand_rules.sql', 'create table');
-
--- this first table is supplanted by static_builer
 
 drop    table if exists expand_rules;
 create  table           expand_rules
@@ -23,7 +23,7 @@ alter table expand_rules add column include boolean default NULL;
 update expand_rules set include = TRUE  where lower(rule) = 'yes';
 update expand_rules set include = FALSE where lower(rule) = 'no';
 
--- source of UMLS_TTY needs to be provided
+
 
 drop    table if exists expand_rules_readme;
 create  table           expand_rules_readme
