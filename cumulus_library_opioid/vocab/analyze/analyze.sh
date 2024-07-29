@@ -10,7 +10,7 @@ if [ -z "$CURATED" ]; then
   exit 1
 fi
 
-echo "Using $CURATED.tsv"
+echo "analyze.sh CURATED = $CURATED"
 $mysql_table_schema -e "call version('${CURATED}', 'results.sh:begin')"
 
 #python vsac.py $CURATED

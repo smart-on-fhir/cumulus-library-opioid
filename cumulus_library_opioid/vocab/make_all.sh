@@ -15,6 +15,14 @@ export CURATED='CancerLinQ'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
+export CURATED='cliniwiz'
+cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
+./make.sh
+
+export CURATED='cliniwiz_keywords'
+cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
+./make.sh
+
 export CURATED='ecri'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
@@ -31,10 +39,11 @@ export CURATED='math_349'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
-#export CURATED='medrt'
-#./make.sh
-
 export CURATED='mitre'
+cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
+./make.sh
+
+export CURATED='atc_non'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
@@ -46,16 +55,19 @@ export CURATED='mdpartners_non'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
-export CURATED='atc_non'
-cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
+export CURATED='medrt'
+cd data; rm -f curated.tsv; ln -s medrt.curated.tsv curated.tsv; cd ..
 ./make.sh
 
-#export CURATED='medrt_non'
-#./make.sh
-
-export CURATED='cliniwiz_keywords'
-cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
+export CURATED='medrt_non'
+cd data; rm -f curated.tsv; ln -s medrt_non.curated.tsv curated.tsv; cd ..
 ./make.sh
 
-#export CURATED='keywords'
-#./make.sh
+###############################################################################
+# Validation: UCDAVIS Epic EHR real world data of prescriptions
+
+export CURATED='ucdavis'
+source env_table_schema.sh
+cd data; rm -f curated.tsv; ln -s ucdavis.ordered_rxcui_str.tsv curated.tsv; cd ..
+./make.sh
+

@@ -30,6 +30,14 @@ set
 where lower(C.STR) like concat('%',K.STR, '%');
 
 -- ##############################################
+call log('curated_keywords', 'refresh');
+
+drop    table if exists curated_keywords;
+create  table           curated_keywords
+select distinct RXCUI, STR from RXNCONSO_curated where keyword_len >= 4
+order by        RXCUI, STR;
+
+-- ##############################################
 call log('rxcui_str', 'refresh');
 
 drop    table if exists rxcui_str;
