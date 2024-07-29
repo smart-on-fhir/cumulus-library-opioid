@@ -4,6 +4,7 @@ study_prefix = "opioid"
 file_names = [
     "vocab/static_builder.py",
     "vocab/rxnorm_vsac_builder.py",
+    "vocab/additional_rules_builder.py",
 ]
 
 [sql_config]
