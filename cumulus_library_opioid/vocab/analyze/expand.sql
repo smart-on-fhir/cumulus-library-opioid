@@ -47,15 +47,18 @@ and     rules.RELA = relax.RELA ;
 -- ##############################################
 call log('expand_keywords', 'refresh');
 
--- ##############################################
-call log('expand_keywords', 'refresh');
-
 drop    table if exists expand_keywords;
 create  table           expand_keywords
 select  distinct        relax.*
-from    expand_relax as relax
-where   relax.REL not in ('RB', 'PAR')
-and     relax.keyword_len >=4;
+from    expand_relax as relax,
+        expand_rules as rules
+where   rules.include is NULL
+and     relax.REL not in ('RB', 'PAR')
+and     relax.keyword_len >= 4
+and     rules.TTY1 = relax.TTY1
+and     rules.TTY2 = relax.TTY2
+and     rules.RELA = relax.RELA ;
+
 
 -- ##############################################
 call log('expand', 'refresh');

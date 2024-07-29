@@ -1,0 +1,9 @@
+CREATE OR REPLACE VIEW opioid__{{steward}}_rxnconso_keywords_annotated AS SELECT
+    rxcui,
+    str,
+    tty,
+    sab,
+    code,
+    b.keyword
+FROM rxnorm.rxnconso AS a
+    left join opioid__{{steward}}_rxnconso_keywords AS b USING(rxcui,str,tty,sab,code)
