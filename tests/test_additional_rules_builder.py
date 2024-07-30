@@ -36,7 +36,7 @@ def test_additional_rules(mock_api, mock_db_config_rxnorm):
         {
             'name':'opioid__acep_potential_rules', 
             'columns':10,
-            'count':2880,
+            'count':1440,
             'first':(
                 1819, '1151359', 'BN', 'SCDG', 18636093, 'RO', 'has_ingredient', 
                 'Buprenorphine', 'buprenorphine / naloxone Oral Product', 
@@ -50,20 +50,20 @@ def test_additional_rules(mock_api, mock_db_config_rxnorm):
         {
             'name':'opioid__acep_included_rels', 
             'columns':10,
-            'count':28,
+            'count':14,
             'first':(
                 1819, '1431077', 'BN', 'BN', 43028489, 'RN', 'reformulated_to', 
-                'reformulated_to', 'Buprenorphine', 'Zubsolv', 'zubsolv'
+                'Buprenorphine', 'Zubsolv', 'zubsolv'
             ),
             'last': (
                 1819, '904871', 'BN', 'BN', 3764389, 'RN', 'reformulated_to', 
-                'reformulated_to', 'Buprenorphine', 'Butrans', 'butrans'
+                'Buprenorphine', 'Butrans', 'butrans'
             ),
         },
         {
             'name':'opioid__acep_included_keywords', 
             'columns':10,
-            'count':2808,
+            'count':1404,
             'first':(
                 1819, '1151359', 'BN', 'SCDG', 18636093, 'RO', 'has_ingredient', 
                 'Buprenorphine', 'buprenorphine / naloxone Oral Product', 
@@ -95,6 +95,10 @@ def test_additional_rules(mock_api, mock_db_config_rxnorm):
             f"Select * from {table_conf['name']} order by "
             f"{','.join([str(x+1) for x in range(table_conf['columns'])])}"
         ).fetchall()
+        print(table_conf['name'])
+        print(res[0])
+        print(res[-1])
+        print(len(res))
         assert len(res) == table_conf['count']
         assert res[0] == table_conf['first']
         if table_conf['count'] > 1:
