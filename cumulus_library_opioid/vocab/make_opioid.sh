@@ -16,7 +16,6 @@ cp $TSV/opioid.curated_steward.tsv data/.
 cd data; rm -f curated.tsv; ln -s opioid.curated.tsv curated.tsv; cd ..
 
 export CURATED='opioid2'
-source db.config
 source env_table_schema.sh
 ./make.sh
 ./export_tsv.sh curated
@@ -24,30 +23,26 @@ source env_table_schema.sh
 cat $TSV/$CURATED.curated.tsv $TSV/$CURATED.expand_rxcui_str.tsv > data/$CURATED.tsv
 cd data; rm -f curated.tsv; ln -s $CURATED.tsv curated.tsv; cd ..
 
-#  export CURATED='opioid3'
-#  source env_table_schema.sh
-#  cd data; rm -f curated.tsv; ln -s opioid2.curated.tsv curated.tsv; cd ..
-#  ./make.sh
-#  ./export_tsv.sh curated
-#  cp /Users/andy/code/medgen-umls/opioid/tsv/opioid3.curated.tsv data/.
-#
-#  export CURATED='opioid4'
-#  source env_table_schema.sh
-#  cd data; rm -f curated.tsv; ln -s opioid3.curated.tsv curated.tsv; cd ..
-#  ./make.sh
-#  ./export_tsv.sh curated
-#  cp /Users/andy/code/medgen-umls/opioid/tsv/opioid4.curated.tsv data/.
-#
-#  export CURATED='opioid5'
-#  source env_table_schema.sh
-#  cd data; rm -f curated.tsv; ln -s opioid4.curated.tsv curated.tsv; cd ..
-#  ./make.sh
-#  ./export_tsv.sh curated
-#  cp /Users/andy/code/medgen-umls/opioid/tsv/opioid5.curated.tsv data/.
-#
-#  export CURATED='opioid6'
-#  source env_table_schema.sh
-#  cd data; rm -f curated.tsv; ln -s opioid5.curated.tsv curated.tsv; cd ..
-#  ./make.sh
-#  ./export_tsv.sh curated
-#  cp /Users/andy/code/medgen-umls/opioid/tsv/opioid6.curated.tsv data/.
+export CURATED='opioid3'
+source env_table_schema.sh
+./make.sh
+./export_tsv.sh curated
+./export_tsv.sh expand_rxcui_str
+cat $TSV/$CURATED.curated.tsv $TSV/$CURATED.expand_rxcui_str.tsv > data/$CURATED.tsv
+cd data; rm -f curated.tsv; ln -s $CURATED.tsv curated.tsv; cd ..
+
+export CURATED='opioid4'
+source env_table_schema.sh
+./make.sh
+./export_tsv.sh curated
+./export_tsv.sh expand_rxcui_str
+cat $TSV/$CURATED.curated.tsv $TSV/$CURATED.expand_rxcui_str.tsv > data/$CURATED.tsv
+cd data; rm -f curated.tsv; ln -s $CURATED.tsv curated.tsv; cd ..
+
+export CURATED='opioid5'
+source env_table_schema.sh
+./make.sh
+./export_tsv.sh curated
+./export_tsv.sh expand_rxcui_str
+cat $TSV/$CURATED.curated.tsv $TSV/$CURATED.expand_rxcui_str.tsv > data/$CURATED.tsv
+cd data; rm -f curated.tsv; ln -s $CURATED.tsv curated.tsv; cd ..
