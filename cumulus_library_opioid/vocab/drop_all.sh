@@ -3,6 +3,12 @@ set -e
 source db.config
 source env_table_schema.sh
 
+echo "########################################################################"
+echo "./drop_all.sh"
+echo "@start"
+mysql -u root -e "show databases"
+echo "########################################################################"
+
 export CURATED='acep'
 mysql -u root -e "drop database if exists ${CURATED}"
 
@@ -77,5 +83,13 @@ mysql -u root -e "drop database if exists ${CURATED}"
 
 export CURATED='opioid6'
 mysql -u root -e "drop database if exists ${CURATED}"
+
+echo "########################################################################"
+echo "./drop_all.sh"
+echo "@done"
+mysql -u root -e "show databases"
+echo "########################################################################"
+
+
 
 

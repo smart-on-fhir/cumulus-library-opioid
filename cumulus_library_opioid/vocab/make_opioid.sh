@@ -5,6 +5,10 @@ set -e
 export CURATED='opioid'
 source env_table_schema.sh
 
+echo "########################################################################"
+echo "./make_opioid.sh"
+echo "@start"
+
 ./create_database.sh
 $mysql_dataset < data/opioid.curated.sql
 ./export_tsv.sh curated
@@ -53,3 +57,7 @@ source env_table_schema.sh
 $mysql_table_schema -e "insert into opioid.curated_steward select distinct 'opioid5', RXCUI, STR from opioid5.curated"
 $mysql_table_schema -e "drop table if exists opioid.curated"
 $mysql_table_schema -e "create table opioid.curated select distinct RXCUI, STR from opioid.curated_steward order by RXCUI, STR"
+
+echo "########################################################################"
+echo "./make_opioid.sh"
+echo "@done"

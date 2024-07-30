@@ -5,7 +5,6 @@ CURATED_KEYWORDS = ["cliniwiz_keywords", "keywords"]
 CURATED_OPIOID = [
     "acep",
     "bioportal",
-    "bwh",
     "CancerLinQ",
     "cliniwiz",
     "ecri",
@@ -16,6 +15,6 @@ CURATED_OPIOID = [
     "mitre",
 ]
 
-VALIDATE_SOURCES = ['all_rxcui_str', 'opioid', 'ucdavis']
+VALIDATE_SOURCES = ['all_rxcui_str', "bwh", 'opioid', 'ucdavis']
 
 CURATED_LIST = CURATED_OPIOID + CURATED_NON + CURATED_KEYWORDS + VALIDATE_SOURCES

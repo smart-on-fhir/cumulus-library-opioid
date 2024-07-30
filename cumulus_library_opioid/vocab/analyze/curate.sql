@@ -17,9 +17,6 @@ local   infile     'data/curated.tsv'
 into    table       curated;
 show warnings; 
 
-call create_index('curated','RXCUI');
-call create_index('curated','STR(255)');
-
 -- #############################################################################
 call log('curated', 'curated_orig');
 
@@ -34,6 +31,8 @@ order by trim(STR);
 -- if header was provided, remove header row.
 delete from curated where (RXCUI like '%RXCUI%');
 
+call create_index('curated','RXCUI');
+call create_index('curated','STR(255)');
 
 -- #############################################################################
 call log('curated', 'curated_rxcui_str');
