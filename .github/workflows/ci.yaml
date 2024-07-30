@@ -12,7 +12,7 @@ on:
 jobs:
   unittest:
     name: unit tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -23,11 +23,7 @@ jobs:
           cache: pip
 
       - name: Get library from main
-        run: |
-              git clone https://github.com/smart-on-fhir/cumulus-library.git
-              cd cumulus-library
-              pip install -e .
-              cd ..
+        run: pip install git+https://github.com/smart-on-fhir/cumulus-library.git
 
       - name: Install dependencies
         run: |

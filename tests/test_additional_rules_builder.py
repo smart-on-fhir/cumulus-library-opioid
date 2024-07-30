@@ -95,10 +95,6 @@ def test_additional_rules(mock_api, mock_db_config_rxnorm):
             f"Select * from {table_conf['name']} order by "
             f"{','.join([str(x+1) for x in range(table_conf['columns'])])}"
         ).fetchall()
-        print(table_conf['name'])
-        print(res[0])
-        print(res[-1])
-        print(len(res))
         assert len(res) == table_conf['count']
         assert res[0] == table_conf['first']
         if table_conf['count'] > 1:
