@@ -85,7 +85,6 @@ class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
                         'r.rui',
                         'r.rel',
                         'r.rela',
-                        'e.rela',
                         'r.str1',
                         'r.str2',
                         'r.keyword',

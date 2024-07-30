@@ -13,7 +13,7 @@ from cumulus_library_opioid.vocab import rxnorm_vsac_builder, static_builder
     clear=True,
 )
 @mock.patch("cumulus_library.apis.umls.UmlsApi")
-def test_rxnorm_vsac_builder(mock_api, mock_db_config_rxnorm,  tmp_path):
+def test_rxnorm_vsac_builder(mock_api, mock_db_config_rxnorm):
     with open(pathlib.Path(__file__).parent / "test_data/vsac_resp.json") as f:
         resp = json.load(f)
     mock_api.return_value.get_vsac_valuesets.return_value = resp
@@ -27,10 +27,10 @@ def test_rxnorm_vsac_builder(mock_api, mock_db_config_rxnorm,  tmp_path):
     builder = rxnorm_vsac_builder.RxNormVsacBuilder()
     builder.execute_queries(config=mock_db_config_rxnorm, manifest=manifest)
     res = cursor.execute('select * from opioid__acep_rela').fetchall()
-    assert len(res) == 1800
+    assert len(res) == 900
     assert res[0] == (
         1819, 'Product containing buprenorphine (medicinal product)', 'FN', 
-        'SNOMEDCT_US', 1818, 'RN', 'tradename_of', 4716626
+        'SNOMEDCT_US', 1818, 'RN', 'reformulated_to', 4716626
     )
     assert res[-1] == (
         1819, 'Buprenorphine', 'IN', 'GS', 1655031, 'RO', 'has_ingredient', 86130850

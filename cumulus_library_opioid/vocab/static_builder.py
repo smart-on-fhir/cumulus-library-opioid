@@ -28,56 +28,57 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
     display_text = "Building static data tables..."
     base_path = pathlib.Path(__file__).resolve().parent
 
-    tables = [  # noqa: RUF012
-        TableConfig(
-            file_path=base_path / "./common/keywords/keywords.tsv",
-            delimiter="\t",
-            table_name="keywords",
-            headers=["STR"],
-            dtypes={"STR": "str"},
-            parquet_types=["STRING"],
-            filtered_path=base_path / "./common/keywords/keywords.filtered.tsv",
-        ),
-        TableConfig(
-            file_path=base_path / "./all_rxcui_str.RXNCONSO_curated.tsv",
-            delimiter="\t",
-            table_name="all_rxnconso_keywords",
-            headers=["RXCUI","STR","TTY","SAB","CODE","keyword","keyword_len"],
-            dtypes={"RXCUI":"str","STR":"str","TTY":"str","SAB":"str","CODE":"str","keyword":"str","keyword_len":"str"},
-            parquet_types=["STRING","STRING","STRING","STRING","STRING","STRING","STRING"],
-        ),
-        TableConfig(
-            file_path=base_path / "./common/expand_rules/expand_rules.tsv",
-            delimiter="\t",
-            table_name="search_rules",
-            headers=[
-                "TTY1",
-                "RELA",
-                "TTY2",
-                "rule",
-            ],
-            dtypes={"TTY1": "str", "RELA": "str", "TTY2": "str", "rule": "str"},
-            parquet_types=["STRING", "STRING", "STRING", "STRING", "BOOLEAN"],
-            ignore_header=True,
-            map_cols=[
-                {
-                    "from": "rule",
-                    "to": "include",
-                    "map_dict": {"yes": True, "no": False},
-                }
-            ],
-        ),
-        # TODO: We should eventually replace this with a source derived from
-        # UMLS directly at some point
-        TableConfig(
-            file_path=base_path / "./common/umls/umls_tty.tsv",
-            delimiter="\t",
-            table_name="umls_tty",
-            headers=["TTY","TTY_STR"],
-            dtypes={"TTY": "str","TTY_STR": "str",},
-            parquet_types=["STRING", "STRING"],
-        ),
-    ]
+    def get_table_configs(self):
+        return [
+            TableConfig(
+                file_path=self.base_path / "./common/keywords/keywords.tsv",
+                delimiter="\t",
+                table_name="keywords",
+                headers=["STR"],
+                dtypes={"STR": "str"},
+                parquet_types=["STRING"],
+                filtered_path=self.base_path / "./common/keywords/keywords.filtered.tsv",
+            ),
+            TableConfig(
+                file_path=self.base_path / "./all_rxcui_str.RXNCONSO_curated.tsv",
+                delimiter="\t",
+                table_name="all_rxnconso_keywords",
+                headers=["RXCUI","STR","TTY","SAB","CODE","keyword","keyword_len"],
+                dtypes={"RXCUI":"str","STR":"str","TTY":"str","SAB":"str","CODE":"str","keyword":"str","keyword_len":"str"},
+                parquet_types=["STRING","STRING","STRING","STRING","STRING","STRING","STRING"],
+            ),
+            TableConfig(
+                file_path=self.base_path / "./common/expand_rules/expand_rules.tsv",
+                delimiter="\t",
+                table_name="search_rules",
+                headers=[
+                    "TTY1",
+                    "RELA",
+                    "TTY2",
+                    "rule",
+                ],
+                dtypes={"TTY1": "str", "RELA": "str", "TTY2": "str", "rule": "str"},
+                parquet_types=["STRING", "STRING", "STRING", "STRING", "BOOLEAN"],
+                ignore_header=True,
+                map_cols=[
+                    {
+                        "from": "rule",
+                        "to": "include",
+                        "map_dict": {"yes": True, "no": False},
+                    }
+                ],
+            ),
+            # TODO: We should eventually replace this with a source derived from
+            # UMLS directly at some point
+            TableConfig(
+                file_path=self.base_path / "./common/umls/umls_tty.tsv",
+                delimiter="\t",
+                table_name="umls_tty",
+                headers=["TTY","TTY_STR"],
+                dtypes={"TTY": "str","TTY_STR": "str",},
+                parquet_types=["STRING", "STRING"],
+            ),
+        ]
 
     def filter_duplicated_meds(
         self, path: pathlib.Path, delimiter: str, filtered_path: pathlib.Path
@@ -127,6 +128,7 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
         **kwargs,
     ):
         # fetch and add vsac tables
+        self.tables = self.get_table_configs()
         vsac_stewards = vsac.get_vsac_stewards(config)
         for steward in vsac_stewards:
             vsac.download_oid_data(steward, config=config, path=self.base_path /'data')
@@ -195,4 +197,3 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                     )
                 )
                 progress.advance(task)
-

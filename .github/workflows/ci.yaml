@@ -1,0 +1,38 @@
+name: CI
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+
+jobs:
+  unittest:
+    name: unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Get library from main
+        run: pip install git+https://github.com/smart-on-fhir/cumulus-library.git
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ".[test]"
+      - name: Create mock AWS credentials
+        run: |
+          mkdir ~/.aws && touch ~/.aws/credentials 
+          echo -e "[test]\naws_access_key_id = test\naws_secret_access_key = test" > ~/.aws/credentials
+      - name: Test with pytest
+        run: |
+          python -m pytest tests
