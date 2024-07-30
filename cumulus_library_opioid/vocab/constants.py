@@ -5,6 +5,7 @@ CURATED_KEYWORDS = ["cliniwiz_keywords", "keywords"]
 CURATED_OPIOID = [
     "acep",
     "bioportal",
+    "bwh",
     "CancerLinQ",
     "cliniwiz",
     "ecri",

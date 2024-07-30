@@ -9,6 +9,7 @@ from cumulus_library.apis import umls
 
 VSAC_OIDS = {
     "acep": "2.16.840.1.113762.1.4.1106.68",
+    "bwh": "2.16.840.1.113762.1.4.1206.12",
     "atc_non": "2.16.840.1.113762.1.4.1032.291",
     "bioportal": None,
     "CancerLinQ_non": "2.16.840.1.113762.1.4.1260.173",

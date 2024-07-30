@@ -11,6 +11,10 @@ export CURATED='bioportal'
 cd data; rm -f curated.tsv; ln -s bioportal.curated.tsv curated.tsv; cd ..
 ./make.sh
 
+export CURATED='bwh'
+cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
+./make.sh
+
 export CURATED='CancerLinQ'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh

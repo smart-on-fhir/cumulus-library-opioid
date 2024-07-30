@@ -12,6 +12,9 @@ mysql -u root -e "drop database if exists ${CURATED}"
 export CURATED='bioportal'
 mysql -u root -e "drop database if exists ${CURATED}"
 
+export CURATED='bwh'
+mysql -u root -e "drop database if exists ${CURATED}"
+
 export CURATED='CancerLinQ'
 mysql -u root -e "drop database if exists ${CURATED}"
 
