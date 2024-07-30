@@ -1,12 +1,14 @@
 import unittest
 
 from cumulus_library_opioid.vocab.constants import CURATED_LIST
-
+from cumulus_library_opioid.vocab.generate.file_sql import log
 
 def jaccard_insert() -> str:
     _insert = list()
+    _insert.append(log('jaccard_insert', 'begin'))
 
     for vsac1 in CURATED_LIST:
+        _insert.append(log('jaccard_insert', vsac1))
         _insert.append(jaccard_valueset(vsac1))
         _insert.append(jaccard_superset(vsac1))
 
@@ -14,8 +16,13 @@ def jaccard_insert() -> str:
             _insert.append(jaccard_intersect(vsac1, vsac2))
             _insert.append(jaccard_difference(vsac1, vsac2))
 
+    _insert.append(log('jaccard_intersect_size', 'begin'))
     _insert.append(jaccard_intersect_size())
+
+    _insert.append(log('jaccard_difference_size', 'begin'))
     _insert.append(jaccard_difference_size())
+
+    _insert.append(log('jaccard_insert', 'done'))
 
     return "\n".join(_insert)
 

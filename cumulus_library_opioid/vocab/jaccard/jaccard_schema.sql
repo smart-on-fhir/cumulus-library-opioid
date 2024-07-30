@@ -5,6 +5,8 @@ create  table           jaccard_valueset
     size        int             not null
 );
 
+call create_index('jaccard_valueset', 'vsac');
+
 drop    table if exists jaccard_superset;
 create  table           jaccard_superset
 (
@@ -12,12 +14,19 @@ create  table           jaccard_superset
     rxcui       varchar(8)      not null
 );
 
+call create_index('jaccard_superset', 'vsac');
+call create_index('jaccard_superset', 'rxcui');
+
 drop    table if exists jaccard_superset_opioid;
 create  table           jaccard_superset_opioid
 (
     vsac        varchar(30)     not null,
     rxcui       varchar(8)      not null
 );
+
+call create_index('jaccard_superset_opioid', 'vsac');
+call create_index('jaccard_superset_opioid', 'rxcui');
+
 
 drop    table if exists jaccard_superset_opioid_size;
 create  table           jaccard_superset_opioid_size
@@ -33,6 +42,10 @@ create  table           jaccard_superset_non
     rxcui       varchar(8)      not null
 );
 
+call create_index('jaccard_superset_non', 'vsac');
+call create_index('jaccard_superset_non', 'rxcui');
+
+
 drop    table if exists jaccard_superset_non_size;
 create  table           jaccard_superset_non_size
 (
@@ -41,15 +54,20 @@ create  table           jaccard_superset_non_size
 );
 
 drop   table if exists jaccard_intersect;
-create  table           jaccard_intersect
+create  table          jaccard_intersect
 (
     vsac1       varchar(30)     not null,
     vsac2       varchar(30)     not null,
     rxcui       varchar(8)      not null
 );
 
+call create_index('jaccard_intersect', 'vsac1');
+call create_index('jaccard_intersect', 'vsac2');
+call create_index('jaccard_intersect', 'rxcui');
+
+
 drop   table if exists jaccard_intersect_size;
-create  table           jaccard_intersect_size
+create  table          jaccard_intersect_size
 (
     vsac1       varchar(30)     not null,
     vsac2       varchar(30)     not null,
@@ -63,6 +81,10 @@ create table           jaccard_difference
     vsac2       varchar(30)     not null,
     rxcui       varchar(8)      not null
 );
+
+call create_index('jaccard_difference', 'vsac1');
+call create_index('jaccard_difference', 'vsac2');
+call create_index('jaccard_difference', 'rxcui');
 
 drop   table if exists jaccard_difference_size;
 create table           jaccard_difference_size
@@ -83,3 +105,6 @@ create table           jaccard_score
     diff        int             default 0,
     score       float           NULL
 );
+
+call create_index('jaccard_score', 'vsac1');
+call create_index('jaccard_score', 'vsac2');

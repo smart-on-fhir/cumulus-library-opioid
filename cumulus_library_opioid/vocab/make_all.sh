@@ -70,4 +70,5 @@ export CURATED='ucdavis'
 source env_table_schema.sh
 cd data; rm -f curated.tsv; ln -s ucdavis.ordered_rxcui_str.tsv curated.tsv; cd ..
 ./make.sh
-
+$mysql_table_schema -e "drop table if exists ucdavis.curated"
+$mysql_table_schema -e "create table ucdavis.curated select distinct RXCUI, STR from ucdavis.curated_rxcui_str order by RXCUI, STR"

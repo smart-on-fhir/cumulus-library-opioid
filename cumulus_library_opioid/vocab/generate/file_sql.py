@@ -17,6 +17,8 @@ def create(tablename: str) -> str:
 def index(tablename: str, columns) -> str:
     return f"call create_index('{tablename}', '{columns}');"
 
+def log(entity: str, message: str) -> str:
+    return f"call log('{entity}', '{message}');"
 
 def str_like(keywords) -> str:
     if isinstance(keywords, list):
