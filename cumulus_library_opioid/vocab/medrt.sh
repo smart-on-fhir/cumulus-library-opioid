@@ -18,6 +18,7 @@ $mysql_table_schema < medrt/generated/medrt_opioid.sql
 $mysql_table_schema < medrt/medrt_rxcui.sql
 # ./backup_database.sh
 ./export_tsv.sh curated
+cp $TSV/medrt.curated.tsv data/.
 
 export CURATED='medrt_non'
 source env_table_schema.sh
@@ -28,6 +29,8 @@ $mysql_table_schema < medrt/generated/medrt_non.sql
 $mysql_table_schema < medrt/medrt_rxcui.sql
 # ./backup_database.sh
 ./export_tsv.sh curated
+
+cp $TSV/medrt_non.curated.tsv data/.
 
 echo "########################################################################"
 echo "./medrt.sh"
