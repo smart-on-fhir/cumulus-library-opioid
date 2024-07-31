@@ -24,9 +24,6 @@ mysql -u root -e "drop database if exists ${CURATED}"
 export CURATED='CancerLinQ'
 mysql -u root -e "drop database if exists ${CURATED}"
 
-export CURATED='cliniwiz'
-mysql -u root -e "drop database if exists ${CURATED}"
-
 export CURATED='cliniwiz_keywords'
 mysql -u root -e "drop database if exists ${CURATED}"
 

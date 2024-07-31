@@ -11,6 +11,10 @@ export CURATED='acep'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
+export CURATED='atc_non'
+cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
+./make.sh
+
 export CURATED='bioportal'
 cd data; rm -f curated.tsv; ln -s bioportal.curated.tsv curated.tsv; cd ..
 ./make.sh
@@ -23,7 +27,7 @@ export CURATED='CancerLinQ'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
-export CURATED='cliniwiz'
+export CURATED='CancerLinQ_non'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
@@ -48,14 +52,6 @@ cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 
 export CURATED='mitre'
-cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
-./make.sh
-
-export CURATED='atc_non'
-cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
-./make.sh
-
-export CURATED='CancerLinQ_non'
 cd data; rm -f curated.tsv; ln -s VSAC/$CURATED.tsv curated.tsv; cd ..
 ./make.sh
 

@@ -6,7 +6,6 @@ CURATED_OPIOID = [
     "acep",
     "bioportal",
     "CancerLinQ",
-    "cliniwiz",
     "ecri",
     "impaq",
     "lantana",
