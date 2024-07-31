@@ -36,10 +36,10 @@ export CURATED='math_349'
 export CURATED='medrt'
 ./backup_database.sh
 
-export CURATED='mitre'
+export CURATED='medrt_non'
 ./backup_database.sh
 
-export CURATED='medrt_non'
+export CURATED='mitre'
 ./backup_database.sh
 
 export CURATED='mdpartners_non'
@@ -51,7 +51,7 @@ export CURATED='cliniwiz_keywords'
 export CURATED='keywords'
 ./backup_database.sh
 
-export CURATED='opioids'
+export CURATED='opioid'
 ./backup_database.sh
 
 export CURATED='ucdavis'

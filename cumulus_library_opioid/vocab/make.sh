@@ -10,7 +10,7 @@ echo "*************************************************"
 
 ./create_database.sh
 ./analyze/analyze.sh
-./backup_database.sh
+# ./backup_database.sh
 
 echo "*************************************************"
 echo "DONE  $CURATED"

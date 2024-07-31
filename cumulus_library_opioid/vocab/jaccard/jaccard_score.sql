@@ -43,10 +43,16 @@ where vsac2 not like ('%keywords%')
 and   vsac2 not like ('%_non%')
 group by vsac1 order by avg_score desc;
 
+--    drop    table if exists jaccard_recall;
+--    create  table           jaccard_recall
+--    select S.*, round((inter/size2),3) as recall
+--    from jaccard_score S
+--    where vsac2 not like ('%keywords%')
+--    and   vsac2 not like ('%_non%')
+--    order by vsac1, recall desc;
+
 drop    table if exists jaccard_recall;
 create  table           jaccard_recall
 select S.*, round((inter/size2),3) as recall
 from jaccard_score S
-where vsac2 not like ('%keywords%')
-and   vsac2 not like ('%_non%')
 order by vsac1, recall desc;
