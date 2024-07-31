@@ -2,6 +2,8 @@
 set -e
 source db.config
 
+export TSV="/Users/andy/code/medgen-umls/opioid/tsv"
+
 if [ "$#" -lt 1 ]; then
   export TABLE_SCHEMA=$CURATED
   echo "no TABLE_SCHEMA name was provided, trying CURATED *** [${CURATED}] ***"
