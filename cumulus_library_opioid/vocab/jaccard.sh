@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+set -e
+export CURATED='opioid'
 source env_table_schema.sh
 
 $mysql_table_schema < jaccard/jaccard_drop.sql
