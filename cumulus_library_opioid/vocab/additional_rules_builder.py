@@ -63,8 +63,8 @@ class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
                     },
                     join_clauses= [
                         's.rxcui2 = r.rxcui',
-                        # ('s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM '
-                        # f'{prefix}{steward}_rxnconso_keywords)')
+                        ('s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM '
+                        f'{prefix}{steward}_rxnconso_keywords)')
                     ],
                 )
             )
