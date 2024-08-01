@@ -39,7 +39,6 @@ class RxNormVsacBuilder(base_table_builder.BaseTableBuilder):
             join_clauses = join_clauses or [f"{a_join_col} = {b_join_col}"]
             view_name = view_name or f'{manifest.get_study_prefix()}__{steward}_{a_table}'
 
-
             return base_templates.get_create_view_from_tables(
                 view_name=view_name,
                 tables = [
@@ -52,6 +51,16 @@ class RxNormVsacBuilder(base_table_builder.BaseTableBuilder):
                 column_aliases = column_aliases,
 
             )
+
+        with open(self.base_path / "./common/keywords/keywords.filtered.tsv") as f:
+            keywords = [row.rstrip() for row in f.readlines()]
+        self.queries.append(
+            base_templates.get_base_template(
+                'create_annotated_rxnconso',
+                self.base_path / "template_sql",
+                keywords = keywords
+            )
+        )
         stewards = vsac.get_vsac_stewards(config)
         for steward in stewards:
             self.queries.append(
@@ -73,14 +82,6 @@ class RxNormVsacBuilder(base_table_builder.BaseTableBuilder):
                     column_aliases = {"b.str": "keyword"}
                 )
             )
-            # TODO: Fix this template to mimic the static rxnconso file
-            # self.queries.append(
-            #     base_templates.get_base_template(
-            #         'create_annotated_rxnconso',
-            #         self.base_path / "template_sql",
-            #         steward=steward
-            #     )
-            # )
             self.queries.append(
                 get_create_view_filter_by(
                     steward,

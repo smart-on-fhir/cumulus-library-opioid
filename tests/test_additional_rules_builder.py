@@ -32,63 +32,37 @@ def test_additional_rules(mock_api, mock_db_config_rxnorm):
     r_builder.execute_queries(config=mock_db_config_rxnorm, manifest=manifest)
     builder = additional_rules_builder.AdditionalRulesBuilder()
     builder.execute_queries(config=mock_db_config_rxnorm, manifest=manifest)
+    res = cursor.execute("select * from opioid__acep_rela")
     for table_conf in [
         {
             'name':'opioid__acep_potential_rules', 
             'columns':10,
-            'count':1440,
-            'first':(
-                1819, '1151359', 'BN', 'SCDG', 18636093, 'RO', 'has_ingredient', 
-                'Buprenorphine', 'buprenorphine / naloxone Oral Product', 
-                'buprenorphine'
-            ),
-            'last': (
-                1819, '904879', 'SY', 'SCDC', 5110638, 'RO', 'has_ingredient', 
-                '(-)-buprenorphine', 'buprenorphine 0.005 MG/HR', 'buprenorphine'
-            ),
+            'count':36,
+            'first':(1819, 1818, 'BN', 'BN', 4716626, 'RN', 'reformulated_to', 'Buprenorphine', 'Subutex', 'subutex'),
+            'last': (1819, 1818, 'SY', 'BN', 4716626, 'RN', 'reformulated_to', '(-)-buprenorphine', 'Subutex', 'subutex'),
         },
         {
             'name':'opioid__acep_included_rels', 
             'columns':10,
-            'count':14,
-            'first':(
-                1819, '1431077', 'BN', 'BN', 43028489, 'RN', 'reformulated_to', 
-                'Buprenorphine', 'Zubsolv', 'zubsolv'
-            ),
-            'last': (
-                1819, '904871', 'BN', 'BN', 3764389, 'RN', 'reformulated_to', 
-                'Buprenorphine', 'Butrans', 'butrans'
-            ),
+            'count':2,
+            'first':(1819, 1818, 'BN', 'BN', 4716626, 'RN', 'reformulated_to', 'Buprenorphine', 'Subutex', 'subutex'),
+            'last': (1819, 1818, 'BN', 'BN', 4716626, 'RN', 'reformulated_to', 'Buprenorphine', 'Subutex', 'subutex'),
         },
         {
             'name':'opioid__acep_included_keywords', 
             'columns':10,
-            'count':1404,
-            'first':(
-                1819, '1151359', 'BN', 'SCDG', 18636093, 'RO', 'has_ingredient', 
-                'Buprenorphine', 'buprenorphine / naloxone Oral Product', 
-                'buprenorphine'
-            ),
-            'last': (
-                1819, '904879', 'SY', 'SCDC', 5110638, 'RO', 'has_ingredient',
-                '(-)-buprenorphine', 'buprenorphine 0.005 MG/HR', 'buprenorphine'
-            ),
+            'count':36,
+            'first':(1819, 1818, 'BN', 'BN', 4716626, 'RN', 'reformulated_to', 'Buprenorphine', 'Subutex', 'subutex'),
+            'last': (1819, 1818, 'SY', 'BN', 4716626, 'RN', 'reformulated_to', '(-)-buprenorphine', 'Subutex', 'subutex'),
         },
         # The following table has fewer rows than the proceding due to duplication
         # in the key lookup. The union operation removes extra rows.
         {
             'name':'opioid__acep_combined_ruleset', 
             'columns':10,
-            'count':938,
-            'first':(
-                1819, '1151359', 'BN', 'SCDG', 18636093, 'RO', 'has_ingredient', 
-                'Buprenorphine', 'buprenorphine / naloxone Oral Product',
-                'buprenorphine'
-            ),
-            'last': (
-                1819, '904879', 'SY', 'SCDC', 5110638, 'RO', 'has_ingredient', 
-                '(-)-buprenorphine', 'buprenorphine 0.005 MG/HR', 'buprenorphine'
-            ),
+            'count':13,
+            'first':(1819, 1818, 'BN', 'BN', 4716626, 'RN', 'reformulated_to', 'Buprenorphine', 'Subutex', 'subutex'),
+            'last': (1819, 1818, 'SY', 'BN', 4716626, 'RN', 'reformulated_to', '(-)-buprenorphine', 'Subutex', 'subutex'),
         },
     ]:
         res = cursor.execute (

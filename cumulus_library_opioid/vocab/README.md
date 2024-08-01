@@ -63,14 +63,6 @@ A list of substrings of the display names in RxNorm of medications. This will be
 the primary artifact provided by a study author, and is used for filtering of 
 other tables, and tracking the original source of discovered related medications.
 
-### `rxn_curated` (prev RXNCONSO_curated)
-
-A to be replaced/renamed list of codes and identifiers RXNCONSO, which has the
-keywords left joined to it by a substring match. We will eventually do this join
-directly from a copy of RXNCONSO in the database.
-
-This table needs to be renamed.
-
 ### `search_rules` (prev expand_rules)
 
 A human curated mapping of TTY relation types that are relevant to our specific
@@ -86,7 +78,7 @@ A mapping of abbreviations for TTY codes to human readable display names.
 ### `[steward]_vsac` (prev curated)
 
 A list of codes and display names derived by looking up a specific value set
-OID via the VSAC API. It should be of the same format as `rxn_curated`
+OID via the VSAC API. It should be of the same format as `all_rxnconso_keywords`
 
 ## RxNorm-VSAC Builder
 
@@ -94,6 +86,11 @@ This file handles combining the curated dataset with RxNorm tables to
 produce a relationship, derived from `RXNREL`, of drugs identified by
 keywords to other potential drugs, with the goal of generating a more
 comprehensive list.
+
+### `all_rxnconso_keywords`
+
+This table annotates the rxnorm.rxnconso table with a given keyword
+found as a substring of the drug name, or null if not found.
 
 ### `[steward]_rxnconso` (prev RXNCONSO_curated)
 
@@ -106,10 +103,6 @@ This adds a column to `[steward]_rxnconso`, derived from the `keywords`
 table, by searching for a given keyword as part of the name of
 the particular drug
 
-### `[steward]_rxnconso_keywords_annotated`
-
-This was an attempt to generate something like `rxn_curated`. It should
-be fixed to do so, or removed.
 
 ### `[steward]_rxnsty` (prev RXNSTY_curated)
 A list of category types from `RXNSTY`, filtered by the codes from the 
@@ -140,7 +133,7 @@ This was originally in the static builder, and could go back there.
 
 ### `[steward]_potential_rules` (prev expand_relax)
 
-Using `rxn_curated` as the RXNCONSO source, `[steward]_rela` as the
+Using `all_rxnconso_keywords` as the RXNCONSO source, `[steward]_rela` as the
 relationship, and `[vendor]_rxnconso_keywords` as the source of
 RXCUIs, get every medication from the RXNCONSO source that is defined
 by the relationship that is not already in the list of RXCUIs.

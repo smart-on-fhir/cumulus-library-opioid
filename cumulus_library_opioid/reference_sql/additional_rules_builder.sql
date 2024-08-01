@@ -85,6 +85,7 @@ WHERE
     r.REL NOT IN ('RB', 'PAR')
     AND length(r.keyword) >= 4
 
+
 -- ###########################################################
 
 CREATE TABLE opioid__acep_combined_ruleset AS

@@ -40,14 +40,6 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                 filtered_path=self.base_path / "./common/keywords/keywords.filtered.tsv",
             ),
             TableConfig(
-                file_path=self.base_path / "./all_rxcui_str.RXNCONSO_curated.tsv",
-                delimiter="\t",
-                table_name="all_rxnconso_keywords",
-                headers=["RXCUI","STR","TTY","SAB","CODE","keyword","keyword_len"],
-                dtypes={"RXCUI":"str","STR":"str","TTY":"str","SAB":"str","CODE":"str","keyword":"str","keyword_len":"str"},
-                parquet_types=["STRING","STRING","STRING","STRING","STRING","STRING","STRING"],
-            ),
-            TableConfig(
                 file_path=self.base_path / "./common/expand_rules/expand_rules.tsv",
                 delimiter="\t",
                 table_name="search_rules",
@@ -197,3 +189,4 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
                     )
                 )
                 progress.advance(task)
+            
