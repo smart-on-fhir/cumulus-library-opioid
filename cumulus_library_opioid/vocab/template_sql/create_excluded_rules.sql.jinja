@@ -1,0 +1,17 @@
+CREATE TABLE {{prefix}}{{ steward}}_excluded_rules AS 
+SELECT 
+    rxcui1,
+    rxcui2,
+    tty1,
+    tty2,
+    rui,
+    rel,
+    rela,
+    str1,
+    str2,
+    keyword
+FROM
+    {{prefix}}{{ steward }}_potential_rules
+WHERE rui NOT IN (SELECT DISTINCT rui from {{prefix}}{{steward}}_combined_ruleset)
+AND rxcui1 NOT IN (SELECT DISTINCT rxcui1 from {{prefix}}{{steward}}_combined_ruleset)   
+AND rxcui2 NOT IN (SELECT DISTINCT rxcui2 from {{prefix}}{{steward}}_combined_ruleset)

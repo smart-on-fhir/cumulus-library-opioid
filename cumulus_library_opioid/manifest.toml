@@ -5,6 +5,7 @@ file_names = [
     "vocab/static_builder.py",
     "vocab/rxnorm_vsac_builder.py",
     "vocab/additional_rules_builder.py",
+    "vocab/excluded_rules_summary.py",
 ]
 
 # [sql_config]
