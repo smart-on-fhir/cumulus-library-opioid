@@ -1,0 +1,12 @@
+CREATE VIEW {{ prefix }}{{ steward }}_excluded_{{ name }} AS 
+SELECT 
+    rxcui1,
+    tty1,
+    rel,
+    rela,
+    rxcui2,
+    tty2,
+    str2
+FROM
+    {{ prefix }}{{ steward }}_excluded_rules
+WHERE rela {% if exclude_relas %}NOT {% endif %}IN ('{{ "','".join(relas) }}')
