@@ -101,21 +101,6 @@ WHERE rela IN ('dose_form_of','has_dose_form','doseformgroup_of','has_doseformgr
 
 -- ###########################################################
 
-CREATE VIEW opioid__acep_excluded_refresh AS 
-SELECT 
-    rxcui1,
-    tty1,
-    rel,
-    rela,
-    rxcui2,
-    tty2,
-    str2
-FROM
-    opioid__acep_excluded_rules
-WHERE rela IN ('form_of','has_form')
-
--- ###########################################################
-
 CREATE VIEW opioid__acep_excluded_form AS 
 SELECT 
     rxcui1,

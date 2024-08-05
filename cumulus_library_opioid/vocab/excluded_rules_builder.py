@@ -59,12 +59,6 @@ class ExcludedRulesBuilder(base_table_builder.BaseTableBuilder):
                 ],
             ),
             TableConfig(
-                name='refresh',
-                relas=[
-                    'form_of', 'has_form',
-                ],
-            ),
-            TableConfig(
                 name='form',
                 relas=[
                     'form_of', 'has_form',
