@@ -13,8 +13,8 @@ from
     curated_cui     as C,
     rxnorm.RXNCONSO as R
 where   C.SAB   = R.SAB
-and     C.CODE  = R.CODE;
--- and     C.TTY   = R.TTY;
+and     C.CODE  = R.CODE
+and     C.TTY   = R.TTY;
 
 drop    table if exists curated;
 create  table           curated
