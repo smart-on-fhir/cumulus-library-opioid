@@ -4,8 +4,8 @@ export TSV="/Users/andy/code/medgen-umls/opioid/tsv"
 export CURATED='opioid'
 source env_table_schema.sh
 
-$mysql_dataset < data/validate/validate_drop.sql
-$mysql_dataset < data/validate/validate_create.sql
+$mysql_dataset < validate/validate_drop.sql
+$mysql_dataset < validate/validate_create.sql
 
 ./export_tsv.sh invalid_RXCUI;
 ./export_tsv.sh missed_RXCUI;
@@ -23,6 +23,6 @@ $mysql_dataset < data/validate/validate_create.sql
 ./export_tsv.sh falsepos_mdpartners_non;
 ./export_tsv.sh falsepos_medrt_non;
 
-cp $TSV/opioid.invalid_*.tsv data/validate/.
-cp $TSV/opioid.missed_*.tsv data/validate/.
-cp $TSV/opioid.falsepos_*.tsv data/validate/.
+cp $TSV/opioid.invalid_*.tsv validate/.
+cp $TSV/opioid.missed_*.tsv validate/.
+cp $TSV/opioid.falsepos_*.tsv validate/.
