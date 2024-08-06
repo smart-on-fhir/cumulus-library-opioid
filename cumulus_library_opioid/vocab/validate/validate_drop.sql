@@ -1,0 +1,15 @@
+drop table if exists invalid_RXCUI;
+drop table if exists missed_RXCUI;
+drop table if exists missed_ucdavis;
+drop table if exists missed_acep;
+drop table if exists opioid.missed_bwh;
+drop table if exists missed_CancerLinQ;
+drop table if exists missed_ecri;
+drop table if exists missed_impaq;
+drop table if exists missed_lantana;
+drop table if exists missed_mitre;
+drop table if exists missed_keywords;
+drop table if exists falsepos_atc_non;
+drop table if exists falsepos_CancerLinQ_non;
+drop table if exists falsepos_mdpartners_non;
+drop table if exists falsepos_medrt_non;
