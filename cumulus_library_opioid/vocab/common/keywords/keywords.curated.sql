@@ -16,4 +16,15 @@ where   keyword_len >= 4
 order by RXCUI,STR;
 
 -- #############################################################################
+call log('curated_len_dist', 'begin');
+
+drop    table if exists keywords.curated_len_dist;
+create  table           keywords.curated_len_dist
+select  keyword_len,
+        count(distinct RXCUI) cnt_rxcui,
+        count(distinct lower(STR)) cnt_str
+from    RXNCONSO_curated
+group by keyword_len order by keyword_len asc;
+
+-- #############################################################################
 call log('keywords_db.sql', 'done');

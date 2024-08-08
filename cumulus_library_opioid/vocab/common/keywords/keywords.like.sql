@@ -60,4 +60,13 @@ order by  STR1, STR2;
 delete from keywords where STR in (select STR1 from keywords_str_in_str);
 
 -- #############################################################################
+call log('keywords_len_dist', 'length distribution');
+
+drop    table if exists keywords_len_dist;
+create  table           keywords_len_dist
+select  len, count(distinct STR) cnt
+from    keywords
+group by len order by len asc;
+
+-- #############################################################################
 call log('keywords.sql', 'done');
