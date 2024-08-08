@@ -152,3 +152,13 @@ order by A.RXCUI, A.STR;
 
 -- ###########################################################################
 call log('validate.sql', 'done');
+
+--     HOTFIX workaround due to VSAC API previously only paging 1000 entries at a time
+--    drop   table if exists  falsepos_atc_non_fixed;
+--    create table            falsepos_atc_non_fixed
+--    select  distinct
+--            FP.RXCUI, FP.STR,
+--            ATC.vote1
+--    from    falsepos_atc_non FP
+--    LEFT JOIN   human_atc_non ATC on FP.RXCUI=ATC.RXCUI
+--    order by FP.RXCUI, FP.STR;
