@@ -17,16 +17,14 @@ create  table           jaccard_superset
 call create_index('jaccard_superset', 'vsac');
 call create_index('jaccard_superset', 'rxcui');
 
+drop    table if exists jaccard_superset_non;
+create  table           jaccard_superset_non    like jaccard_superset;
+
 drop    table if exists jaccard_superset_opioid;
-create  table           jaccard_superset_opioid
-(
-    vsac        varchar(30)     not null,
-    rxcui       varchar(8)      not null
-);
+create  table           jaccard_superset_opioid like jaccard_superset;
 
-call create_index('jaccard_superset_opioid', 'vsac');
-call create_index('jaccard_superset_opioid', 'rxcui');
-
+drop    table if exists jaccard_superset_rwd;
+create  table           jaccard_superset_rwd    like jaccard_superset;
 
 drop    table if exists jaccard_superset_opioid_size;
 create  table           jaccard_superset_opioid_size
@@ -35,23 +33,11 @@ create  table           jaccard_superset_opioid_size
     size        int             not null
 );
 
-drop    table if exists jaccard_superset_non;
-create  table           jaccard_superset_non
-(
-    vsac        varchar(30)     not null,
-    rxcui       varchar(8)      not null
-);
-
-call create_index('jaccard_superset_non', 'vsac');
-call create_index('jaccard_superset_non', 'rxcui');
-
-
 drop    table if exists jaccard_superset_non_size;
-create  table           jaccard_superset_non_size
-(
-    rxcui       varchar(8)      not null,
-    size        int             not null
-);
+create  table           jaccard_superset_non_size   like jaccard_superset_opioid_size;
+
+drop    table if exists jaccard_superset_rwd_size;
+create  table           jaccard_superset_rwd_size   like jaccard_superset_opioid_size;
 
 drop   table if exists jaccard_intersect;
 create  table          jaccard_intersect

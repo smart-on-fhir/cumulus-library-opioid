@@ -15,25 +15,44 @@ update jaccard_score set score = round(inter / (size1 + size2 - inter), 3);
 
 insert into jaccard_superset_opioid
 select distinct vsac, RXCUI from jaccard_superset
-where vsac not like '%_non'
+where vsac not in ('all_rxcui_str', 'ucdavis', 'bwh')
+and   vsac not like '%_non'
 and   vsac not like '%keyword%';
 
 insert into jaccard_superset_non
 select distinct vsac, RXCUI from jaccard_superset
-where vsac      like '%_non'
-and   vsac  not like '%keyword%';
+where vsac      like '%_non';
+
+insert into jaccard_superset_rwd
+select distinct vsac, RXCUI from jaccard_superset
+where vsac in ('ucdavis', 'bwh');
 
 insert into jaccard_superset_opioid_size (RXCUI, size)
-select RXCUI, count(distinct vsac) as size from jaccard_superset_opioid group by RXCUI order by RXCUI;
+select RXCUI, count(distinct vsac) as size from jaccard_superset_opioid group by RXCUI order by size, RXCUI;
 
 insert into jaccard_superset_non_size (RXCUI, size)
-select RXCUI, count(distinct vsac) as size from jaccard_superset_non group by RXCUI order by RXCUI;
+select RXCUI, count(distinct vsac) as size from jaccard_superset_non group by RXCUI order by size, RXCUI;
+
+insert into jaccard_superset_rwd_size (RXCUI, size)
+select RXCUI, count(distinct vsac) as size from jaccard_superset_rwd group by RXCUI order by size, RXCUI;
 
 drop    table if exists jaccard_superset_opioid_size_dist;
 create  table           jaccard_superset_opioid_size_dist
-select count(distinct RXCUI) cnt_rxcui, size
+select size, count(distinct RXCUI) cnt_rxcui
 from jaccard_superset_opioid_size
-group by size order by size desc;
+group by size order by size;
+
+drop    table if exists jaccard_superset_non_size_dist;
+create  table           jaccard_superset_non_size_dist
+select size, count(distinct RXCUI) cnt_rxcui
+from jaccard_superset_non_size
+group by size order by size;
+
+drop    table if exists jaccard_superset_rwd_size_dist;
+create  table           jaccard_superset_rwd_size_dist
+select size, count(distinct RXCUI) cnt_rxcui
+from jaccard_superset_rwd_size
+group by size order by size;
 
 drop    table if exists jaccard_superset_opioid_avg_score;
 create  table           jaccard_superset_opioid_avg_score

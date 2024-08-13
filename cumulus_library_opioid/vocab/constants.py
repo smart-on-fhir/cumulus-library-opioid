@@ -1,7 +1,5 @@
-import unittest
-
 CURATED_NON = ["CancerLinQ_non", "mdpartners_non", "atc_non", "medrt_non"]
-CURATED_KEYWORDS = ["cliniwiz_keywords", "keywords"]
+CURATED_KEYWORDS = ["keywords"]
 CURATED_OPIOID = [
     "acep",
     "bioportal",
@@ -14,6 +12,6 @@ CURATED_OPIOID = [
     "mitre",
 ]
 
-VALIDATE_SOURCES = ['all_rxcui_str', "bwh", 'opioid', 'ucdavis']
+VALIDATE_SOURCES = ['bwh', 'opioid', 'ucdavis']
 
 CURATED_LIST = CURATED_OPIOID + CURATED_NON + CURATED_KEYWORDS + VALIDATE_SOURCES
