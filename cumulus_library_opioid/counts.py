@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from cumulus_library.schema.counts import CountsBuilder
+from cumulus_library.statistics.counts import CountsBuilder
 
 
 class OpioidCountsBuilder(CountsBuilder):
@@ -61,7 +61,7 @@ class OpioidCountsBuilder(CountsBuilder):
         view_name = self.get_table_name("count_study_period", duration)
         from_table = self.get_table_name("study_period")
         cols = [
-            "enc_class_code",
+            "class_code",
             "age_at_visit",
             "gender",
             "race_display",
@@ -69,7 +69,7 @@ class OpioidCountsBuilder(CountsBuilder):
         ]
 
         if duration:
-            cols.append(f"start_{duration}")
+            cols.append(f"period_start_{duration}")
 
         return self.count_encounter(view_name, from_table, cols, min_subject=5)
 
@@ -85,7 +85,7 @@ class OpioidCountsBuilder(CountsBuilder):
         ]
 
         if duration:
-            cols.append(f"lab_{duration}")
+            cols.append(f"effectivedatetime_{duration}")
 
         return self.count_encounter(view_name, from_table, cols, min_subject=5)
 
@@ -100,7 +100,7 @@ class OpioidCountsBuilder(CountsBuilder):
             "rx_category_display",
             "gender",
             "race_display",
-            "postalcode3",
+            "postalcode_3",
         ]
 
         if duration:
@@ -108,24 +108,24 @@ class OpioidCountsBuilder(CountsBuilder):
 
         return self.count_patient(count_table, from_table, cols, min_subject=5)
 
-    def prepare_queries(self, cursor=None, schema=None):
+    def prepare_queries(self, *args, **kwargs):
         self.queries = [
             self.count_study_period("month"),
             self.count_study_period("week"),
-            self.count_study_period("date"),
+            self.count_study_period("day"),
             self.count_dx(),
             self.count_dx("month"),
             self.count_dx("week"),
-            self.count_dx("date"),
+            self.count_dx("day"),
             # self.count_dx_sud(),
             self.count_dx_sepsis(),
             self.count_dx_sepsis("month"),
             self.count_dx_sepsis("week"),
-            self.count_dx_sepsis("date"),
+            self.count_dx_sepsis("day"),
             self.count_lab(),
             self.count_lab("month"),
             self.count_lab("week"),
-            self.count_lab("date"),
+            self.count_lab("day"),
             self.count_rx("medicationrequest"),
             self.count_rx("rx"),
             self.count_rx("rx_opioid"),

@@ -2,13 +2,12 @@ create table opioid__lab as
 SELECT DISTINCT
     loinc.code as loinc_code,
     loinc.display as loinc_code_display,
-    lab_result,
-    lab_result.code as lab_result_code,
-    lab_result.display as lab_result_display,
-    lab_result.system as lab_result_system,
-    lab.lab_date,
-    lab.lab_week,
-    lab.lab_month,
+    lab.valuecodeableconcept_code as lab_result_code,
+    lab.valuecodeableconcept_display as lab_result_display,
+    lab.valuecodeableconcept_system as lab_result_system,
+    lab.effectivedatetime_day,
+    lab.effectivedatetime_week,
+    lab.effectivedatetime_month,
     p.gender,
     p.race_display,
     p.ethnicity_display,
@@ -22,7 +21,7 @@ FROM
     opioid__define_lab as loinc,
     core__patient AS p
 WHERE
-    lab.lab_code.code = loinc.code and
-    lab.lab_code.system = loinc.system and
+    lab.observation_code = loinc.code and
+    lab.observation_system = loinc.system and
     lab.subject_ref = p.subject_ref and
     lab.encounter_ref = e.encounter_ref;
