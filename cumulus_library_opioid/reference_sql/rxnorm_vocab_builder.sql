@@ -16,7 +16,7 @@ SELECT
     a.code,
     'vi q' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vi q).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vi q.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -26,7 +26,7 @@ SELECT
     a.code,
     'a-cof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:a-cof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*a-cof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -36,7 +36,7 @@ SELECT
     a.code,
     'actiq' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:actiq).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*actiq.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -46,7 +46,7 @@ SELECT
     a.code,
     'allay' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:allay).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*allay.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -56,7 +56,7 @@ SELECT
     a.code,
     'arymo' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:arymo).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*arymo.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -66,7 +66,7 @@ SELECT
     a.code,
     'c-cof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:c-cof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*c-cof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -76,7 +76,7 @@ SELECT
     a.code,
     'codar' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codar).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codar.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -86,7 +86,7 @@ SELECT
     a.code,
     'evzio' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:evzio).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*evzio.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -96,7 +96,7 @@ SELECT
     a.code,
     'hycet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -106,7 +106,7 @@ SELECT
     a.code,
     'hytan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hytan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hytan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -116,7 +116,7 @@ SELECT
     a.code,
     'm-oxy' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:m-oxy).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*m-oxy.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -126,7 +126,7 @@ SELECT
     a.code,
     'nalex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nalex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nalex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -136,7 +136,7 @@ SELECT
     a.code,
     'norco' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:norco).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*norco.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -146,7 +146,7 @@ SELECT
     a.code,
     'oncet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oncet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oncet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -156,7 +156,7 @@ SELECT
     a.code,
     'qdolo' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:qdolo).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*qdolo.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -166,7 +166,7 @@ SELECT
     a.code,
     'revia' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:revia).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*revia.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -176,7 +176,7 @@ SELECT
     a.code,
     'rybix' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:rybix).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*rybix.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -186,7 +186,7 @@ SELECT
     a.code,
     'vitiz' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vitiz).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vitiz.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -196,7 +196,7 @@ SELECT
     a.code,
     'vopac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vopac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vopac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -206,7 +206,7 @@ SELECT
     a.code,
     'xodol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:xodol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*xodol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -216,7 +216,7 @@ SELECT
     a.code,
     'xolox' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:xolox).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*xolox.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -226,7 +226,7 @@ SELECT
     a.code,
     'ascomp' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ascomp).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ascomp.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -236,7 +236,7 @@ SELECT
     a.code,
     'avinza' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:avinza).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*avinza.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -246,7 +246,7 @@ SELECT
     a.code,
     'azdone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:azdone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*azdone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -256,7 +256,7 @@ SELECT
     a.code,
     'bancap' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:bancap).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*bancap.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -266,7 +266,7 @@ SELECT
     a.code,
     'codrix' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codrix).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codrix.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -276,7 +276,7 @@ SELECT
     a.code,
     'conzip' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:conzip).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*conzip.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -286,7 +286,7 @@ SELECT
     a.code,
     'depade' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:depade).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*depade.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -296,7 +296,7 @@ SELECT
     a.code,
     'duocet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duocet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duocet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -306,7 +306,7 @@ SELECT
     a.code,
     'dvorah' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dvorah).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dvorah.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -316,7 +316,7 @@ SELECT
     a.code,
     'embeda' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:embeda).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*embeda.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -326,7 +326,7 @@ SELECT
     a.code,
     'entuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:entuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*entuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -336,7 +336,7 @@ SELECT
     a.code,
     'exalgo' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:exalgo).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*exalgo.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -346,7 +346,7 @@ SELECT
     a.code,
     'exlago' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:exlago).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*exlago.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -356,7 +356,7 @@ SELECT
     a.code,
     'gua hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:gua hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*gua hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -366,7 +366,7 @@ SELECT
     a.code,
     'heroin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:heroin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*heroin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -376,7 +376,7 @@ SELECT
     a.code,
     'hydone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -386,7 +386,7 @@ SELECT
     a.code,
     'hyphed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hyphed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hyphed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -396,7 +396,7 @@ SELECT
     a.code,
     'kadian' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:kadian).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*kadian.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -406,7 +406,7 @@ SELECT
     a.code,
     'kg-fed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:kg-fed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*kg-fed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -416,7 +416,7 @@ SELECT
     a.code,
     'kgs hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:kgs hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*kgs hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -426,7 +426,7 @@ SELECT
     a.code,
     'kgs-hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:kgs-hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*kgs-hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -436,7 +436,7 @@ SELECT
     a.code,
     'lorcet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:lorcet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*lorcet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -446,7 +446,7 @@ SELECT
     a.code,
     'lortab' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:lortab).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*lortab.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -456,7 +456,7 @@ SELECT
     a.code,
     'narcan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:narcan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*narcan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -466,7 +466,7 @@ SELECT
     a.code,
     'narcof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:narcof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*narcof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -476,7 +476,7 @@ SELECT
     a.code,
     'narvox' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:narvox).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*narvox.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -486,7 +486,7 @@ SELECT
     a.code,
     'norcet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:norcet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*norcet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -496,7 +496,7 @@ SELECT
     a.code,
     'notuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:notuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*notuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -506,7 +506,7 @@ SELECT
     a.code,
     'nubain' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nubain).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nubain.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -516,7 +516,7 @@ SELECT
     a.code,
     'oxaydo' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxaydo).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxaydo.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -526,7 +526,7 @@ SELECT
     a.code,
     'oxecta' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxecta).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxecta.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -536,7 +536,7 @@ SELECT
     a.code,
     'pancof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:pancof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*pancof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -546,7 +546,7 @@ SELECT
     a.code,
     'panlor' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:panlor).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*panlor.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -556,7 +556,7 @@ SELECT
     a.code,
     'procet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:procet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*procet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -566,7 +566,7 @@ SELECT
     a.code,
     'procof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:procof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*procof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -576,7 +576,7 @@ SELECT
     a.code,
     'prolex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:prolex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*prolex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -586,7 +586,7 @@ SELECT
     a.code,
     'rezira' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:rezira).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*rezira.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -596,7 +596,7 @@ SELECT
     a.code,
     'ryna c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ryna c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ryna c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -606,7 +606,7 @@ SELECT
     a.code,
     'ryna-c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ryna-c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ryna-c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -616,7 +616,7 @@ SELECT
     a.code,
     'ryzolt' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ryzolt).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ryzolt.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -626,7 +626,7 @@ SELECT
     a.code,
     'stadol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:stadol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*stadol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -636,7 +636,7 @@ SELECT
     a.code,
     'subsys' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:subsys).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*subsys.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -646,7 +646,7 @@ SELECT
     a.code,
     'symtan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:symtan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*symtan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -656,7 +656,7 @@ SELECT
     a.code,
     'talwin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:talwin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*talwin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -666,7 +666,7 @@ SELECT
     a.code,
     'trezix' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:trezix).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*trezix.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -676,7 +676,7 @@ SELECT
     a.code,
     'tussar' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussar).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussar.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -686,7 +686,7 @@ SELECT
     a.code,
     'z tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:z tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*z tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -696,7 +696,7 @@ SELECT
     a.code,
     'zolvit' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zolvit).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zolvit.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -706,7 +706,7 @@ SELECT
     a.code,
     'abstral' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:abstral).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*abstral.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -716,7 +716,7 @@ SELECT
     a.code,
     'ambenyl' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ambenyl).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ambenyl.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -726,7 +726,7 @@ SELECT
     a.code,
     'anexsia' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:anexsia).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*anexsia.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -736,7 +736,7 @@ SELECT
     a.code,
     'atuss g' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:atuss g).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*atuss g.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -746,7 +746,7 @@ SELECT
     a.code,
     'belbuca' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:belbuca).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*belbuca.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -756,7 +756,7 @@ SELECT
     a.code,
     'brontex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:brontex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*brontex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -766,7 +766,7 @@ SELECT
     a.code,
     'butrans' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:butrans).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*butrans.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -776,7 +776,7 @@ SELECT
     a.code,
     'codafed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codafed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codafed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -786,7 +786,7 @@ SELECT
     a.code,
     'codafen' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codafen).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codafen.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -796,7 +796,7 @@ SELECT
     a.code,
     'codeine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codeine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codeine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -806,7 +806,7 @@ SELECT
     a.code,
     'cotab a' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:cotab a).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*cotab a.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -816,7 +816,7 @@ SELECT
     a.code,
     'cycofed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:cycofed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*cycofed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -826,7 +826,7 @@ SELECT
     a.code,
     'dazidox' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dazidox).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dazidox.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -836,7 +836,7 @@ SELECT
     a.code,
     'demerol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:demerol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*demerol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -846,7 +846,7 @@ SELECT
     a.code,
     'depodur' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:depodur).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*depodur.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -856,7 +856,7 @@ SELECT
     a.code,
     'diskets' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:diskets).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*diskets.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -866,7 +866,7 @@ SELECT
     a.code,
     'dolacet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dolacet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dolacet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -876,7 +876,7 @@ SELECT
     a.code,
     'duohist' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duohist).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duohist.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -886,7 +886,7 @@ SELECT
     a.code,
     'endocet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:endocet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*endocet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -896,7 +896,7 @@ SELECT
     a.code,
     'endodan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:endodan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*endodan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -906,7 +906,7 @@ SELECT
     a.code,
     'fentora' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:fentora).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*fentora.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -916,7 +916,7 @@ SELECT
     a.code,
     'flutuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:flutuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*flutuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -926,7 +926,7 @@ SELECT
     a.code,
     'fortral' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:fortral).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*fortral.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -936,7 +936,7 @@ SELECT
     a.code,
     'genecof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:genecof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*genecof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -946,7 +946,7 @@ SELECT
     a.code,
     'guai-co' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guai-co).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guai-co.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -956,7 +956,7 @@ SELECT
     a.code,
     'hy-phen' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hy-phen).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hy-phen.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -966,7 +966,7 @@ SELECT
     a.code,
     'hycodan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycodan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycodan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -976,7 +976,7 @@ SELECT
     a.code,
     'hycomed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycomed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycomed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -986,7 +986,7 @@ SELECT
     a.code,
     'hycosin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycosin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycosin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -996,7 +996,7 @@ SELECT
     a.code,
     'hycotab' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycotab).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycotab.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1006,7 +1006,7 @@ SELECT
     a.code,
     'ibudone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ibudone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ibudone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1016,7 +1016,7 @@ SELECT
     a.code,
     'kg-tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:kg-tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*kg-tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1026,7 +1026,7 @@ SELECT
     a.code,
     'kwelcof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:kwelcof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*kwelcof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1036,7 +1036,7 @@ SELECT
     a.code,
     'lazanda' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:lazanda).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*lazanda.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1046,7 +1046,7 @@ SELECT
     a.code,
     'm-clear' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:m-clear).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*m-clear.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1056,7 +1056,7 @@ SELECT
     a.code,
     'm-eslon' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:m-eslon).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*m-eslon.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1066,7 +1066,7 @@ SELECT
     a.code,
     'mar-cof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:mar-cof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*mar-cof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1076,7 +1076,7 @@ SELECT
     a.code,
     'maxifed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:maxifed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*maxifed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1086,7 +1086,7 @@ SELECT
     a.code,
     'megamor' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:megamor).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*megamor.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1096,7 +1096,7 @@ SELECT
     a.code,
     'monte-g' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:monte-g).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*monte-g.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1106,7 +1106,7 @@ SELECT
     a.code,
     'nalocet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nalocet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nalocet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1116,7 +1116,7 @@ SELECT
     a.code,
     'novasus' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:novasus).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*novasus.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1126,7 +1126,7 @@ SELECT
     a.code,
     'nucofed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nucofed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nucofed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1136,7 +1136,7 @@ SELECT
     a.code,
     'nucynta' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nucynta).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nucynta.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1146,7 +1146,7 @@ SELECT
     a.code,
     'obredon' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:obredon).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*obredon.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1156,7 +1156,7 @@ SELECT
     a.code,
     'oxydose' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxydose).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxydose.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1166,7 +1166,7 @@ SELECT
     a.code,
     'oxyfast' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxyfast).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxyfast.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1176,7 +1176,7 @@ SELECT
     a.code,
     'oxynorm' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxynorm).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxynorm.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1186,7 +1186,7 @@ SELECT
     a.code,
     'panacet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:panacet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*panacet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1196,7 +1196,7 @@ SELECT
     a.code,
     'panasal' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:panasal).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*panasal.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1206,7 +1206,7 @@ SELECT
     a.code,
     'perloxx' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:perloxx).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*perloxx.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1216,7 +1216,7 @@ SELECT
     a.code,
     'primlev' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:primlev).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*primlev.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1226,7 +1226,7 @@ SELECT
     a.code,
     'prolate' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:prolate).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*prolate.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1236,7 +1236,7 @@ SELECT
     a.code,
     'romilar' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:romilar).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*romilar.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1246,7 +1246,7 @@ SELECT
     a.code,
     'roxanol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:roxanol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*roxanol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1256,7 +1256,7 @@ SELECT
     a.code,
     'roxicet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:roxicet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*roxicet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1266,7 +1266,7 @@ SELECT
     a.code,
     'roxilox' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:roxilox).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*roxilox.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1276,7 +1276,7 @@ SELECT
     a.code,
     'su-tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:su-tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*su-tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1286,7 +1286,7 @@ SELECT
     a.code,
     'subutex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:subutex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*subutex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1296,7 +1296,7 @@ SELECT
     a.code,
     'sufenta' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:sufenta).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*sufenta.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1306,7 +1306,7 @@ SELECT
     a.code,
     't-gesic' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:t-gesic).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*t-gesic.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1316,7 +1316,7 @@ SELECT
     a.code,
     'tl-hist' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tl-hist).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tl-hist.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1326,7 +1326,7 @@ SELECT
     a.code,
     'tramake' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tramake).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tramake.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1336,7 +1336,7 @@ SELECT
     a.code,
     'tussend' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussend).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussend.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1346,7 +1346,7 @@ SELECT
     a.code,
     'tuxarin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tuxarin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tuxarin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1356,7 +1356,7 @@ SELECT
     a.code,
     'vanacet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vanacet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vanacet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1366,7 +1366,7 @@ SELECT
     a.code,
     'vendone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vendone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vendone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1376,7 +1376,7 @@ SELECT
     a.code,
     'vicodin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vicodin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vicodin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1386,7 +1386,7 @@ SELECT
     a.code,
     'zamadol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zamadol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zamadol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1396,7 +1396,7 @@ SELECT
     a.code,
     'zamicet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zamicet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zamicet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1406,7 +1406,7 @@ SELECT
     a.code,
     'zohydro' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zohydro).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zohydro.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1416,7 +1416,7 @@ SELECT
     a.code,
     'zomorph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zomorph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zomorph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1426,7 +1426,7 @@ SELECT
     a.code,
     'zotex c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zotex c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zotex c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1436,7 +1436,7 @@ SELECT
     a.code,
     'zotex-c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zotex-c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zotex-c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1446,7 +1446,7 @@ SELECT
     a.code,
     'zubsolv' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zubsolv).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zubsolv.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1456,7 +1456,7 @@ SELECT
     a.code,
     'allfen c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:allfen c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*allfen c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1466,7 +1466,7 @@ SELECT
     a.code,
     'allfen-c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:allfen-c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*allfen-c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1476,7 +1476,7 @@ SELECT
     a.code,
     'amtussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:amtussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*amtussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1486,7 +1486,7 @@ SELECT
     a.code,
     'atuss ex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:atuss ex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*atuss ex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1496,7 +1496,7 @@ SELECT
     a.code,
     'atuss hd' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:atuss hd).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*atuss hd.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1506,7 +1506,7 @@ SELECT
     a.code,
     'atuss hs' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:atuss hs).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*atuss hs.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1516,7 +1516,7 @@ SELECT
     a.code,
     'atuss hx' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:atuss hx).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*atuss hx.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1526,7 +1526,7 @@ SELECT
     a.code,
     'atuss mr' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:atuss mr).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*atuss mr.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1536,7 +1536,7 @@ SELECT
     a.code,
     'atuss ms' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:atuss ms).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*atuss ms.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1546,7 +1546,7 @@ SELECT
     a.code,
     'bunavail' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:bunavail).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*bunavail.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1556,7 +1556,7 @@ SELECT
     a.code,
     'buprenex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:buprenex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*buprenex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1566,7 +1566,7 @@ SELECT
     a.code,
     'co-gesic' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:co-gesic).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*co-gesic.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1576,7 +1576,7 @@ SELECT
     a.code,
     'codehist' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codehist).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codehist.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1586,7 +1586,7 @@ SELECT
     a.code,
     'codotuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codotuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codotuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1596,7 +1596,7 @@ SELECT
     a.code,
     'combunox' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:combunox).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*combunox.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1606,7 +1606,7 @@ SELECT
     a.code,
     'condasin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:condasin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*condasin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1616,7 +1616,7 @@ SELECT
     a.code,
     'contrave' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:contrave).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*contrave.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1626,7 +1626,7 @@ SELECT
     a.code,
     'cotuss v' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:cotuss v).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*cotuss v.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1636,7 +1636,7 @@ SELECT
     a.code,
     'cotuss-v' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:cotuss-v).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*cotuss-v.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1646,7 +1646,7 @@ SELECT
     a.code,
     'de-chlor' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:de-chlor).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*de-chlor.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1656,7 +1656,7 @@ SELECT
     a.code,
     'deconsal' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:deconsal).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*deconsal.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1666,7 +1666,7 @@ SELECT
     a.code,
     'dilaudid' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dilaudid).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dilaudid.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1676,7 +1676,7 @@ SELECT
     a.code,
     'dromoran' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dromoran).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dromoran.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1686,7 +1686,7 @@ SELECT
     a.code,
     'fentanyl' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:fentanyl).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*fentanyl.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1696,7 +1696,7 @@ SELECT
     a.code,
     'gencofed' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:gencofed).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*gencofed.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1706,7 +1706,7 @@ SELECT
     a.code,
     'hyco-pap' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hyco-pap).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hyco-pap.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1716,7 +1716,7 @@ SELECT
     a.code,
     'hycoclar' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycoclar).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycoclar.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1726,7 +1726,7 @@ SELECT
     a.code,
     'hycotuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycotuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycotuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1736,7 +1736,7 @@ SELECT
     a.code,
     'hydrocet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydrocet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydrocet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1746,7 +1746,7 @@ SELECT
     a.code,
     'hydrocod' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydrocod).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydrocod.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1756,7 +1756,7 @@ SELECT
     a.code,
     'hydrocof' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydrocof).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydrocof.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1766,7 +1766,7 @@ SELECT
     a.code,
     'hysingla' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hysingla).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hysingla.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1776,7 +1776,7 @@ SELECT
     a.code,
     'hytussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hytussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hytussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1786,7 +1786,7 @@ SELECT
     a.code,
     'kloxxado' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:kloxxado).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*kloxxado.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1796,7 +1796,7 @@ SELECT
     a.code,
     'liquicet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:liquicet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*liquicet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1806,7 +1806,7 @@ SELECT
     a.code,
     'maxidone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:maxidone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*maxidone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1816,7 +1816,7 @@ SELECT
     a.code,
     'maxiphen' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:maxiphen).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*maxiphen.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1826,7 +1826,7 @@ SELECT
     a.code,
     'medcodin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:medcodin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*medcodin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1836,7 +1836,7 @@ SELECT
     a.code,
     'medent c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:medent c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*medent c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1846,7 +1846,7 @@ SELECT
     a.code,
     'medent-c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:medent-c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*medent-c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1856,7 +1856,7 @@ SELECT
     a.code,
     'medipain' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:medipain).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*medipain.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1866,7 +1866,7 @@ SELECT
     a.code,
     'morphine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:morphine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*morphine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1876,7 +1876,7 @@ SELECT
     a.code,
     'morphone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:morphone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*morphone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1886,7 +1886,7 @@ SELECT
     a.code,
     'ms cotin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ms cotin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ms cotin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1896,7 +1896,7 @@ SELECT
     a.code,
     'mscontin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:mscontin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*mscontin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1906,7 +1906,7 @@ SELECT
     a.code,
     'mycodone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:mycodone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*mycodone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1916,7 +1916,7 @@ SELECT
     a.code,
     'naloxone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:naloxone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*naloxone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1926,7 +1926,7 @@ SELECT
     a.code,
     'novadyne' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:novadyne).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*novadyne.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1936,7 +1936,7 @@ SELECT
     a.code,
     'novagest' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:novagest).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*novagest.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1946,7 +1946,7 @@ SELECT
     a.code,
     'nucodine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nucodine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nucodine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1956,7 +1956,7 @@ SELECT
     a.code,
     'nucotuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nucotuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nucotuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1966,7 +1966,7 @@ SELECT
     a.code,
     'onsollis' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:onsollis).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*onsollis.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1976,7 +1976,7 @@ SELECT
     a.code,
     'oramorph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oramorph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oramorph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1986,7 +1986,7 @@ SELECT
     a.code,
     'oxyrapid' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxyrapid).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxyrapid.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -1996,7 +1996,7 @@ SELECT
     a.code,
     'percocet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:percocet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*percocet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2006,7 +2006,7 @@ SELECT
     a.code,
     'percodan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:percodan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*percodan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2016,7 +2016,7 @@ SELECT
     a.code,
     'primalev' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:primalev).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*primalev.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2026,7 +2026,7 @@ SELECT
     a.code,
     'recuvyra' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:recuvyra).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*recuvyra.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2036,7 +2036,7 @@ SELECT
     a.code,
     'roxiprin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:roxiprin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*roxiprin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2046,7 +2046,7 @@ SELECT
     a.code,
     'roxybond' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:roxybond).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*roxybond.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2056,7 +2056,7 @@ SELECT
     a.code,
     'sevredol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:sevredol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*sevredol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2066,7 +2066,7 @@ SELECT
     a.code,
     'spantuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:spantuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*spantuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2076,7 +2076,7 @@ SELECT
     a.code,
     'suboxone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:suboxone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*suboxone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2086,7 +2086,7 @@ SELECT
     a.code,
     'synalgos' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:synalgos).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*synalgos.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2096,7 +2096,7 @@ SELECT
     a.code,
     'taxadone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:taxadone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*taxadone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2106,7 +2106,7 @@ SELECT
     a.code,
     'tramadol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tramadol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tramadol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2116,7 +2116,7 @@ SELECT
     a.code,
     'tryodone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tryodone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tryodone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2126,7 +2126,7 @@ SELECT
     a.code,
     'tussadur' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussadur).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussadur.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2136,7 +2136,7 @@ SELECT
     a.code,
     'tussicap' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussicap).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussicap.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2146,7 +2146,7 @@ SELECT
     a.code,
     'tussigon' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussigon).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussigon.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2156,7 +2156,7 @@ SELECT
     a.code,
     'tuzistra' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tuzistra).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tuzistra.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2166,7 +2166,7 @@ SELECT
     a.code,
     'ultracet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ultracet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ultracet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2176,7 +2176,7 @@ SELECT
     a.code,
     'vicotuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vicotuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vicotuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2186,7 +2186,7 @@ SELECT
     a.code,
     'vitussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vitussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vitussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2196,7 +2196,7 @@ SELECT
     a.code,
     'vivitrol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vivitrol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vivitrol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2206,7 +2206,7 @@ SELECT
     a.code,
     'welltuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:welltuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*welltuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2216,7 +2216,7 @@ SELECT
     a.code,
     'xartemis' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:xartemis).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*xartemis.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2226,7 +2226,7 @@ SELECT
     a.code,
     'zotex hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zotex hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zotex hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2236,7 +2236,7 @@ SELECT
     a.code,
     'zotex-hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zotex-hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zotex-hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2246,7 +2246,7 @@ SELECT
     a.code,
     'baltussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:baltussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*baltussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2256,7 +2256,7 @@ SELECT
     a.code,
     'bron tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:bron tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*bron tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2266,7 +2266,7 @@ SELECT
     a.code,
     'bron-tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:bron-tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*bron-tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2276,7 +2276,7 @@ SELECT
     a.code,
     'brovex cb' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:brovex cb).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*brovex cb.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2286,7 +2286,7 @@ SELECT
     a.code,
     'brovex pb' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:brovex pb).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*brovex pb.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2296,7 +2296,7 @@ SELECT
     a.code,
     'brovex-cb' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:brovex-cb).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*brovex-cb.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2306,7 +2306,7 @@ SELECT
     a.code,
     'brovex-pb' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:brovex-pb).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*brovex-pb.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2316,7 +2316,7 @@ SELECT
     a.code,
     'canges xp' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:canges xp).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*canges xp.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2326,7 +2326,7 @@ SELECT
     a.code,
     'ceta plus' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ceta plus).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ceta plus.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2336,7 +2336,7 @@ SELECT
     a.code,
     'co-tuss v' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:co-tuss v).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*co-tuss v.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2346,7 +2346,7 @@ SELECT
     a.code,
     'co-tussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:co-tussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*co-tussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2356,7 +2356,7 @@ SELECT
     a.code,
     'codiclear' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codiclear).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codiclear.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2366,7 +2366,7 @@ SELECT
     a.code,
     'damason-p' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:damason-p).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*damason-p.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2376,7 +2376,7 @@ SELECT
     a.code,
     'dihistine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dihistine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dihistine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2386,7 +2386,7 @@ SELECT
     a.code,
     'dolagesic' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dolagesic).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dolagesic.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2396,7 +2396,7 @@ SELECT
     a.code,
     'dolophine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dolophine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dolophine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2406,7 +2406,7 @@ SELECT
     a.code,
     'duragesic' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duragesic).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duragesic.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2416,7 +2416,7 @@ SELECT
     a.code,
     'duramorph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duramorph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duramorph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2426,7 +2426,7 @@ SELECT
     a.code,
     'duromorph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duromorph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duromorph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2436,7 +2436,7 @@ SELECT
     a.code,
     'genocidin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:genocidin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*genocidin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2446,7 +2446,7 @@ SELECT
     a.code,
     'guaifen c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guaifen c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guaifen c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2456,7 +2456,7 @@ SELECT
     a.code,
     'guaifen-c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guaifen-c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guaifen-c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2466,7 +2466,7 @@ SELECT
     a.code,
     'hycoclear' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hycoclear).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hycoclear.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2476,7 +2476,7 @@ SELECT
     a.code,
     'hydro-pro' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydro-pro).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydro-pro.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2486,7 +2486,7 @@ SELECT
     a.code,
     'hydromide' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydromide).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydromide.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2496,7 +2496,7 @@ SELECT
     a.code,
     'hydron cp' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydron cp).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydron cp.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2506,7 +2506,7 @@ SELECT
     a.code,
     'hydron ex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydron ex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydron ex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2516,7 +2516,7 @@ SELECT
     a.code,
     'hydropane' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydropane).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydropane.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2526,7 +2526,7 @@ SELECT
     a.code,
     'hydrotuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydrotuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydrotuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2536,7 +2536,7 @@ SELECT
     a.code,
     'infumorph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:infumorph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*infumorph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2546,7 +2546,7 @@ SELECT
     a.code,
     'maxi tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:maxi tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*maxi tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2556,7 +2556,7 @@ SELECT
     a.code,
     'megagesic' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:megagesic).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*megagesic.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2566,7 +2566,7 @@ SELECT
     a.code,
     'meprozine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:meprozine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*meprozine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2576,7 +2576,7 @@ SELECT
     a.code,
     'merpergan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:merpergan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*merpergan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2586,7 +2586,7 @@ SELECT
     a.code,
     'methadone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:methadone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*methadone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2596,7 +2596,7 @@ SELECT
     a.code,
     'methadose' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:methadose).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*methadose.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2606,7 +2606,7 @@ SELECT
     a.code,
     'ms contin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ms contin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ms contin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2616,7 +2616,7 @@ SELECT
     a.code,
     'nuco-tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nuco-tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nuco-tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2626,7 +2626,7 @@ SELECT
     a.code,
     'numorphan' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:numorphan).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*numorphan.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2636,7 +2636,7 @@ SELECT
     a.code,
     'oxycodone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxycodone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxycodone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2646,7 +2646,7 @@ SELECT
     a.code,
     'oxycontin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:oxycontin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*oxycontin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2656,7 +2656,7 @@ SELECT
     a.code,
     'percolone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:percolone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*percolone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2666,7 +2666,7 @@ SELECT
     a.code,
     'pethidine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:pethidine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*pethidine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2676,7 +2676,7 @@ SELECT
     a.code,
     'pluratuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:pluratuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*pluratuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2686,7 +2686,7 @@ SELECT
     a.code,
     'polygesic' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:polygesic).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*polygesic.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2696,7 +2696,7 @@ SELECT
     a.code,
     'reprexain' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:reprexain).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*reprexain.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2706,7 +2706,7 @@ SELECT
     a.code,
     'rescudose' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:rescudose).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*rescudose.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2716,7 +2716,7 @@ SELECT
     a.code,
     'ro-codone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:ro-codone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*ro-codone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2726,7 +2726,7 @@ SELECT
     a.code,
     'sublocade' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:sublocade).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*sublocade.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2736,7 +2736,7 @@ SELECT
     a.code,
     'tramalgin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tramalgin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tramalgin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2746,7 +2746,7 @@ SELECT
     a.code,
     'tussicare' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussicare).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussicare.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2756,7 +2756,7 @@ SELECT
     a.code,
     'tussionex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussionex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussionex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2766,7 +2766,7 @@ SELECT
     a.code,
     'verdrocet' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:verdrocet).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*verdrocet.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2776,7 +2776,7 @@ SELECT
     a.code,
     'zodryl ac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zodryl ac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zodryl ac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2786,7 +2786,7 @@ SELECT
     a.code,
     'zodryl-ac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zodryl-ac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zodryl-ac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2796,7 +2796,7 @@ SELECT
     a.code,
     'a-g tussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:a-g tussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*a-g tussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2806,7 +2806,7 @@ SELECT
     a.code,
     'astramorph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:astramorph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*astramorph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2816,7 +2816,7 @@ SELECT
     a.code,
     'bitex oral' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:bitex oral).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*bitex oral.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2826,7 +2826,7 @@ SELECT
     a.code,
     'co-histine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:co-histine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*co-histine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2836,7 +2836,7 @@ SELECT
     a.code,
     'codimal bn' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codimal bn).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codimal bn.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2846,7 +2846,7 @@ SELECT
     a.code,
     'codimal dh' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codimal dh).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codimal dh.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2856,7 +2856,7 @@ SELECT
     a.code,
     'codimal ph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codimal ph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codimal ph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2866,7 +2866,7 @@ SELECT
     a.code,
     'cyclimorph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:cyclimorph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*cyclimorph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2876,7 +2876,7 @@ SELECT
     a.code,
     'despec-pdc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:despec-pdc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*despec-pdc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2886,7 +2886,7 @@ SELECT
     a.code,
     'dicomal-ph' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dicomal-ph).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dicomal-ph.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2896,7 +2896,7 @@ SELECT
     a.code,
     'duratuss h' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duratuss h).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duratuss h.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2906,7 +2906,7 @@ SELECT
     a.code,
     'endocodone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:endocodone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*endocodone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2916,7 +2916,7 @@ SELECT
     a.code,
     'guaifen ac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guaifen ac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guaifen ac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2926,7 +2926,7 @@ SELECT
     a.code,
     'guaifen-ac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guaifen-ac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guaifen-ac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2936,7 +2936,7 @@ SELECT
     a.code,
     'halotussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:halotussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*halotussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2946,7 +2946,7 @@ SELECT
     a.code,
     'hexatussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hexatussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hexatussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2956,7 +2956,7 @@ SELECT
     a.code,
     'hydro-tuss' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydro-tuss).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydro-tuss.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2966,7 +2966,7 @@ SELECT
     a.code,
     'hydrogesic' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydrogesic).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydrogesic.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2976,7 +2976,7 @@ SELECT
     a.code,
     'hydron kgs' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydron kgs).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydron kgs.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2986,7 +2986,7 @@ SELECT
     a.code,
     'idrocodone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:idrocodone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*idrocodone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -2996,7 +2996,7 @@ SELECT
     a.code,
     'levorfanol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:levorfanol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*levorfanol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3006,7 +3006,7 @@ SELECT
     a.code,
     'lortuss ex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:lortuss ex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*lortuss ex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3016,7 +3016,7 @@ SELECT
     a.code,
     'lortuss-ex' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:lortuss-ex).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*lortuss-ex.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3026,7 +3026,7 @@ SELECT
     a.code,
     'lortuss hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:lortuss hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*lortuss hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3036,7 +3036,7 @@ SELECT
     a.code,
     'lortuss-hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:lortuss-hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*lortuss-hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3046,7 +3046,7 @@ SELECT
     a.code,
     'meperidine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:meperidine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*meperidine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3056,7 +3056,7 @@ SELECT
     a.code,
     'morphabond' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:morphabond).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*morphabond.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3066,7 +3066,7 @@ SELECT
     a.code,
     'morphinone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:morphinone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*morphinone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3076,7 +3076,7 @@ SELECT
     a.code,
     'nalbuphine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nalbuphine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nalbuphine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3086,7 +3086,7 @@ SELECT
     a.code,
     'naltrexone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:naltrexone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*naltrexone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3096,7 +3096,7 @@ SELECT
     a.code,
     'p-v tussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:p-v tussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*p-v tussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3106,7 +3106,7 @@ SELECT
     a.code,
     'p-v-tussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:p-v-tussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*p-v-tussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3116,7 +3116,7 @@ SELECT
     a.code,
     'pentazocin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:pentazocin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*pentazocin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3126,7 +3126,7 @@ SELECT
     a.code,
     'physeptone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:physeptone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*physeptone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3136,7 +3136,7 @@ SELECT
     a.code,
     'probuphine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:probuphine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*probuphine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3146,7 +3146,7 @@ SELECT
     a.code,
     'propain hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:propain hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*propain hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3156,7 +3156,7 @@ SELECT
     a.code,
     'q-v tussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:q-v tussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*q-v tussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3166,7 +3166,7 @@ SELECT
     a.code,
     'roxicodone' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:roxicodone).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*roxicodone.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3176,7 +3176,7 @@ SELECT
     a.code,
     'tapentadol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tapentadol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tapentadol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3186,7 +3186,7 @@ SELECT
     a.code,
     'tussiclear' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:tussiclear).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*tussiclear.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3196,7 +3196,7 @@ SELECT
     a.code,
     'vicoprofen' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vicoprofen).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vicoprofen.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3206,7 +3206,7 @@ SELECT
     a.code,
     'zodryl dac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zodryl dac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zodryl dac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3216,7 +3216,7 @@ SELECT
     a.code,
     'zodryl dec' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zodryl dec).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zodryl dec.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3226,7 +3226,7 @@ SELECT
     a.code,
     'zodryl-dac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zodryl-dac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zodryl-dac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3236,7 +3236,7 @@ SELECT
     a.code,
     'zodryl-dec' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:zodryl-dec).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*zodryl-dec.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3246,7 +3246,7 @@ SELECT
     a.code,
     'butorphanol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:butorphanol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*butorphanol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3256,7 +3256,7 @@ SELECT
     a.code,
     'carfentanil' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:carfentanil).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*carfentanil.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3266,7 +3266,7 @@ SELECT
     a.code,
     'codahistine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:codahistine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*codahistine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3276,7 +3276,7 @@ SELECT
     a.code,
     'decohistine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:decohistine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*decohistine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3286,7 +3286,7 @@ SELECT
     a.code,
     'decotuss hd' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:decotuss hd).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*decotuss hd.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3296,7 +3296,7 @@ SELECT
     a.code,
     'decotuss-hd' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:decotuss-hd).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*decotuss-hd.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3306,7 +3306,7 @@ SELECT
     a.code,
     'duraganidin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duraganidin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duraganidin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3316,7 +3316,7 @@ SELECT
     a.code,
     'dynatuss df' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dynatuss df).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dynatuss df.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3326,7 +3326,7 @@ SELECT
     a.code,
     'dynatuss hc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dynatuss hc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dynatuss hc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3336,7 +3336,7 @@ SELECT
     a.code,
     'guaifen dac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guaifen dac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guaifen dac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3346,7 +3346,7 @@ SELECT
     a.code,
     'guaifen-dac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guaifen-dac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guaifen-dac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3356,7 +3356,7 @@ SELECT
     a.code,
     'guiatuss ac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guiatuss ac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guiatuss ac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3366,7 +3366,7 @@ SELECT
     a.code,
     'levorphanol' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:levorphanol).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*levorphanol.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3376,7 +3376,7 @@ SELECT
     a.code,
     'merperidine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:merperidine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*merperidine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3386,7 +3386,7 @@ SELECT
     a.code,
     'novahistine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:novahistine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*novahistine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3396,7 +3396,7 @@ SELECT
     a.code,
     'penyazocine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:penyazocine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*penyazocine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3406,7 +3406,7 @@ SELECT
     a.code,
     'poly tussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:poly tussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*poly tussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3416,7 +3416,7 @@ SELECT
     a.code,
     'poly-tussin' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:poly-tussin).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*poly-tussin.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3426,7 +3426,7 @@ SELECT
     a.code,
     'relasin-hcx' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:relasin-hcx).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*relasin-hcx.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3436,7 +3436,7 @@ SELECT
     a.code,
     'stagesic-10' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:stagesic-10).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*stagesic-10.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3446,7 +3446,7 @@ SELECT
     a.code,
     'stagesic 10' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:stagesic 10).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*stagesic 10.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3456,7 +3456,7 @@ SELECT
     a.code,
     'sudatuss sf' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:sudatuss sf).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*sudatuss sf.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3466,7 +3466,7 @@ SELECT
     a.code,
     'vidone oral' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vidone oral).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vidone oral.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3476,7 +3476,7 @@ SELECT
     a.code,
     'vidone pill' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:vidone pill).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*vidone pill.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3486,7 +3486,7 @@ SELECT
     a.code,
     'dhc continus' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:dhc continus).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*dhc continus.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3496,7 +3496,7 @@ SELECT
     a.code,
     'duradyne dhc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:duradyne dhc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*duradyne dhc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3506,7 +3506,7 @@ SELECT
     a.code,
     'guiatuss dac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guiatuss dac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guiatuss dac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3516,7 +3516,7 @@ SELECT
     a.code,
     'hydrotropine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:hydrotropine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*hydrotropine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3526,7 +3526,7 @@ SELECT
     a.code,
     'margesic a-c' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:margesic a-c).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*margesic a-c.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3536,7 +3536,7 @@ SELECT
     a.code,
     'poly-histine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:poly-histine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*poly-histine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3546,7 +3546,7 @@ SELECT
     a.code,
     'statuss oral' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:statuss oral).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*statuss oral.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3556,7 +3556,7 @@ SELECT
     a.code,
     'buprenorphine' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:buprenorphine).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*buprenorphine.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3566,7 +3566,7 @@ SELECT
     a.code,
     'donatussin dc' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:donatussin dc).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*donatussin dc.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3576,7 +3576,7 @@ SELECT
     a.code,
     'nasatuss oral' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:nasatuss oral).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*nasatuss oral.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3586,7 +3586,7 @@ SELECT
     a.code,
     'cheratussin ac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:cheratussin ac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*cheratussin ac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3596,7 +3596,7 @@ SELECT
     a.code,
     'donatussin max' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:donatussin max).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*donatussin max.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3606,7 +3606,7 @@ SELECT
     a.code,
     'cheratussin dac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:cheratussin dac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*cheratussin dac.*)$')
 UNION
 SELECT
     a.rxcui,
@@ -3616,7 +3616,7 @@ SELECT
     a.code,
     'guaiatussin dac' as keyword
 FROM rxnorm.rxnconso AS a
-WHERE regexp_like(a.str, '^.*(?i:guaiatussin dac).*$')
+WHERE REGEXP_LIKE(a.str, '^(?i:.*guaiatussin dac.*)$')
 
 )
 
@@ -3639,7 +3639,7 @@ AND a.code= b.code
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_rxnconso AS
+CREATE OR REPLACE VIEW opioid__medrt_rxnconso AS
 SELECT
     a.rxcui,
     a.str,
@@ -3647,13 +3647,13 @@ SELECT
     a.sab,
     a.code
 FROM rxnorm.rxnconso AS a,
-    opioid__acep_vsac AS b
+    opioid__medrt_vocab AS b
 WHERE
     a.rxcui = b.code
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_rxnconso_keywords AS
+CREATE OR REPLACE VIEW opioid__medrt_rxnconso_keywords AS
 SELECT
     a.rxcui,
     a.str,
@@ -3661,14 +3661,14 @@ SELECT
     a.sab,
     a.code,
     b.str AS keyword
-FROM opioid__acep_rxnconso AS a,
+FROM opioid__medrt_rxnconso AS a,
     opioid__keywords AS b
 WHERE
     lower(a.str) LIKE concat('%',b.STR, '%')
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_rxnsty AS
+CREATE OR REPLACE VIEW opioid__medrt_rxnsty AS
 SELECT
     a.rxcui,
     a.tui,
@@ -3677,13 +3677,13 @@ SELECT
     a.atui,
     a.cvf
 FROM rxnorm.rxnsty AS a,
-    opioid__acep_vsac AS b
+    opioid__medrt_vocab AS b
 WHERE
     a.rxcui = b.code
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_rxnrel AS
+CREATE OR REPLACE VIEW opioid__medrt_rxnrel AS
 SELECT
     a.rxcui1,
     a.rxaui1,
@@ -3699,13 +3699,13 @@ SELECT
     a.sl,
     a.rg
 FROM rxnorm.rxnrel AS a,
-    opioid__acep_vsac AS b
+    opioid__medrt_vocab AS b
 WHERE
     a.rxcui1 = b.code
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_rela AS
+CREATE OR REPLACE VIEW opioid__medrt_rela AS
 SELECT
     a.rxcui,
     a.str,
@@ -3715,7 +3715,7 @@ SELECT
     b.rel,
     b.rela,
     b.rui
-FROM opioid__acep_rxnconso_keywords AS a,
-    opioid__acep_RXNREL AS b
+FROM opioid__medrt_rxnconso_keywords AS a,
+    opioid__medrt_RXNREL AS b
 WHERE
     a.rxcui = b.rxcui1

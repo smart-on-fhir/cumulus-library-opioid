@@ -121,14 +121,14 @@ class StaticBuilder(base_table_builder.BaseTableBuilder):
     ):
         # fetch and add vsac tables
         self.tables = self.get_table_configs()
-        vsac_stewards = vsac.get_vsac_stewards(config)
+        vsac_stewards = vsac.get_vsac_stewards(config=config)
         for steward in vsac_stewards:
             vsac.download_oid_data(steward, config=config, path=self.base_path /'data')
             self.tables.append(
                 TableConfig(
                     file_path=self.base_path / f"data/{steward}.tsv",
                     delimiter="\t",
-                    table_name=f"{steward}_vsac",
+                    table_name=f"{steward}_vocab",
                     headers=["code","display"],
                     dtypes={"code": "str","display": "str"},
                     parquet_types=["STRING", "STRING"],

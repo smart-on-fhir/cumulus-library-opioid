@@ -4,7 +4,7 @@ import pathlib
 from cumulus_library import base_table_builder, base_utils, study_manifest
 from cumulus_library.template_sql import base_templates
 
-from cumulus_library_opioid.vocab import vsac
+from cumulus_library_opioid.vocab import umls, vsac
 
 
 class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
@@ -19,7 +19,8 @@ class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
         **kwargs,
     ):
         prefix = manifest.get_prefix_with_seperator()
-        stewards = vsac.get_vsac_stewards(config)
+        stewards = vsac.get_vsac_stewards(config=config) 
+        stewards += umls.get_umls_stewards(config=config)
         for steward in stewards:
             self.queries.append(
                 base_templates.get_base_template(
@@ -28,49 +29,57 @@ class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
                     steward=steward
                 )
             )
+            # self.queries.append(
+            #     base_templates.get_create_table_from_tables(
+            #         table_name=f'{prefix}{steward}_potential_rules',
+            #         # From a domain logic perspective, the _rela table is
+            #         # the leftmost table and we're annotating with the
+            #         # data from rxnconso. Since rxnconso is much, much
+            #         # larger, we're moving it to the left in the actual
+            #         # constructed join for athena performance reasons
+            #         tables = [
+            #             f'{prefix}all_rxnconso_keywords',
+            #             f'{prefix}{steward}_rela'
+            #         ],
+            #         table_aliases = ['r', 's'],
+            #         columns =[
+            #             's.rxcui',
+            #             'r.rxcui',
+            #             's.tty',
+            #             'r.tty',
+            #             's.rui',
+            #             's.rel',
+            #             's.rela',
+            #             's.str',
+            #             'r.str',
+            #             'r.keyword'
+            #         ],
+            #         column_aliases={ 
+            #             's.rxcui': 'rxcui1',
+            #             's.tty': 'tty1',
+            #             's.str': 'str1',
+            #             'r.rxcui': 'rxcui2',
+            #             'r.tty': 'tty2',
+            #             'r.str': 'str2',
+            #         },
+            #         join_clauses= [
+            #             's.rxcui2 = r.rxcui',
+            #             ('s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM '
+            #             f'{prefix}{steward}_rxnconso_keywords)')
+            #         ],
+            #     )
+            # )
             self.queries.append(
-                base_templates.get_create_view_from_tables(
-                    view_name=f'{prefix}{steward}_potential_rules',
-                    # From a domain logic perspective, the _rela table is
-                    # the leftmost table and we're annotating with the
-                    # data from rxnconso. Since rxnconso is much, much
-                    # larger, we're moving it to the left in the actual
-                    # constructed join for athena performance reasons
-                    tables = [
-                        f'{prefix}all_rxnconso_keywords',
-                        f'{prefix}{steward}_rela'
-                    ],
-                    table_aliases = ['r', 's'],
-                    columns =[
-                        's.rxcui',
-                        'r.rxcui',
-                        's.tty',
-                        'r.tty',
-                        's.rui',
-                        's.rel',
-                        's.rela',
-                        's.str',
-                        'r.str',
-                        'r.keyword'
-                    ],
-                    column_aliases={ 
-                        's.rxcui': 'rxcui1',
-                        's.tty': 'tty1',
-                        's.str': 'str1',
-                        'r.rxcui': 'rxcui2',
-                        'r.tty': 'tty2',
-                        'r.str': 'str2',
-                    },
-                    join_clauses= [
-                        's.rxcui2 = r.rxcui',
-                        ('s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM '
-                        f'{prefix}{steward}_rxnconso_keywords)')
-                    ],
+                base_templates.get_base_template(
+                    'create_potential_rules',
+                    self.base_path / "template_sql",
+                    steward=steward,
+                    prefix=prefix
                 )
             )
             self.queries.append(
-                base_templates.get_create_view_from_tables(
-                    view_name=f'{prefix}{steward}_included_rels',
+                base_templates.get_create_table_from_tables(
+                    table_name=f'{prefix}{steward}_included_rels',
 
                     tables = [
                         f'{prefix}{steward}_potential_rules',

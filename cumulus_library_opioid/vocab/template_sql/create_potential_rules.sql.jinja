@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS {{ prefix }}{{ steward }}_potential_rules AS
+
+WITH --rxcui_list AS(
+    
+--),
+rel_list AS (
+SELECT
+    s.rxcui AS rxcui1,
+    r.rxcui AS rxcui2,
+    s.tty AS tty1,
+    r.tty AS tty2,
+    s.rui,
+    s.rel,
+    s.rela,
+    s.str AS str1,
+    r.str AS str2,
+    r.keyword
+FROM opioid__all_rxnconso_keywords AS r,
+    opioid__medrt_rela AS s
+WHERE
+    s.rxcui2 = r.rxcui
+)
+SELECT * FROM rel_list
+WHERE rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM opioid__medrt_rxnconso_keywords)

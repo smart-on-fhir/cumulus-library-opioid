@@ -75,7 +75,9 @@ how to apply these rules later.
 
 A mapping of abbreviations for TTY codes to human readable display names.
 
-### `[steward]_vsac` (prev curated)
+This should be moved into the UMLS study.
+
+### `[steward]_vocab` (prev curated)
 
 A list of codes and display names derived by looking up a specific value set
 OID via the VSAC API. It should be of the same format as `all_rxnconso_keywords`

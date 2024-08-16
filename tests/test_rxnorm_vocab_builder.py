@@ -5,7 +5,7 @@ from unittest import mock
 
 from cumulus_library import study_manifest
 
-from cumulus_library_opioid.vocab import rxnorm_vsac_builder, static_builder
+from cumulus_library_opioid.vocab import rxnorm_vocab_builder, static_builder
 
 
 @mock.patch.dict(
@@ -13,7 +13,7 @@ from cumulus_library_opioid.vocab import rxnorm_vsac_builder, static_builder
     clear=True,
 )
 @mock.patch("cumulus_library.apis.umls.UmlsApi")
-def test_rxnorm_vsac_builder(mock_api, mock_db_config_rxnorm):
+def test_rxnorm_vocab_builder(mock_api, mock_db_config_rxnorm):
     with open(pathlib.Path(__file__).parent / "test_data/vsac_resp.json") as f:
         resp = json.load(f)
     mock_api.return_value.get_vsac_valuesets.return_value = resp
@@ -24,7 +24,7 @@ def test_rxnorm_vsac_builder(mock_api, mock_db_config_rxnorm):
 
     s_builder = static_builder.StaticBuilder()    
     s_builder.execute_queries(config=mock_db_config_rxnorm, manifest=manifest)
-    builder = rxnorm_vsac_builder.RxNormVsacBuilder()
+    builder = rxnorm_vocab_builder.RxNormVocabBuilder()
     builder.execute_queries(config=mock_db_config_rxnorm, manifest=manifest)
     res = cursor.execute('select * from opioid__acep_rela').fetchall()
     assert len(res) == 900

@@ -35,13 +35,3 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__umls_tty` (
 STORED AS PARQUET
 LOCATION 's3://bucket/db_path/opioid/umls_tty'
 tblproperties ("parquet.compression"="SNAPPY");
-
--- ###########################################################
-
-CREATE EXTERNAL TABLE IF NOT EXISTS `cumulus_mhg_dev_db`.`opioid__acep_vsac` (
-    code STRING,
-    display STRING
-)
-STORED AS PARQUET
-LOCATION 's3://bucket/db_path/opioid/acep'
-tblproperties ("parquet.compression"="SNAPPY");

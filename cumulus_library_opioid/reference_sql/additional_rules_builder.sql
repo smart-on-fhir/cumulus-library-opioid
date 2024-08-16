@@ -25,7 +25,7 @@ CREATE TABLE opioid__search_rules_descriptions AS
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_potential_rules AS
+CREATE TABLE IF NOT EXISTS opioid__medrt_potential_rules AS
 SELECT
     s.rxcui AS rxcui1,
     r.rxcui AS rxcui2,
@@ -38,14 +38,14 @@ SELECT
     r.str AS str2,
     r.keyword
 FROM opioid__all_rxnconso_keywords AS r,
-    opioid__acep_rela AS s
+    opioid__medrt_rela AS s
 WHERE
     s.rxcui2 = r.rxcui
-    AND s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM opioid__acep_rxnconso_keywords)
+    AND s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM opioid__medrt_rxnconso_keywords)
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_included_rels AS
+CREATE TABLE IF NOT EXISTS opioid__medrt_included_rels AS
 SELECT
     r.rxcui1,
     r.rxcui2,
@@ -57,7 +57,7 @@ SELECT
     r.str1,
     r.str2,
     r.keyword
-FROM opioid__acep_potential_rules AS r,
+FROM opioid__medrt_potential_rules AS r,
     opioid__search_rules AS e
 WHERE
     r.REL NOT IN ('RB', 'PAR')
@@ -68,7 +68,7 @@ WHERE
 
 -- ###########################################################
 
-CREATE OR REPLACE VIEW opioid__acep_included_keywords AS
+CREATE OR REPLACE VIEW opioid__medrt_included_keywords AS
 SELECT
     r.rxcui1,
     r.rxcui2,
@@ -80,7 +80,7 @@ SELECT
     r.str1,
     r.str2,
     r.keyword
-FROM opioid__acep_potential_rules AS r
+FROM opioid__medrt_potential_rules AS r
 WHERE
     r.REL NOT IN ('RB', 'PAR')
     AND length(r.keyword) >= 4
@@ -88,7 +88,7 @@ WHERE
 
 -- ###########################################################
 
-CREATE TABLE opioid__acep_combined_ruleset AS
+CREATE TABLE opioid__medrt_combined_ruleset AS
 SELECT
 rxcui1,
 rxcui2,
@@ -100,7 +100,7 @@ rela,
 str1,
 str2,
 keyword
-FROM opioid__acep_included_keywords
+FROM opioid__medrt_included_keywords
 UNION
 SELECT
 rxcui1,
@@ -113,5 +113,5 @@ rela,
 str1,
 str2,
 keyword
-FROM opioid__acep_included_rels
+FROM opioid__medrt_included_rels
 

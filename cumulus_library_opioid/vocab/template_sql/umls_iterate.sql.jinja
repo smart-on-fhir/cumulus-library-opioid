@@ -1,0 +1,30 @@
+{%- import 'syntax.sql.jinja' as syntax -%}
+{%- if tier == 0  %}
+CREATE TABLE {{ prefix }}{{ steward }}_vocab_rel AS 
+WITH vocab AS (
+    SELECT cui, tty, code, str FROM umls.mrconso
+    WHERE sab = '{{ sab }}'
+    AND (
+        {%- for term in search_terms %}
+        {{ syntax.or_delineate(loop) }} {{ syntax.ilike('str', '%' + term + '%') }}
+        {%- endfor %}
+    )
+)
+
+SELECT DISTINCT cast('{{ tier }}' AS VARCHAR) as tier, m.cui1 AS cui,m.cui1, m.rel, m.rela, m.cui2, m.sab, v.tty, v.code, v.str
+FROM umls.mrrel_is_a AS m, vocab AS v
+WHERE m.cui1 = v.cui
+
+{%- else %}
+INSERT INTO {{ prefix }}{{ steward }}_vocab_rel
+SELECT DISTINCT 
+'{{ tier }}' as tier,r.cui2 AS cui, r.cui1, r.rel, r.rela,r.cui2,d.sab,d.tty, d.code,d.str
+FROM 
+{{ prefix }}{{ steward }}_vocab_rel AS p,
+umls.mrrel_is_a AS r, 
+umls.mrconso_drugs AS d
+
+WHERE r.cui1 = p.cui2
+AND r.sab = d.sab
+AND r.cui2 = d.cui AND r.cui2 NOT IN (SELECT DISTINCT cui from {{ prefix }}{{ steward }}_vocab_rel)
+{%- endif %}
