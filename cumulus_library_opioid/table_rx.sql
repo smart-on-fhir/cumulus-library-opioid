@@ -2,28 +2,26 @@ drop table if exists opioid__medicationrequest;
 
 create table opioid__medicationrequest as
 select
-    status,
-    intent,
-    authoredon,
+    mr.status,
+    mr.intent,
+    mr.authoredon,
     date_trunc('week', date(authoredon)) AS authoredon_week,
-    authoredon_month,
-    rx_system,
-    rx_code,
-    coalesce(rx_display, 'None') as rx_display,
-    category_code_row.system as rx_category_system,
-    category_code_row.code as rx_category_code,
-    category_code_row.display as rx_category_display,
+    mr.authoredon_month,
+    mr.medication_system as rx_system,
+    mr.medication_code as rx_code,
+    mr.medication_display as rx_display,
+    mr.category_system as rx_category_system,
+    mr.category_code as rx_category_code,
+    mr.category_display as rx_category_display,
     p.gender,
     p.race_display,
     p.ethnicity_display,
-    p.postalcode3,
+    p.postalcode_3,
     mr.subject_ref,
-    mr.med_admin_id
+    mr.id as med_admin_id
 from
     core__patient as p,
-    core__medicationrequest as mr,
-    unnest (category) as t1(category_row),
-    unnest (category_row.coding) as t2(category_code_row)
+    core__medicationrequest as mr
 where
     p.subject_ref = mr.subject_ref;
 
