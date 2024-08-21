@@ -29,46 +29,46 @@ class AdditionalRulesBuilder(base_table_builder.BaseTableBuilder):
                     steward=steward
                 )
             )
-            # self.queries.append(
-            #     base_templates.get_create_table_from_tables(
-            #         table_name=f'{prefix}{steward}_potential_rules',
-            #         # From a domain logic perspective, the _rela table is
-            #         # the leftmost table and we're annotating with the
-            #         # data from rxnconso. Since rxnconso is much, much
-            #         # larger, we're moving it to the left in the actual
-            #         # constructed join for athena performance reasons
-            #         tables = [
-            #             f'{prefix}all_rxnconso_keywords',
-            #             f'{prefix}{steward}_rela'
-            #         ],
-            #         table_aliases = ['r', 's'],
-            #         columns =[
-            #             's.rxcui',
-            #             'r.rxcui',
-            #             's.tty',
-            #             'r.tty',
-            #             's.rui',
-            #             's.rel',
-            #             's.rela',
-            #             's.str',
-            #             'r.str',
-            #             'r.keyword'
-            #         ],
-            #         column_aliases={ 
-            #             's.rxcui': 'rxcui1',
-            #             's.tty': 'tty1',
-            #             's.str': 'str1',
-            #             'r.rxcui': 'rxcui2',
-            #             'r.tty': 'tty2',
-            #             'r.str': 'str2',
-            #         },
-            #         join_clauses= [
-            #             's.rxcui2 = r.rxcui',
-            #             ('s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM '
-            #             f'{prefix}{steward}_rxnconso_keywords)')
-            #         ],
-            #     )
-            # )
+            self.queries.append(
+                base_templates.get_create_table_from_tables(
+                    table_name=f'{prefix}{steward}_potential_rules',
+                    # From a domain logic perspective, the _rela table is
+                    # the leftmost table and we're annotating with the
+                    # data from rxnconso. Since rxnconso is much, much
+                    # larger, we're moving it to the left in the actual
+                    # constructed join for athena performance reasons
+                    tables = [
+                        f'{prefix}all_rxnconso_keywords',
+                        f'{prefix}{steward}_rela'
+                    ],
+                    table_aliases = ['r', 's'],
+                    columns =[
+                        's.rxcui',
+                        'r.rxcui',
+                        's.tty',
+                        'r.tty',
+                        's.rui',
+                        's.rel',
+                        's.rela',
+                        's.str',
+                        'r.str',
+                        'r.keyword'
+                    ],
+                    column_aliases={ 
+                        's.rxcui': 'rxcui1',
+                        's.tty': 'tty1',
+                        's.str': 'str1',
+                        'r.rxcui': 'rxcui2',
+                        'r.tty': 'tty2',
+                        'r.str': 'str2',
+                    },
+                    join_clauses= [
+                        's.rxcui2 = r.rxcui',
+                        ('s.rxcui2 NOT IN (SELECT DISTINCT RXCUI FROM '
+                        f'{prefix}{steward}_rxnconso_keywords)')
+                    ],
+                )
+            )
             self.queries.append(
                 base_templates.get_base_template(
                     'create_potential_rules',

@@ -84,7 +84,7 @@ def generate_umls_tables(
             prev=0
             current = cursor.execute(f"SELECT count(*) from {prefix}{steward}_vocab_rel").fetchone()[0]
             print(current)
-            while current != prev and tier !=15:
+            while current != prev:
                 prev = current
                 tier +=1
                 progress.update(

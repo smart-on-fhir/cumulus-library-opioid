@@ -4,6 +4,7 @@ CREATE TABLE {{ prefix }}{{ steward }}_vocab_rel AS
 WITH vocab AS (
     SELECT cui, tty, code, str FROM umls.mrconso
     WHERE sab = '{{ sab }}'
+    AND tty NOT IN ('RB', 'PAR')
     AND (
         {%- for term in search_terms %}
         {{ syntax.or_delineate(loop) }} {{ syntax.ilike('str', '%' + term + '%') }}
@@ -14,6 +15,7 @@ WITH vocab AS (
 SELECT DISTINCT cast('{{ tier }}' AS VARCHAR) as tier, m.cui1 AS cui,m.cui1, m.rel, m.rela, m.cui2, m.sab, v.tty, v.code, v.str
 FROM umls.mrrel_is_a AS m, vocab AS v
 WHERE m.cui1 = v.cui
+
 
 {%- else %}
 INSERT INTO {{ prefix }}{{ steward }}_vocab_rel
@@ -26,5 +28,7 @@ umls.mrconso_drugs AS d
 
 WHERE r.cui1 = p.cui2
 AND r.sab = d.sab
+AND r.sab IN ('ATC','CVX','DRUGBANK','GS','MMSL','MMX','MTHCMSFRF','MTHSPL','NDDF','RXNORM','SNOMEDCT_US','USP','VANDF')
+AND d.tty NOT IN ('RB', 'PAR')
 AND r.cui2 = d.cui AND r.cui2 NOT IN (SELECT DISTINCT cui from {{ prefix }}{{ steward }}_vocab_rel)
 {%- endif %}
