@@ -1,23 +1,14 @@
-# This is our stock pyproject.toml, which we use for installing dependencies and
-# packaging. You don't have to touch this if you don't want to! But if you're
-# making a distributable, or need extra python dependencies, this is a good 
-# place to put that info.
-
 [project]
-# Change this to reference the name of your study
 name = "cumulus-library-opioid"
-# You can leave this alone to start. Only worry about it when you need to create
-# a package for other users
-version = "0.1.4"
-requires-python = ">= 3.9"
+version = "1.0"
+requires-python = ">= 3.11"
 # If you need python libraries, add them here
 dependencies = [
-    # we'll try to keep this template up to date, but it's recommended to use the
-    # minor version of cumulus-library
-    "cumulus-library >= 1.4.0",
-    "sqlfluff == 2.0.2",
+    "cumulus-library >= 3, <4",
+    "sqlfluff >=3",
     "xlrd",
-    "openpyxl"
+    "openpyxl",
+    "pandas"
 ]
 # You can alter this to discuss your study specifics
 description = "Opioid Overdose and Opioid Use Disorder (OUD)"
@@ -43,10 +34,28 @@ build-backend = "flit_core.buildapi"
 
 [project.optional-dependencies]
 dev = [
-    "black",
+    "ruff < 0.6",
     "pylint",    
+]
+test = [
+    "pytest",    
 ]
 
 [tool.flit.sdist]
-# change this to the name of the study folder inside of the module directory
-include = ["opioid/"]
+include = ["LICENSE"]
+
+[tool.ruff.lint]
+allowed-confusables = ["’"]  # allow proper apostrophes
+select = [
+    "A",  # prevent using keywords that clobber python builtins
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "I",  # isort
+    "PLE",  # pylint errors
+    "RUF",  # the ruff developer's own rules
+    "S",  # bandit security warnings
+    "UP",  # alert you when better syntax is available in your python version
+]
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["F401"]  # init files hold API, so not using imports is intentional
+"tests/**" = ["S"]  # tests do suspicious stuff that's fine, actually
