@@ -8,7 +8,7 @@
 drop   table if exists   MRCONSO_drug;
 create table             MRCONSO_drug
 select distinct * from umls.MRCONSO
-where SAB in ('ATC','CVX','DRUGBANK','GS','MMSL','MMX','MTHCMSFRFMTHSPL','NDDF','RXNORM','SNOMEDCT_US','USP','VANDF')
+where SAB in ('ATC','CVX','DRUGBANK','GS','MED-RT','MMSL','MMX','MTHCMSFRF','MTHSPL','NDDF','RXNORM','SNOMEDCT_US','USP','VANDF')
 ;
 call create_index('MRCONSO_drug', 'CUI');
 call create_index('MRCONSO_drug', 'TTY');
