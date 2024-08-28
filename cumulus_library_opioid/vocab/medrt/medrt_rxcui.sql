@@ -6,6 +6,8 @@ call log('medrt_rxcui.sql', 'begin');
 -- ############################################################################
 call log('curated_cui_rxcui', 'refresh');
 
+call utf8_unicode('curated_cui');
+
 drop    table if exists curated_cui_rxcui;
 create  table           curated_cui_rxcui
 select  distinct        C.*, R.RXCUI

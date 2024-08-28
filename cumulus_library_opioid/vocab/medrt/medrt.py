@@ -30,7 +30,7 @@ RXNORM_SAB = [
 
 
 def drop_tables():
-    _tables = [f"MRREL_medrt_cui{tier}" for tier in range(1, 25)]
+    _tables = [f"MRREL_medrt_cui{tier}" for tier in range(1, 10)]
     _tables += ["MRCONSO_drug", "MRCONSO_medrt", "MRREL_medrt"]
     return "DROP table if exists " + ", ".join(_tables) + ";\n"
 
@@ -172,8 +172,8 @@ def medrt(where: str):
         linebreak(),
     ]
 
-    # TODO: notice, 15 is the soft "max" depth of MEDRT, the recursion shoudl STOP when there are new matches.
-    for tier in range(2, 25):
+    # TODO: notice, this is the soft "max" depth of MEDRT, the recursion shoudl STOP when there are new matches.
+    for tier in range(2, 10):
         _sql.append(MRREL_medrt_cui(tier))
         _sql.append(curated_cui(tier))
         _sql.append(MRREL_medrt_cui_cnt(tier))
