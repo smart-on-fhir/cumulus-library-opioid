@@ -54,7 +54,11 @@ cd data; rm -f curated.tsv; ln -s $CURATED.tsv curated.tsv; cd ..
 ####
 export CURATED='opioid'
 source env_table_schema.sh
-$mysql_table_schema -e "insert into opioid.curated_steward select distinct 'opioid5', RXCUI, STR from opioid5.curated"
+$mysql_table_schema -e "insert into opioid.curated_steward select distinct 'opioid.curated',  RXCUI, STR from opioid.curated"
+$mysql_table_schema -e "insert into opioid.curated_steward select distinct 'opioid2.curated', RXCUI, STR from opioid2.curated"
+$mysql_table_schema -e "insert into opioid.curated_steward select distinct 'opioid3.curated', RXCUI, STR from opioid3.curated"
+$mysql_table_schema -e "insert into opioid.curated_steward select distinct 'opioid4.curated', RXCUI, STR from opioid4.curated"
+$mysql_table_schema -e "insert into opioid.curated_steward select distinct 'opioid5.curated', RXCUI, STR from opioid5.curated"
 $mysql_table_schema -e "drop table if exists opioid.curated"
 $mysql_table_schema -e "create table opioid.curated select distinct RXCUI, STR from opioid.curated_steward order by RXCUI, STR"
 
