@@ -165,15 +165,123 @@ delete from human_mdpartners_non where RXCUI = 'RXCUI';
 
 alter table human add column vsac varchar(50);
 
-insert into human select *, 'acep'      from human_acep where votes > 0;
-insert into human select *, 'CancerLinQ' from human_CancerLinQ where votes > 0;
-insert into human select *, 'ecri'      from human_ecri where votes > 0;
-insert into human select *, 'impaq'     from human_impaq where votes > 0;
-insert into human select *, 'keywords'  from human_keywords where votes > 0;
-insert into human select *, 'mdpartners_non'  from human_mdpartners_non where votes > 0;
-insert into human select *, 'medrt_non'  from human_medrt_non where votes > 0;
-insert into human select *, 'mitre'  from human_mitre where votes > 0;
-insert into human select *, 'ucdavis'  from human_ucdavis where votes > 0;
+insert into human select *, 'acep'      from human_acep;
+insert into human select *, 'CancerLinQ' from human_CancerLinQ;
+insert into human select *, 'ecri'      from human_ecri;
+insert into human select *, 'impaq'     from human_impaq;
+insert into human select *, 'keywords'  from human_keywords;
+insert into human select *, 'mdpartners_non'  from human_mdpartners_non;
+insert into human select *, 'medrt_non'  from human_medrt_non;
+insert into human select *, 'mitre'  from human_mitre;
+insert into human select *, 'ucdavis'  from human_ucdavis;
+
+drop    table if exists conflict_false_pos;
+create  table           conflict_false_pos
+select  distinct rxcui, str, vsac from    human
+where   VOTES = 0
+and     vsac not in ('keywords')
+order by         rxcui, str, vsac;
+
+drop    table if exists conflict_false_pos_count;
+create  table           conflict_false_pos_count
+select vsac, count(distinct rxcui) from conflict_false_pos
+group by vsac order by vsac;
+
+drop    table if exists conflict_false_neg;
+create  table           conflict_false_neg
+select  distinct rxcui, str, vsac from    human
+where   VOTES > 0
+and     vsac not in ('medrt_non', 'mdpartners_non', 'keywords')
+order by  rxcui, str, vsac;
+
+drop    table if exists conflict_false_neg_count;
+create  table           conflict_false_neg_count
+select vsac, count(distinct rxcui) from conflict_false_neg
+group by vsac order by vsac;
+
+drop    table if exists opioid_valueset;
+create  table           opioid_valueset
+select  distinct rxcui, str from curated
+UNION
+select distinct rxcui, str from conflict_false_neg
+order by rxcui,str;
 
 
 
+
+--    select count(distinct rxcui) cnt from conflict_false_neg where vsac not in ('medrt_non', 'mdpartners_non', 'ucdavis', 'keywords');
+--    --    +-----+
+--    --    |  33 |
+--    --    +-----+
+--
+--    select vsac, count(distinct rxcui) cnt from conflict_false_neg group by vsac order by cnt desc
+--    --    +----------------+-----+
+--    --    | vsac           | cnt |
+--    --    +----------------+-----+
+--    --    | medrt_non      | 129 |
+--    --    | mdpartners_non |  30 |
+--    --    | CancerLinQ     |  14 |
+--    --    | mitre          |  11 |
+--    --    | keywords       |   5 |
+--    --    | ecri           |   4 |
+--    --    | ucdavis        |   1 |
+--    --    +----------------+-----+
+--
+--    select vsac, count(distinct rxcui) cnt from conflict_false_pos group by vsac order by cnt desc;
+--    --    +------------+-----+
+--    --    | vsac       | cnt |
+--    --    +------------+-----+
+--    --    | keywords   | 139 |
+--    --    | ucdavis    |  57 |
+--    --    | impaq      |  12 |
+--    --    | medrt_non  |   6 |
+--    --    | mitre      |   4 |
+--    --    | CancerLinQ |   2 |
+--    --    | acep       |   1 |
+--    --    | ecri       |   1 |
+--    --    +------------+-----+
+--
+--    select count(distinct rxcui) from jaccard_superset_opioid where vsac not in ('opioid', 'medrt', 'bioportal');
+--    --    +-----------------------+
+--    --    |                  1956 |
+--    --    +-----------------------+
+--
+--    select vsac, count(distinct rxcui) from jaccard_superset_opioid where vsac not in ('opioid', 'medrt', 'bioportal', 'lantana') group by vsac;
+--    --    +------------+-----------------------+
+--    --    | vsac       | count(distinct rxcui) |
+--    --    +------------+-----------------------+
+--    --    | acep       |                   836 |
+--    --    | CancerLinQ |                  1612 |
+--    --    | ecri       |                   455 |
+--    --    | impaq      |                  1004 |
+--    --    | lantana    |                   379 |
+--    --    | math_349   |                   349 |
+--    --    | mitre      |                   753 |
+--    --    +------------+-----------------------+
+--
+--    select count(distinct rxcui) as cnt from jaccard_superset_non where vsac not in ('medrt_non');
+--    --    +------+
+--    --    | 3877 |
+--    --    +------+
+--
+--    select vsac, count(distinct rxcui) as cnt from jaccard_superset_non where vsac not in ('medrt_non') group by vsac;
+--    --    +----------------+------+
+--    --    | vsac           | cnt  |
+--    --    +----------------+------+
+--    --    | atc_non        | 1968 |
+--    --    | CancerLinQ_non | 1305 |
+--    --    | mdpartners_non | 1906 |
+--    --    | medrt_non      | 2048 | << do not count
+--    --    +----------------+------+
+--
+--    select count(distinct rxcui) as cnt from jaccard_superset_rwd;
+--
+--    select vsac, count(distinct rxcui) as cnt from jaccard_superset_rwd group by vsac;
+--    --    +---------+------+
+--    --    | vsac    | cnt  |
+--    --    +---------+------+
+--    --    | bwh     |  228 |
+--    --    | ucdavis | 1137 |
+--    --    +---------+------+
+--
+--

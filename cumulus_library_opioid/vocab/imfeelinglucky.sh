@@ -7,9 +7,9 @@ echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 echo "./imfeelinglucky.sh"
 echo "@start"
 
- ./drop_all.sh
-# ./prepare.sh
- ./medrt.sh
+./drop_all.sh
+./prepare.sh
+./medrt.sh
 ./make_all.sh
 ./make_opioid.sh
 ./jaccard.sh

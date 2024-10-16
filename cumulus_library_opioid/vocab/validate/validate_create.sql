@@ -10,16 +10,16 @@ select  distinct vsac1, RXCUI
 from    jaccard_difference
 where   vsac2='all_rxcui_str' order by vsac1, RXCUI;
 
--- ###########################################################################
-call log('missed_RXCUI', 'opioid missed  ucdavis (without join)');
-
-drop    table   if exists   missed_RXCUI;
-create  table               missed_RXCUI
-select  distinct RXCUI
-from    opioid.jaccard_difference
-where   vsac1='ucdavis'
-and     vsac2='opioid'
-order by RXCUI;
+---- ###########################################################################
+--call log('missed_RXCUI', 'opioid missed  ucdavis (without join)');
+--
+--drop    table   if exists   missed_RXCUI;
+--create  table               missed_RXCUI
+--select  distinct RXCUI
+--from    opioid.jaccard_difference
+--where   vsac1='ucdavis'
+--and     vsac2='opioid'
+--order by RXCUI;
 
 -- ###########################################################################
 call log('missed_RXCUI', 'opioid missed  ucdavis (WITH join)');
@@ -112,6 +112,33 @@ and     J.RXCUI = A.RXCUI
 order by A.RXCUI, A.STR;
 
 -- ###########################################################################
+call log('missed', '... aggregate');
+
+drop    table   if exists   missed, missed_temp;
+create  table               missed
+        select RXCUI, STR, 'acep' as valueset from missed_acep
+UNION   select RXCUI, STR, 'bwh' from missed_bwh
+UNION   select RXCUI, STR, 'CancerLinQ' from missed_CancerLinQ
+UNION   select RXCUI, STR, 'ecri' from missed_ecri
+UNION   select RXCUI, STR, 'impaq' from missed_impaq
+UNION   select RXCUI, STR, 'keywords' from missed_keywords
+UNION   select RXCUI, STR, 'lantana' from missed_lantana
+UNION   select RXCUI, STR, 'mitre' from missed_mitre
+UNION   select RXCUI, STR, 'ucdavis' from missed_ucdavis;
+
+create table missed_temp select * from missed order by RXCUI, valueset, STR;
+drop   table missed;
+alter  table missed_temp rename to missed;
+
+drop table if exists missed_rxcui;
+create table         missed_RXCUI
+select distinct RXCUI from missed;
+
+drop table if exists missed_rxcui_str;
+create table         missed_rxcui_str
+select distinct RXCUI,STR from missed;
+
+-- ###########################################################################
 call log('falsepos_*******', 'False Positive entries, should be NON opioid');
 
 drop    table   if exists   falsepos_atc_non;
@@ -162,3 +189,16 @@ call log('validate.sql', 'done');
 --    from    falsepos_atc_non FP
 --    LEFT JOIN   human_atc_non ATC on FP.RXCUI=ATC.RXCUI
 --    order by FP.RXCUI, FP.STR;
+
+drop    table   if exists   disagreement;
+create  table               disagreement
+select distinct * from jaccard_intersect
+where
+(vsac1 like '%_non%' and vsac2 not like '%_non%')
+OR
+(vsac2 like '%_non%' and vsac1 not like '%_non%');
+
+drop    table   if exists   disagreement_rxcui;
+create  table               disagreement_rxcui
+select distinct RXCUI from disagreement order by RXCUI;
+

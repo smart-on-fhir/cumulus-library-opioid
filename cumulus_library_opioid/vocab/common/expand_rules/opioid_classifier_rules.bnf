@@ -1,0 +1,78 @@
+OpioidClassifierRule::= ConceptPair Class
+
+DrugPair::= 'drug 1' (Brand|Generic|Ingredient|MultipleIngredients) 'relation' (Ingredient|Tradename|Reformulation|DoseForm|QuantifiedForm|Form) (to|of|is|has) 'drug 2' (Brand|Generic|Ingredient|MultipleIngredients)
+
+Class::= (True|False|Keyword)
+
+Keyword::= (True 'if opioid keyword matches' | False)
+
+ConceptPairXXX::= 'concept 1' (Brand|Generic|Ingredient|MultipleIngredients) 'relation' (Ingredient|Tradename|Reformulation|DoseForm|QuantifiedForm|Form) (to|of|is|has) 'concept 2' (Brand|Generic|Ingredient|MultipleIngredients)
+
+
+=====
+
+
+OpioidClassifier::= OpioidClassifierRule+
+OpioidClassifierRule::= ConceptPair Class
+
+ConceptPair::= 'concept 1' (Brand|Generic|Ingredient|IngredientMulti) 'relation' (Ingredient|Tradename|Reformulation|DoseForm|QuantifiedForm|Form) (to|of|is|has) 'concept 2' (Brand|Generic|Ingredient|IngredientMulti)
+
+Class::= (True|False|Keyword)
+
+Keyword::= (True 'if opioid keyword matches' | False)
+
+
+
+
+
+
+
+
+Classifier::=ClassifierRule+
+ClassifierRule::= TermType RELA TermType
+TermType::=
+
+RELA::= (Ingredient|Tradename|Reformulation|DoseForm|QuantifiedForm|Form) (to|of|is|has)
+
+
+====
+
+Classifier::=ClassifierRule+
+ClassifierRule::= TermType RELA TermType
+TermType::= Brand|Generic|Ingredient|IngredientMulti
+
+RELA::= (Ingredient|Tradename|Reformulation|DoseForm|QuantifiedForm|Form) (to|of|is|has)
+
+BrandName::= (BN| BPCK| SBD| SBDC| SBDF| SBDFP| SBDG)
+DoseForm::= DF DFG
+Generic::= GPCK
+Ingredient::= IN PIN
+IngredientMulti::=MIN
+
+reformulated_to
+reformulation_of
+tradename_of
+has_precise_ingredient
+ingredient_of
+has_dose_form
+contains
+
+has_tradename
+part_of
+has_form
+boss_of
+has_part
+ingredients_of
+precise_ingredient_of
+form_of
+has_ingredient
+contained_in
+quantified_form_of
+has_quantified_form
+consists_of
+isa
+constitutes
+inverse_isa
+has_doseformgroup
+has_ingredients
+has_boss

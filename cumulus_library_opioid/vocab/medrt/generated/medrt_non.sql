@@ -10,7 +10,7 @@ where SAB ='MED-RT' and ( (lower(STR) like lower('%Benzodiazepine%')) OR (lower(
 call create_index('MRCONSO_medrt', 'CUI');
 
 -- #########################################
-
+w
 drop   table if exists   MRREL_medrt_cui1;
 create table             MRREL_medrt_cui1
 select  distinct R.CUI1, R.REL, R.RELA, R.CUI2, R.SAB, C.TTY, C.CODE, C.STR
